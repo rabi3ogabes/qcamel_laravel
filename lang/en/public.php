@@ -268,4 +268,11 @@ return [
         'not_staff_title' => 'This account has no access to the staff apps',
         'not_staff_hint' => 'Ask your system administrator to grant you the right role.',
     ],
+
+    'callback' => [
+        'title' => 'Payment result received',
+        'hint' => 'We are confirming your payment with Sadad. Keep your booking reference — you can follow its status at any time.',
+        'reference' => 'Booking reference',
+        'view_status' => 'Check booking status',
+    ],
 ];

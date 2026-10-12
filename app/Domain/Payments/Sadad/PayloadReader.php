@@ -36,6 +36,10 @@ final class PayloadReader
                 return is_array($parsed) && ! array_is_list($parsed) ? $parsed : [];
             }
             parse_str($text, $out);
+            if ((! is_array($out) || $out === []) && $request->request->count() > 0) {
+                // Body already parsed by PHP/the framework (e.g. form POST): use the parsed fields.
+                $out = array_map(fn ($v) => is_string($v) ? $v : '', $request->request->all());
+            }
 
             return is_array($out) ? $out : [];
         } catch (Throwable) {
