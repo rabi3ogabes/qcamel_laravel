@@ -21,6 +21,7 @@ class MigrateFromSupabaseCommand extends Command
         {--step=* : Only these steps (see LegacyImporter::STEPS)}
         {--source=db : db (read-only Postgres connection) or rest (Supabase URL + secret key)}
         {--connection=supabase_legacy : Read-only legacy database connection (source=db)}
+        {--sqlite= : Read a SQLite file converted from a pg_dump backup (tools/pgdump/dump_to_sqlite.py); implies --auth-table=auth_users}
         {--auth-table=auth.users : Table holding the Supabase auth users}
         {--with-secrets : Also copy Sadad secret and n8n webhook URLs (rotate them afterwards)}
         {--storage= : Folder with the downloaded Supabase buckets (qr-codes/, pos-receipts/)}
@@ -35,6 +36,16 @@ class MigrateFromSupabaseCommand extends Command
             return self::FAILURE;
         }
 
+        if ($file = $this->option('sqlite')) {
+            if (! is_file((string) $file)) {
+                $this->error("SQLite file not found: {$file}");
+
+                return self::FAILURE;
+            }
+            config(['database.connections.legacy_sqlite' => ['driver' => 'sqlite', 'database' => (string) $file, 'prefix' => '', 'foreign_key_constraints' => false]]);
+            $this->input->setOption('connection', 'legacy_sqlite');
+            $this->input->setOption('auth-table', 'auth_users');
+        }
         $source = $this->option('source') === 'rest'
             ? new SupabaseRestSource((string) config('qcamelmc.legacy.supabase_url'), (string) config('qcamelmc.legacy.supabase_secret_key'))
             : DB::connection((string) $this->option('connection'));

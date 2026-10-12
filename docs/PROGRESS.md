@@ -36,7 +36,7 @@ Last updated: 2026-10-12.
 
 | Item | Notes |
 |---|---|
-| Production data cut-over | Run `migrate:from-supabase --dry-run` against a read-only copy of production, review the report, then run it for real (RUNBOOK §8). |
+| Production data cut-over | Rehearsed 2026-10-12 on the production backup `qcamelmc_261012`: 3,191 orders, 6,025 holders, 34 events, 37,461 page views imported; confirmed revenue 1,007,150.00 QAR reconciled per event; 0 stock drift; 0 warnings. Repeat with the final backup at cut-over (RUNBOOK §8). |
 | Docker image build verification | Dockerfile and compose validated (`docker compose config`); image not built locally because Docker Desktop was not running — CI builds it on every push. |
 | Larastan backlog | ~340 baseline entries, mostly missing relation generics; reduce over time. |
 | Operational setup | Real Sadad keys, mail provider, n8n workflows, backups off-site, `TRUSTED_PROXIES` (see SECURITY-CHECKLIST). |

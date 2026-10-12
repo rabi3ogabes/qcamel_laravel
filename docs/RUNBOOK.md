@@ -80,7 +80,11 @@ Health: `GET /up` (Laravel) and the Horizon dashboard at `/horizon` (admins only
 ## 8. Data migration from Supabase (one-off cut-over)
 
 1. Freeze the old site (maintenance page, disable n8n and its auto-send cron); snapshot the database and both buckets.
-2. Restore the snapshot to a **read-only** Postgres and set `LEGACY_DB_*` in `.env`.
+2. Pick a source:
+   - **Backup file** (Supabase dashboard → Database → Backups, `*.backup`, no Postgres needed):
+     `python -I tools/pgdump/dump_to_sqlite.py qcamelmc.backup legacy.sqlite`, then add `--sqlite=legacy.sqlite` below.
+   - **Read-only Postgres** restored from the snapshot: set `LEGACY_DB_*` in `.env`.
+   - **Supabase API**: set `SUPABASE_URL` + `SUPABASE_SECRET_KEY`, add `--source=rest` (no password hashes → all users reset).
 3. Download the buckets (`qr-codes/`, `pos-receipts/`) to a folder, e.g. `/srv/legacy-storage`.
 4. Rehearse: `php artisan migrate:from-supabase --dry-run` → read `storage/app/migration-report.md`
    (row counts, confirmed revenue old vs new, fixes F-01…F-14, warnings such as unknown ticket types F-10).
