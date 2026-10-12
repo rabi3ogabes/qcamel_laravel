@@ -86,14 +86,18 @@ class KioskDeviceResource extends Resource
             ->defaultSort('last_seen_at', 'desc')
             ->columns([
                 TextColumn::make('name')->label(__('admin.sec.device_name'))->weight('bold')->searchable()
-                    ->icon(fn (KioskDevice $record) => match ($record->kind) { DeviceKind::Pos => Heroicon::OutlinedBanknotes, DeviceKind::Board => Heroicon::OutlinedTv, default => Heroicon::OutlinedQrCode })
+                    ->icon(fn (KioskDevice $record) => match ($record->kind) {
+                        DeviceKind::Pos => Heroicon::OutlinedBanknotes, DeviceKind::Board => Heroicon::OutlinedTv, default => Heroicon::OutlinedQrCode
+                    })
                     ->description(fn (KioskDevice $record) => $record->kind?->label()),
                 TextColumn::make('posUser.name')->label(__('admin.stf.pos_profile'))->placeholder('—')
                     ->formatStateUsing(fn ($state, KioskDevice $record) => $record->posUser?->label()),
                 TextColumn::make('status')->label(__('admin.pos.status'))->badge()
                     ->state(fn (KioskDevice $record) => $record->revoked_at ? 'revoked' : ($record->isUsable() ? 'active' : 'expired'))
                     ->formatStateUsing(fn ($state) => __('admin.sec.state.'.$state))
-                    ->color(fn ($state) => match ($state) { 'active' => 'success', 'expired' => 'gray', default => 'danger' }),
+                    ->color(fn ($state) => match ($state) {
+                        'active' => 'success', 'expired' => 'gray', default => 'danger'
+                    }),
                 TextColumn::make('last_seen_at')->label(__('admin.sec.last_seen'))->sortable()->placeholder('—')
                     ->formatStateUsing(fn ($state) => Formats::ago($state))
                     ->description(fn (KioskDevice $record) => $record->last_ip),

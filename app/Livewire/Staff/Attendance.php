@@ -8,6 +8,7 @@ use App\Domain\Staff\AttendanceService;
 use App\Support\Formats;
 use App\Support\QatarClock;
 use Carbon\CarbonImmutable;
+use Filament\Notifications\Notification;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -71,7 +72,7 @@ class Attendance extends Component
     private function toast(string $type, string $message, ?string $title = null): void
     {
         if ($this->embedded) {
-            \Filament\Notifications\Notification::make()->status($type === 'error' ? 'danger' : $type)
+            Notification::make()->status($type === 'error' ? 'danger' : $type)
                 ->title($title ?? $message)->body($title ? $message : null)->send();
 
             return;

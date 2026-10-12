@@ -1,0 +1,83 @@
+# Qatar Camel Festival ticketing — production-like stack.
+#   cp .env.example .env   (fill the [SECRET] values; DB_HOST=mysql, REDIS_HOST=redis, REVERB_HOST=<public host>)
+#   docker compose build && docker compose up -d
+#   docker compose exec app php artisan migrate --force && docker compose exec app php artisan db:seed --force
+name: qcamelmc
+
+x-app: &app
+  build:
+    context: .
+    dockerfile: docker/Dockerfile
+    target: runtime
+  image: qcamelmc:latest
+  env_file: .env
+  environment:
+    DB_HOST: mysql
+    REDIS_HOST: redis
+  volumes:
+    - storage:/var/www/html/storage
+  depends_on:
+    mysql: { condition: service_healthy }
+    redis: { condition: service_healthy }
+  restart: unless-stopped
+
+services:
+  app:
+    <<: *app
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      target: web
+    image: qcamelmc-web:latest
+    ports: ["8080:80"]
+    volumes:
+      - storage:/var/www/html/storage:ro   # serves /storage (event images, QR codes)
+    depends_on: [app]
+    restart: unless-stopped
+
+  # Queues: payments > notifications > automation > qr > exports > default.
+  horizon:
+    <<: *app
+    command: ["php", "artisan", "horizon"]
+
+  # Scheduler: expire holds, reconcile Sadad, auto-invoices, prune visitors, backups.
+  scheduler:
+    <<: *app
+    command: ["php", "artisan", "schedule:work"]
+
+  reverb:
+    <<: *app
+    command: ["php", "artisan", "reverb:start", "--host=0.0.0.0", "--port=8080"]
+
+  mysql:
+    image: mysql:8.4
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-qcamelmc}
+      MYSQL_USER: ${DB_USERNAME:-qcamelmc}
+      MYSQL_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-${DB_PASSWORD}}
+      TZ: UTC
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    volumes: [mysql:/var/lib/mysql]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 10s
+      retries: 10
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes: [redis:/data]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      retries: 10
+    restart: unless-stopped
+
+volumes:
+  storage:
+  mysql:
+  redis:

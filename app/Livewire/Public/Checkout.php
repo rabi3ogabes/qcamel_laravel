@@ -15,6 +15,7 @@ use App\Livewire\Public\Concerns\ManagesCart;
 use App\Models\Event;
 use App\Settings\BusinessSettings;
 use App\Support\Countries;
+use App\Support\Formats;
 use App\Support\Money;
 use App\Support\PhoneNumber;
 use App\Support\PublicSession;
@@ -22,6 +23,7 @@ use App\Support\PublicSettings;
 use App\Support\Text;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
@@ -75,7 +77,7 @@ class Checkout extends Component
         }
         $this->eventId = $event->id;
         $this->eventTitle = $event->title;
-        $this->eventDate = \App\Support\Formats::longDate($event->event_date);
+        $this->eventDate = Formats::longDate($event->event_date);
         $this->qty = $cart['lines'];
         $this->loadAvailability($event);
         $this->priceSignature = $this->signature();
@@ -321,7 +323,7 @@ class Checkout extends Component
         }
         try {
             $this->validate();
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        } catch (ValidationException $e) {
             $this->toast('error', __('public.checkout.fill_required'));
             $this->dispatch('scroll-to-error');
 

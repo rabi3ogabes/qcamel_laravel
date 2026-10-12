@@ -3,12 +3,15 @@
 namespace App\Providers;
 
 use App\Domain\Messaging\Drivers\N8nWebhookDriver;
-use App\Domain\Messaging\Drivers\WhatsAppCloudDriver;
 use App\Domain\Messaging\Drivers\WhatsAppChannel;
+use App\Domain\Messaging\Drivers\WhatsAppCloudDriver;
 use App\Domain\Payments\Sadad\SadadConfig;
 use App\Listeners\DomainEventSubscriber;
 use App\Models\User;
 use App\View\Composers\BrandComposer;
+use Dedoc\Scramble\Scramble;
+use Dedoc\Scramble\Support\Generator\OpenApi;
+use Dedoc\Scramble\Support\Generator\SecurityScheme;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Builder as QueryBuilder;
@@ -45,8 +48,8 @@ class AppServiceProvider extends ServiceProvider
 
         // Spec 2.2: OpenAPI docs at /docs/api for admins only (session); bearer scheme documented.
         Gate::define('viewApiDocs', fn (?User $user) => $user !== null && $user->is_active && $user->can('settings.view'));
-        \Dedoc\Scramble\Scramble::configure()->withDocumentTransformers(
-            fn (\Dedoc\Scramble\Support\Generator\OpenApi $openApi) => $openApi->secure(\Dedoc\Scramble\Support\Generator\SecurityScheme::http('bearer'))
+        Scramble::configure()->withDocumentTransformers(
+            fn (OpenApi $openApi) => $openApi->secure(SecurityScheme::http('bearer'))
         );
 
         Event::subscribe(DomainEventSubscriber::class);

@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    // Receipt OCR vision model (ParseReceiptAction): AI_PROVIDER=gemini or any
+    // OpenAI-compatible chat-completions endpoint (AI_BASE_URL).
+    'ai' => [
+        'key' => env('AI_API_KEY'),
+        'base_url' => env('AI_BASE_URL', 'https://api.openai.com/v1'),
+    ],
+
 ];

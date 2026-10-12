@@ -9,6 +9,7 @@ use App\Models\Order;
 use App\Settings\AutomationSettings;
 use App\Support\Audit;
 use App\Support\QatarClock;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -79,7 +80,7 @@ class InvoiceDispatcher
         }
         try {
             $interval = max((int) config('qcamelmc.notifications.interval_min_seconds', 10), (int) $this->settings->auto_invoice_interval_seconds);
-            $last = $this->settings->last_invoice_sent_at ? \Carbon\CarbonImmutable::parse($this->settings->last_invoice_sent_at) : null;
+            $last = $this->settings->last_invoice_sent_at ? CarbonImmutable::parse($this->settings->last_invoice_sent_at) : null;
             if (! $manual && $last && $last->addSeconds($interval)->isFuture()) {
                 return ['message' => 'Interval not reached yet', 'seconds_remaining' => (int) round(now()->diffInSeconds($last->addSeconds($interval)))];
             }
@@ -145,7 +146,7 @@ class InvoiceDispatcher
         if (! $this->settings->last_invoice_sent_at) {
             return 0;
         }
-        $next = \Carbon\CarbonImmutable::parse($this->settings->last_invoice_sent_at)->addSeconds($interval);
+        $next = CarbonImmutable::parse($this->settings->last_invoice_sent_at)->addSeconds($interval);
 
         return max(0, (int) now()->diffInSeconds($next, false));
     }

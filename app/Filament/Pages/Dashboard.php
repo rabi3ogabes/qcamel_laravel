@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Support\Formats;
 use App\Support\QatarClock;
 use Filament\Pages\Dashboard as BaseDashboard;
 use Filament\Support\Icons\Heroicon;
@@ -25,7 +26,7 @@ class Dashboard extends BaseDashboard
 
     public function getSubheading(): ?string
     {
-        return \App\Support\Formats::longDate(QatarClock::now());
+        return Formats::longDate(QatarClock::now());
     }
 
     public function getColumns(): int|array

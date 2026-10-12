@@ -100,6 +100,20 @@ return [
         'home_page_size' => 9,                // R-175
     ],
 
+    // Sadad .env fallbacks. Read only through config() so they survive `config:cache`
+    // (env() returns null outside config files once the configuration is cached).
+    'sadad' => [
+        'merchant_id' => env('SADAD_MERCHANT_ID'),
+        'website_domain' => env('SADAD_WEBSITE_DOMAIN'),
+        'checkout_secret' => env('SADAD_CHECKOUT_SECRET'),
+        'api_login_secret' => env('SADAD_API_LOGIN_SECRET'),
+        'environment' => env('SADAD_ENV', 'auto'),
+        'frontend_url' => env('FRONTEND_URL'),
+        'api_live_url' => env('SADAD_API_LIVE_URL', 'https://api-s.sadad.qa'),
+        'api_sandbox_url' => env('SADAD_API_SANDBOX_URL', 'https://api-sandbox.sadad.qa'),
+        'http_timeout' => (int) env('SADAD_HTTP_TIMEOUT', 8),
+    ],
+
     'mcp' => [
         'enabled' => (bool) env('MCP_ENABLED', true),  // F-API-001: read-only AI tools at POST /mcp
         'token_days' => (int) env('MCP_TOKEN_DAYS', 90),

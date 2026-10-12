@@ -1,5 +1,20 @@
 <?php
 
+use App\Settings\AnalyticsSettings;
+use App\Settings\AutomationSettings;
+use App\Settings\BrandingSettings;
+use App\Settings\BusinessSettings;
+use App\Settings\ContactSettings;
+use App\Settings\EventSettings;
+use App\Settings\FeatureFlagSettings;
+use App\Settings\SadadSettings;
+use Spatie\LaravelData\Data;
+use Spatie\LaravelSettings\SettingsCasts\DataCast;
+use Spatie\LaravelSettings\SettingsCasts\DateTimeInterfaceCast;
+use Spatie\LaravelSettings\SettingsCasts\DateTimeZoneCast;
+use Spatie\LaravelSettings\SettingsRepositories\DatabaseSettingsRepository;
+use Spatie\LaravelSettings\SettingsRepositories\RedisSettingsRepository;
+
 return [
 
     /*
@@ -7,14 +22,14 @@ return [
      * put them (manually) here.
      */
     'settings' => [
-        App\Settings\BrandingSettings::class,
-        App\Settings\ContactSettings::class,
-        App\Settings\EventSettings::class,
-        App\Settings\FeatureFlagSettings::class,
-        App\Settings\AutomationSettings::class,
-        App\Settings\SadadSettings::class,
-        App\Settings\AnalyticsSettings::class,
-        App\Settings\BusinessSettings::class,
+        BrandingSettings::class,
+        ContactSettings::class,
+        EventSettings::class,
+        FeatureFlagSettings::class,
+        AutomationSettings::class,
+        SadadSettings::class,
+        AnalyticsSettings::class,
+        BusinessSettings::class,
     ],
 
     /*
@@ -42,13 +57,13 @@ return [
      */
     'repositories' => [
         'database' => [
-            'type' => Spatie\LaravelSettings\SettingsRepositories\DatabaseSettingsRepository::class,
+            'type' => DatabaseSettingsRepository::class,
             'model' => null,
             'table' => null,
             'connection' => null,
         ],
         'redis' => [
-            'type' => Spatie\LaravelSettings\SettingsRepositories\RedisSettingsRepository::class,
+            'type' => RedisSettingsRepository::class,
             'connection' => null,
             'prefix' => null,
         ],
@@ -68,7 +83,7 @@ return [
      * additional prefix.
      */
     'cache' => [
-        'enabled' => (bool)env('SETTINGS_CACHE_ENABLED', true),
+        'enabled' => (bool) env('SETTINGS_CACHE_ENABLED', true),
         'store' => null,
         'prefix' => null,
         'ttl' => null,
@@ -85,10 +100,10 @@ return [
      * your settings class isn't a default PHP type.
      */
     'global_casts' => [
-        DateTimeInterface::class => Spatie\LaravelSettings\SettingsCasts\DateTimeInterfaceCast::class,
-        DateTimeZone::class => Spatie\LaravelSettings\SettingsCasts\DateTimeZoneCast::class,
-//        Spatie\DataTransferObject\DataTransferObject::class => Spatie\LaravelSettings\SettingsCasts\DtoCast::class,
-        Spatie\LaravelData\Data::class => Spatie\LaravelSettings\SettingsCasts\DataCast::class,
+        DateTimeInterface::class => DateTimeInterfaceCast::class,
+        DateTimeZone::class => DateTimeZoneCast::class,
+        //        Spatie\DataTransferObject\DataTransferObject::class => Spatie\LaravelSettings\SettingsCasts\DtoCast::class,
+        Data::class => DataCast::class,
     ],
 
     /*

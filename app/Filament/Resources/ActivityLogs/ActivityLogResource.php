@@ -17,7 +17,6 @@ use Filament\Infolists\Components\KeyValueEntry;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
 use Filament\Schemas\Components\Grid;
-use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\Filter;
@@ -110,7 +109,9 @@ class ActivityLogResource extends Resource
                 TextColumn::make('description')->label(__('admin.log.description'))->wrap()->limit(110)->searchable(),
                 TextColumn::make('actor_type')->label(__('admin.log.actor'))->badge()
                     ->formatStateUsing(fn ($state) => ActorType::tryFrom((string) $state)?->label() ?? $state)
-                    ->color(fn ($state) => match ($state) { 'admin' => 'primary', 'staff' => 'info', 'system' => 'gray', default => 'warning' })
+                    ->color(fn ($state) => match ($state) {
+                        'admin' => 'primary', 'staff' => 'info', 'system' => 'gray', default => 'warning'
+                    })
                     ->description(fn (Activity $record) => $record->causer?->name ?? $record->actor_identifier),
                 TextColumn::make('actor_identifier')->hidden()->searchable(),
                 TextColumn::make('ip_address')->label('IP')->fontFamily('mono')->size('xs')->toggleable(isToggledHiddenByDefault: true),

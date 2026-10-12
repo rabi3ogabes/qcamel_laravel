@@ -14,8 +14,8 @@ use App\Support\PhoneNumber;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Support\Icons\Heroicon;
@@ -51,7 +51,9 @@ class HoldersRelationManager extends RelationManager
                     ->description(fn (TicketHolder $record) => $record->order?->event?->title),
                 TextColumn::make('order.payment_status')->label(__('admin.booked.cols.payment'))->badge()
                     ->formatStateUsing(fn (TicketHolder $record) => __('admin.trx.status.'.$record->order?->payment_status?->value))
-                    ->color(fn (TicketHolder $record) => match ($record->order?->payment_status?->value) { 'confirmed' => 'success', 'pending' => 'warning', default => 'danger' }),
+                    ->color(fn (TicketHolder $record) => match ($record->order?->payment_status?->value) {
+                        'confirmed' => 'success', 'pending' => 'warning', default => 'danger'
+                    }),
                 TextColumn::make('is_present')->label(__('admin.booked.cols.scan'))->badge()
                     ->formatStateUsing(fn (TicketHolder $record) => $record->is_present ? '✓ '.__('common.present') : __('admin.booked.not_scanned'))
                     ->color(fn (TicketHolder $record) => $record->is_present ? 'success' : 'gray')

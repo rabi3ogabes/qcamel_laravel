@@ -5,6 +5,7 @@ namespace App\Livewire\Public;
 use App\Models\Event;
 use App\Support\Formats;
 use App\Support\PublicSettings;
+use App\Support\QatarClock;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Url;
@@ -73,7 +74,7 @@ class Home extends Component
                 'weekday' => Formats::weekday($e['event_date']),
                 'start' => Formats::time12($e['start_time']),
                 'end' => Formats::time12($e['end_time']),
-                'is_today' => \App\Support\QatarClock::dateOf($e['event_date']) === \App\Support\QatarClock::today(),
+                'is_today' => QatarClock::dateOf($e['event_date']) === QatarClock::today(),
             ], $events),
             'pages' => $pages,
             'total' => count($all),

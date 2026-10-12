@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\EmailDeliveryEvent;
 use App\Models\MailSend;
 use App\Models\MailSuppression;
+use App\Models\Order;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -53,7 +54,7 @@ class MailEventsController extends Controller
         };
         $event = EmailDeliveryEvent::create([
             'order_id' => $send?->order_id,
-            'booking_reference' => $send?->order_id ? \App\Models\Order::query()->withTrashed()->whereKey($send->order_id)->value('booking_reference') : null,
+            'booking_reference' => $send?->order_id ? Order::query()->withTrashed()->whereKey($send->order_id)->value('booking_reference') : null,
             'recipient' => $recipient !== '' ? $recipient : $send?->recipient,
             'template' => $send?->template ?? 'booking-invoice',
             'provider_message_id' => $messageId ?: null,

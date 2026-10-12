@@ -90,6 +90,7 @@ final class Money implements JsonSerializable, Stringable
         if (! is_finite($f)) {
             return null;
         }
+
         // 0.1 + 0.2 => "0.30000000000000004" -> 30 cents.
         return rtrim(rtrim(sprintf('%.10F', $f), '0'), '.') ?: '0';
     }

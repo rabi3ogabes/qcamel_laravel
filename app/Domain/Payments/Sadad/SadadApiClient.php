@@ -2,6 +2,7 @@
 
 namespace App\Domain\Payments\Sadad;
 
+use App\Enums\SadadLiveStatus;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -243,7 +244,7 @@ class SadadApiClient
         return [
             'transactionno' => (string) ($tx['invoicenumber'] ?? $fallbackTxn),
             'status' => $status,
-            'statusAr' => \App\Enums\SadadLiveStatus::label($status),
+            'statusAr' => SadadLiveStatus::label($status),
             'isRefund' => (bool) ($tx['isRefund'] ?? $tx['is_refund'] ?? in_array($status, ['REFUND', 'REFUNDED'], true)),
             'amount' => round($amount, 2),
             'commission' => round($commission, 2),

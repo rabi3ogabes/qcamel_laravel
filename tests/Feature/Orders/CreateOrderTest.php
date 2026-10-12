@@ -1,5 +1,7 @@
 <?php
 
+use App\Domain\Booking\Actions\CreateOrderAction;
+use App\Domain\Booking\Data\OrderRequestValidator;
 use App\Domain\Shared\Actor;
 use App\Domain\Shared\DomainError;
 use App\Enums\Role;
@@ -7,7 +9,7 @@ use App\Models\Customer;
 use App\Models\Order;
 use App\Models\PosUser;
 use App\Models\TicketHolder;
-use App\Support\QatarClock;
+use Illuminate\Database\QueryException;
 
 /*
 | Order creation rules — T-021…T-036, T-039…T-041, T-045 (F-ORD-*).
@@ -79,8 +81,8 @@ it('keeps an explicit holder country code and derives one from an international 
     $body = orderBody([[$t['normal'], 2]]);
     $body['holders'][0]['country_code'] = '+966';
     $body['holders'][1]['phone'] = '+971 55510002';
-    $data = app(\App\Domain\Booking\Data\OrderRequestValidator::class)->validate($body);
-    $order = app(\App\Domain\Booking\Actions\CreateOrderAction::class)->execute($data, Actor::guest());
+    $data = app(OrderRequestValidator::class)->validate($body);
+    $order = app(CreateOrderAction::class)->execute($data, Actor::guest());
     $holders = $order->holders()->orderBy('position')->get();
 
     expect($holders[0]->country_code)->toBe('+966')
@@ -138,7 +140,7 @@ it('enforces the per-person cap by national ID (T-030)', function () {
         }
         $body['customer']['id_number'] = $id;
 
-        return app(\App\Domain\Booking\Actions\CreateOrderAction::class)->execute(app(\App\Domain\Booking\Data\OrderRequestValidator::class)->validate($body), Actor::guest());
+        return app(CreateOrderAction::class)->execute(app(OrderRequestValidator::class)->validate($body), Actor::guest());
     };
 
     $withId(3);
@@ -224,8 +226,8 @@ it('limits open unpaid orders per phone, whatever its formatting (T-040)', funct
 
 it('stores the return origin only when it is safe (T-041)', function (?string $origin, ?string $expected) {
     $t = openEvent();
-    $data = app(\App\Domain\Booking\Data\OrderRequestValidator::class)->validate(orderBody([[$t['normal'], 1]]));
-    $order = app(\App\Domain\Booking\Actions\CreateOrderAction::class)->execute($data, Actor::guest(), ['return_origin' => $origin]);
+    $data = app(OrderRequestValidator::class)->validate(orderBody([[$t['normal'], 1]]));
+    $order = app(CreateOrderAction::class)->execute($data, Actor::guest(), ['return_origin' => $origin]);
 
     expect($order->return_origin)->toBe($expected);
 })->with([
@@ -264,5 +266,5 @@ it('has a unique index on orders.payment_id (T-006)', function () {
     $b = posOrder([[$t['normal'], 1]]);
     $a->forceFill(['payment_id' => 'TXN-1'])->save();
 
-    expect(fn () => $b->forceFill(['payment_id' => 'TXN-1'])->save())->toThrow(\Illuminate\Database\QueryException::class);
+    expect(fn () => $b->forceFill(['payment_id' => 'TXN-1'])->save())->toThrow(QueryException::class);
 });

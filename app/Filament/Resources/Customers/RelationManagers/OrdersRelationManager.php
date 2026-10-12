@@ -40,7 +40,9 @@ class OrdersRelationManager extends RelationManager
                     ->description(fn (Order $record) => trim(($record->event?->title ?? '—').' · '.Formats::date($record->event?->event_date))),
                 TextColumn::make('payment_status')->label(__('admin.orders.cols.status'))->badge()
                     ->formatStateUsing(fn (Order $record) => __('enums.public_payment_status.'.$record->publicStatus()))
-                    ->color(fn (Order $record) => match ($record->publicStatus()) { 'confirmed' => 'success', 'pending' => 'warning', default => 'danger' })
+                    ->color(fn (Order $record) => match ($record->publicStatus()) {
+                        'confirmed' => 'success', 'pending' => 'warning', default => 'danger'
+                    })
                     ->description(fn (Order $record) => $record->noteLabel()),
                 TextColumn::make('quantity')->label(__('admin.orders.cols.tickets'))->formatStateUsing(fn (Order $record) => OrdersTable::ticketSummary($record))->html(),
                 TextColumn::make('total_amount')->label(__('admin.orders.cols.amount'))->formatStateUsing(fn ($state) => Formats::money($state, short: true)),

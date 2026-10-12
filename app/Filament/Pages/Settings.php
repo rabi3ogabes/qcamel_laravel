@@ -41,6 +41,8 @@ use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Components\Text;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
 use Maatwebsite\Excel\Facades\Excel;
@@ -503,7 +505,7 @@ class Settings extends Page
             return;
         }
         try {
-            $res = \Illuminate\Support\Facades\Http::timeout(10)->acceptJson()->post($url, ['action' => 'test', 'message' => 'QCAMELMC webhook test', 'timestamp' => now()->toIso8601String()]);
+            $res = Http::timeout(10)->acceptJson()->post($url, ['action' => 'test', 'message' => 'QCAMELMC webhook test', 'timestamp' => now()->toIso8601String()]);
             Notification::make()->{$res->successful() ? 'success' : 'warning'}()->title(__('admin.set.test_result', ['status' => $res->status()]))->send();
         } catch (Throwable $e) {
             Notification::make()->danger()->title(__('admin.set.test_failed'))->body($e->getMessage())->send();
@@ -519,7 +521,7 @@ class Settings extends Page
             return;
         }
         try {
-            \Illuminate\Support\Facades\Mail::raw(__('admin.set.test_mail_body'), fn ($m) => $m->to($to)->subject(__('admin.set.test_mail_subject')));
+            Mail::raw(__('admin.set.test_mail_body'), fn ($m) => $m->to($to)->subject(__('admin.set.test_mail_subject')));
             Notification::make()->success()->title(__('admin.set.test_mail_sent', ['to' => $to]))->send();
         } catch (Throwable $e) {
             Notification::make()->danger()->title(__('admin.set.test_failed'))->body($e->getMessage())->send();

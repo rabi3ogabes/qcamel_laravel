@@ -1,0 +1,1 @@
+O:23:"PHPStan\Cache\CacheItem":2:{s:11:"variableKey";s:74:"v2-bfbe9e64d5ddbdd5a98600a752ea597a462335b5dac295b2e650fe9d646b26a1-8.4.25";s:4:"data";a:3:{s:7:"classes";a:1:{s:45:"laravel\mcp\server\attributes\serverattribute";b:1;}s:9:"functions";a:0:{}s:9:"constants";a:0:{}}}

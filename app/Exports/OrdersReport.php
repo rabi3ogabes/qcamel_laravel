@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Domain\Shared\Actor;
 use App\Models\Order;
 use App\Support\QatarClock;
 use Illuminate\Support\Collection;
@@ -21,7 +22,7 @@ class OrdersReport implements Export, WithMultipleSheets
     /** @param array{variant?:string, from?:?string, to?:?string, event_id?:?string, status?:?string, method?:?string} $filters */
     public function __construct(private readonly array $filters = [])
     {
-        $this->pii = \App\Domain\Shared\Actor::current()->can('customers.view_pii');
+        $this->pii = Actor::current()->can('customers.view_pii');
     }
 
     public static function rows(array $filters): Collection

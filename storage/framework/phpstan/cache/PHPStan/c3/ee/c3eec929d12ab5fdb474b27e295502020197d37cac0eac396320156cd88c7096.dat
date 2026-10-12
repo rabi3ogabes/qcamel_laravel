@@ -1,0 +1,1 @@
+O:23:"PHPStan\Cache\CacheItem":2:{s:11:"variableKey";s:74:"v2-d2a32109c35943784f4ece34fd1e0a77e8705640c57d369a54065ae31e57cb8c-8.4.25";s:4:"data";a:3:{s:7:"classes";a:1:{s:51:"laravel\mcp\server\tools\annotations\toolannotation";b:1;}s:9:"functions";a:0:{}s:9:"constants";a:0:{}}}

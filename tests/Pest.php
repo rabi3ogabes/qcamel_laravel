@@ -10,6 +10,7 @@ use App\Models\PosUser;
 use App\Models\TicketType;
 use App\Models\User;
 use App\Settings\SadadSettings;
+use App\Support\QatarClock;
 use Database\Seeders\RolesAndPermissionsSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Http;
@@ -61,7 +62,7 @@ function actingAsRole(Role|string|null $role = Role::Admin): User
  */
 function openEvent(int $normal = 200, int $vip = 50, int $parking = 100, array $prices = ['normal' => '100.00', 'vip' => '200.00', 'parking' => '20.00'], ?string $date = null): array
 {
-    $date ??= \App\Support\QatarClock::local(\App\Support\QatarClock::today())->addDays(3)->toDateString();
+    $date ??= QatarClock::local(QatarClock::today())->addDays(3)->toDateString();
     $event = Event::factory()->on($date)->withTickets($normal, $vip, $parking, $prices)->create(['is_active' => true, 'is_archived' => false]);
     $types = TicketType::query()->where('event_id', $event->id)->get()->keyBy(fn ($t) => $t->type->value);
 

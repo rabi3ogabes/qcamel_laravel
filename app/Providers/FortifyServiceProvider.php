@@ -2,22 +2,20 @@
 
 namespace App\Providers;
 
+use App\Actions\ResetPassword;
 use App\Domain\Staff\PasscodeAuthenticator;
 use App\Http\Auth\LoginResponse;
 use App\Http\Auth\ThrottleAndValidateLogin;
-use App\Models\User;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Actions\AttemptToAuthenticate;
 use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
 use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
-use Laravel\Fortify\Contracts\ResetsUserPasswords;
 use Laravel\Fortify\Contracts\TwoFactorLoginResponse;
 use Laravel\Fortify\Fortify;
 
@@ -48,7 +46,7 @@ class FortifyServiceProvider extends ServiceProvider
             PrepareAuthenticatedSession::class,
         ]);
 
-        Fortify::resetUserPasswordsUsing(\App\Actions\ResetPassword::class);
+        Fortify::resetUserPasswordsUsing(ResetPassword::class);
 
         RateLimiter::for('two-factor', fn (Request $request) => Limit::perMinute(5)->by((string) $request->session()->get('login.id')));
 

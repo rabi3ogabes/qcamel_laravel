@@ -14,7 +14,9 @@ use App\Models\Event;
 use App\Models\Order;
 use App\Support\Countries;
 use App\Support\Formats;
+use App\Support\PhoneNumber;
 use App\Support\QatarClock;
+use App\Support\Text;
 use Filament\Actions\ActionGroup;
 use Filament\Actions\BulkAction;
 use Filament\Actions\BulkActionGroup;
@@ -51,12 +53,14 @@ class OrdersTable
                     ->badge(fn (Order $record) => $record->event_changes_count > 0)->tooltip(fn (Order $record) => $record->event_changes_count > 0 ? __('admin.orders.moved_tooltip') : null),
                 TextColumn::make('payment_status')->label(__('admin.orders.cols.status'))->badge()
                     ->formatStateUsing(fn (Order $record) => __('enums.public_payment_status.'.$record->publicStatus()))
-                    ->color(fn (Order $record) => match ($record->publicStatus()) { 'confirmed' => 'success', 'pending' => 'warning', default => 'danger' })
+                    ->color(fn (Order $record) => match ($record->publicStatus()) {
+                        'confirmed' => 'success', 'pending' => 'warning', default => 'danger'
+                    })
                     ->description(fn (Order $record) => $record->noteLabel()),
                 TextColumn::make('customer.name')->label(__('admin.orders.cols.customer'))
                     ->searchable(query: fn (Builder $query, string $search) => $query->whereHas('customer', function ($c) use ($search) {
-                        $like = \App\Support\Text::like($search);
-                        $digits = \App\Support\PhoneNumber::digits($search);
+                        $like = Text::like($search);
+                        $digits = PhoneNumber::digits($search);
                         $c->where('name', 'like', $like)->orWhere('phone', 'like', $like);
                         if (strlen($digits) >= 4) {
                             $c->orWhere('phone_e164', 'like', '%'.$digits.'%');

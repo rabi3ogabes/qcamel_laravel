@@ -8,8 +8,8 @@ use App\Domain\Shared\Actor;
 use App\Domain\Shared\DomainError;
 use App\Enums\PaymentStatus;
 use App\Enums\Role;
-use App\Models\DeletedTicket;
 use App\Models\ExpiredQrCode;
+use App\Models\Order;
 use App\Models\TicketType;
 
 /*
@@ -55,7 +55,7 @@ it('T-054 / T-126 releases seats once when tickets and orders are deleted', func
 
     app(OrderStatusActions::class)->delete($order->fresh(), $actor);
     expect(sold($t['normal']))->toBe(0)
-        ->and(\App\Models\Order::withTrashed()->find($order->id))->not->toBeNull(); // soft-deleted, auditable
+        ->and(Order::withTrashed()->find($order->id))->not->toBeNull(); // soft-deleted, auditable
 
     $cancelled = placeOrder([[$t['normal'], 1]]);
     app(OrderStatusActions::class)->cancel($cancelled, 'x', $actor);

@@ -1,6 +1,5 @@
 <?php
 
-
 return [
     /*
      * Which routes to document. String or array form; use Scramble::routes() for custom selection.

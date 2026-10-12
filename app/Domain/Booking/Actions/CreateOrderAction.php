@@ -28,7 +28,6 @@ use App\Support\QatarClock;
 use App\Support\Text;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 /**
  * The single transactional path through which every booking is born

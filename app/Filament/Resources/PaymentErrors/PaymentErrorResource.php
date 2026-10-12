@@ -104,7 +104,9 @@ class PaymentErrorResource extends Resource
                 TextColumn::make('amount')->label(__('admin.orders.cols.amount'))->placeholder('—')->formatStateUsing(fn ($state) => Formats::money($state, short: true)),
                 TextColumn::make('error_source')->label(__('admin.perr.cols.source'))->badge()
                     ->formatStateUsing(fn ($state) => __('enums.payment_error_source.'.($state?->value ?? $state)))
-                    ->color(fn ($state) => match ($state?->value ?? $state) { 'sadad' => 'warning', 'bank' => 'danger', default => 'gray' }),
+                    ->color(fn ($state) => match ($state?->value ?? $state) {
+                        'sadad' => 'warning', 'bank' => 'danger', default => 'gray'
+                    }),
                 TextColumn::make('error_message')->label(__('admin.perr.cols.reason'))->wrap()->lineClamp(3)
                     ->state(fn (PaymentError $record) => $record->error_message ?: $record->error_code ?: '—')
                     ->description(fn (PaymentError $record) => $record->event?->title),

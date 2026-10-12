@@ -12,6 +12,7 @@ use App\Models\StaffAttendance;
 use App\Support\Audit;
 use App\Support\QatarClock;
 use Carbon\CarbonImmutable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -45,7 +46,7 @@ class AttendanceService
         }
     }
 
-    /** @return array{users:\Illuminate\Support\Collection, records:\Illuminate\Support\Collection, can_edit:bool} */
+    /** @return array{users:Collection, records:Collection, can_edit:bool} */
     public function list(string $from, string $to, Actor $actor): array
     {
         if ($from > $to) {

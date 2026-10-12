@@ -1,0 +1,12 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    # Known backlog (mostly relations without generic return types). CI fails on any NEW finding.
+    - phpstan-baseline.neon
+
+parameters:
+    level: 5
+    paths:
+        - app
+    tmpDir: storage/framework/phpstan
+    # Filament's fluent closures inject parameters by name; their types are resolved at runtime.
+    treatPhpDocTypesAsCertain: false

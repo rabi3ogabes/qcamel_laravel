@@ -28,7 +28,7 @@ class SecurityHeaders
         if (app()->isLocal()) {
             $connect .= ' http://localhost:* http://127.0.0.1:* ws://localhost:* ws://127.0.0.1:*';
         }
-        $scriptDev = app()->isLocal() ? " http://localhost:* http://127.0.0.1:*" : '';
+        $scriptDev = app()->isLocal() ? ' http://localhost:* http://127.0.0.1:*' : '';
 
         // Alpine needs 'unsafe-eval'. Public/staff pages use nonces; the Filament panel
         // injects inline bootstrap scripts, so it keeps 'unsafe-inline' (behind auth + 2FA).

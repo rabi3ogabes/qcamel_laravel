@@ -7,7 +7,9 @@ use App\Models\Event;
 use App\Models\TicketHolder;
 use App\Models\TicketType;
 use App\Support\Countries;
+use App\Support\Money;
 use App\Support\QatarClock;
+use App\Support\Text;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -107,7 +109,7 @@ class LiveBookingsQuery
             });
         $search = trim($search);
         if (mb_strlen($search) >= 2) {
-            $like = \App\Support\Text::like($search);
+            $like = Text::like($search);
             $q->where(fn ($w) => $w->where('name', 'like', $like)->orWhere('phone', 'like', $like)->orWhere('qr_code', 'like', $like)
                 ->orWhereHas('order', fn ($o) => $o->where('booking_reference', 'like', $like)));
         }
@@ -180,6 +182,6 @@ class LiveBookingsQuery
 
     private static function add(string $a, string $b): string
     {
-        return \App\Support\Money::of($a)->add(\App\Support\Money::of($b))->toDecimal();
+        return Money::of($a)->add(Money::of($b))->toDecimal();
     }
 }

@@ -27,7 +27,9 @@ class OrderInfolist
                 TextEntry::make('booking_reference')->label(__('admin.orders.cols.reference'))->copyable()->fontFamily('mono')->weight('bold')->color('primary'),
                 TextEntry::make('payment_status')->label(__('admin.orders.cols.status'))->badge()
                     ->formatStateUsing(fn (Order $record) => __('enums.public_payment_status.'.$record->publicStatus()))
-                    ->color(fn (Order $record) => match ($record->publicStatus()) { 'confirmed' => 'success', 'pending' => 'warning', default => 'danger' })
+                    ->color(fn (Order $record) => match ($record->publicStatus()) {
+                        'confirmed' => 'success', 'pending' => 'warning', default => 'danger'
+                    })
                     ->helperText(fn (Order $record) => $record->noteLabel()),
                 TextEntry::make('total_amount')->label(__('admin.orders.cols.amount'))->formatStateUsing(fn ($state) => Formats::money($state))->weight('bold')->size('lg'),
                 TextEntry::make('payment_method')->label(__('admin.orders.cols.method'))->formatStateUsing(fn (Order $record) => __('enums.payment_method.'.$record->payment_method->value))

@@ -3,6 +3,7 @@
 namespace App\Domain\Staff;
 
 use App\Domain\Messaging\TransactionalMailer;
+use App\Domain\Shared\Actor;
 use App\Enums\ActivityType;
 use App\Models\KioskDevice;
 use App\Settings\FeatureFlagSettings;
@@ -134,7 +135,7 @@ class PasscodeAuthenticator
             $out += ['blocked' => true, 'retry_after_seconds' => (int) config('qcamelmc.auth.passcode_ip_block') * 60];
             // U-AUTH-04: passcode lockouts alert the admin too.
             app(TransactionalMailer::class)->sendLoginAlert($callerId, 'passcode', (int) config('qcamelmc.auth.passcode_ip_max'), $ip, $ua);
-            Audit::log(ActivityType::LoginBlocked, __('auth.audit_blocked', ['identifier' => $callerId]), null, ['attempts' => (int) config('qcamelmc.auth.passcode_ip_max'), 'block_minutes' => (int) config('qcamelmc.auth.passcode_ip_block'), 'kind' => 'passcode'], \App\Domain\Shared\Actor::guest());
+            Audit::log(ActivityType::LoginBlocked, __('auth.audit_blocked', ['identifier' => $callerId]), null, ['attempts' => (int) config('qcamelmc.auth.passcode_ip_max'), 'block_minutes' => (int) config('qcamelmc.auth.passcode_ip_block'), 'kind' => 'passcode'], Actor::guest());
         }
 
         return $out;

@@ -170,7 +170,7 @@ class Pos extends Component
         return collect($this->tickets)->firstWhere('id', $id);
     }
 
-    private function admissionInCart(array $cart = null): int
+    private function admissionInCart(?array $cart = null): int
     {
         $cart ??= $this->cart;
         $n = 0;

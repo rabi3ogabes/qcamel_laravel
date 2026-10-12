@@ -8,6 +8,7 @@ use App\Domain\Payments\PaymentProcessor;
 use App\Domain\Payments\Sadad\ApiResult;
 use App\Domain\Payments\Sadad\NormalizedPayment;
 use App\Domain\Payments\Sadad\SadadApiClient;
+use App\Models\Order;
 use App\Models\PaymentEvent;
 use App\Models\Refund;
 
@@ -17,7 +18,7 @@ use App\Models\Refund;
 
 beforeEach(fn () => configureSadad());
 
-function sadadOrder(array $t, int $qty = 2): \App\Models\Order
+function sadadOrder(array $t, int $qty = 2): Order
 {
     return placeOrder([[$t['normal'], $qty]], 'sadad');
 }

@@ -2,6 +2,7 @@
 
 namespace App\Domain\Shared;
 
+use App\Enums\TicketKind;
 use RuntimeException;
 
 /**
@@ -39,7 +40,7 @@ class DomainError extends RuntimeException
             $msg = $this->getMessage() !== $this->errorCode ? $this->getMessage() : __('errors.default');
         }
         if ($this->errorCode === 'insufficient_stock' && isset($this->extra['ticket_type'])) {
-            $kind = \App\Enums\TicketKind::tryFrom((string) $this->extra['ticket_type']);
+            $kind = TicketKind::tryFrom((string) $this->extra['ticket_type']);
             if ($kind) {
                 $msg .= ' ('.$kind->apiLabel().')';
             }

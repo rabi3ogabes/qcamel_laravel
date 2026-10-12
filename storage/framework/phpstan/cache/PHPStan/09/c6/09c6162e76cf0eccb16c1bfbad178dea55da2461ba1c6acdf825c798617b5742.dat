@@ -1,0 +1,1 @@
+O:23:"PHPStan\Cache\CacheItem":2:{s:11:"variableKey";s:74:"v2-a8f4fd7e5fa3fe3ed68a374476c63e4695819dcc74b7ac97c9b66dc5e8dfdb1a-8.4.25";s:4:"data";a:3:{s:7:"classes";a:1:{s:39:"symfony\component\httpfoundation\cookie";b:1;}s:9:"functions";a:0:{}s:9:"constants";a:0:{}}}

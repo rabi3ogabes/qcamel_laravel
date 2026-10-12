@@ -1,21 +1,29 @@
 <?php
 
 use App\Domain\Analytics\VisitorAnalyticsQuery;
+use App\Domain\Booking\Actions\OrderStatusActions;
 use App\Domain\Messaging\InvoiceDispatcher;
+use App\Domain\Payments\Actions\ConfirmPaymentAction;
 use App\Domain\Payments\Actions\FailPaymentAction;
 use App\Domain\Payments\PaymentCheckThrottle;
+use App\Domain\Payments\Sadad\SadadConfig;
 use App\Domain\Payments\Sadad\SadadDiagnose;
 use App\Domain\Shared\Actor;
 use App\Domain\Shared\DomainError;
 use App\Enums\Role;
+use App\Jobs\SendWhatsAppInvoice;
+use App\Models\Activity;
 use App\Models\LoginAttempt;
 use App\Models\Order;
 use App\Models\PageView;
 use App\Models\PosReceipt;
 use App\Settings\AutomationSettings;
 use App\Support\PublicSession;
+use Carbon\CarbonImmutable;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 /*
 | Cross-cutting platform rules — T-020, T-059, T-073, T-084, T-092, T-093,
@@ -26,7 +34,7 @@ it('T-020 lets the system context create orders and read secrets', function () {
     configureSadad(['checkout_secret' => 'SYS-SECRET']);
     $t = openEvent();
 
-    expect(app(\App\Domain\Payments\Sadad\SadadConfig::class)->checkoutSecret())->toBe('SYS-SECRET')
+    expect(app(SadadConfig::class)->checkoutSecret())->toBe('SYS-SECRET')
         ->and(placeOrder([[$t['normal'], 1]], 'cash_pos', [], Actor::system())->exists)->toBeTrue();
 });
 
@@ -52,7 +60,7 @@ it('T-073 maps cancelled orders to failed or cancelled for customers', function 
     $staff = placeOrder([[$t['normal'], 1]]);
     $admin = staffUser(Role::Admin);
     $this->actingAs($admin);
-    app(\App\Domain\Booking\Actions\OrderStatusActions::class)->cancel($staff, 'x', Actor::user($admin));
+    app(OrderStatusActions::class)->cancel($staff, 'x', Actor::user($admin));
 
     expect($failed->fresh()->publicStatus())->toBe('failed')
         ->and($staff->fresh()->publicStatus())->toBe('cancelled')
@@ -78,7 +86,7 @@ it('T-092 locks an account e-mail after 5 failed sign-ins and logs the block onc
     $this->post('/login', ['email' => 'lock@qcamel.test', 'password' => 'password']);
 
     $this->assertGuest();
-    expect(\App\Models\Activity::query()->where('log_name', 'login_blocked')->count())->toBe(1)
+    expect(Activity::query()->where('log_name', 'login_blocked')->count())->toBe(1)
         ->and(LoginAttempt::query()->where('identifier', 'lock@qcamel.test')->where('success', false)->count())->toBeGreaterThanOrEqual(5);
 });
 
@@ -139,8 +147,8 @@ it('T-115 remembers the last 10 bookings, newest last, without duplicates', func
 it('T-123 keeps receipt images private behind short-lived signed links', function () {
     $staff = staffUser(Role::Cashier);
     $receipt = PosReceipt::query()->create(['image_path' => 'x.jpg', 'created_by' => $staff->id]);
-    \Illuminate\Support\Facades\Storage::fake('receipts');
-    \Illuminate\Support\Facades\Storage::disk('receipts')->put('x.jpg', 'jpg');
+    Storage::fake('receipts');
+    Storage::disk('receipts')->put('x.jpg', 'jpg');
 
     $this->get('/staff/receipts/'.$receipt->id.'/image')->assertRedirect(); // guest
     $this->actingAs($staff)->get('/staff/receipts/'.$receipt->id.'/image')->assertStatus(403); // unsigned
@@ -162,19 +170,19 @@ it('T-124 sends each pending invoice once even when the dispatcher runs twice', 
     configureSadad();
     $t = openEvent();
     $order = placeOrder([[$t['normal'], 1]], 'sadad');
-    app(\App\Domain\Payments\Actions\ConfirmPaymentAction::class)->execute($order->booking_reference, 'SD-INV');
-    \Illuminate\Support\Facades\Bus::fake([\App\Jobs\SendWhatsAppInvoice::class]);
+    app(ConfirmPaymentAction::class)->execute($order->booking_reference, 'SD-INV');
+    Bus::fake([SendWhatsAppInvoice::class]);
     Order::query()->whereKey($order->id)->update(['n8n_response_message' => null, 'send_attempt_count' => 0, 'created_at' => now()->subMinutes(5)]);
 
     app(InvoiceDispatcher::class)->run(manual: true);
     app(InvoiceDispatcher::class)->run(manual: true);
 
-    \Illuminate\Support\Facades\Bus::assertDispatchedTimes(\App\Jobs\SendWhatsAppInvoice::class, 1);
+    Bus::assertDispatchedTimes(SendWhatsAppInvoice::class, 1);
     expect($order->fresh()->send_attempt_count)->toBe(1);
 });
 
 it('T-125 groups page views by the Qatar day', function () {
-    PageView::query()->create(['session_id' => 's1', 'page_path' => '/', 'viewed_at' => \Carbon\CarbonImmutable::parse('2026-10-09 22:30:00', 'UTC'), 'is_new_visitor' => true, 'device_type' => 'mobile']);
+    PageView::query()->create(['session_id' => 's1', 'page_path' => '/', 'viewed_at' => CarbonImmutable::parse('2026-10-09 22:30:00', 'UTC'), 'is_new_visitor' => true, 'device_type' => 'mobile']);
     $rows = collect(app(VisitorAnalyticsQuery::class)->perDate('2026-10-09', '2026-10-10'))->keyBy('date');
 
     expect($rows->has('2026-10-10'))->toBeTrue()->and($rows->has('2026-10-09'))->toBeFalse();

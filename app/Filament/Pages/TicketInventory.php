@@ -10,10 +10,12 @@ use App\Domain\Shared\DomainError;
 use App\Filament\Concerns\InNavigationGroup;
 use App\Models\Event;
 use App\Models\TicketType;
+use App\Settings\BusinessSettings;
+use App\Support\QatarClock;
 use BackedEnum;
 use Filament\Actions\Action;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Support\Icons\Heroicon;
@@ -113,7 +115,7 @@ class TicketInventory extends Page
     {
         $events = Event::query()->where('is_archived', $this->season === 'archive')->orderBy('event_date')->orderBy('display_order')->get(['id', 'title', 'event_date', 'end_date', 'location']);
         if (! $this->eventId || ! $events->contains('id', $this->eventId)) {
-            $today = \App\Support\QatarClock::today();
+            $today = QatarClock::today();
             $this->eventId = ($events->first(fn ($e) => $e->lastDay() >= $today) ?? $events->first())?->id;
         }
         $event = $events->firstWhere('id', $this->eventId);
@@ -134,7 +136,7 @@ class TicketInventory extends Page
             'breakdown' => $breakdown,
             'revenue' => $revenue,
             'daily' => $this->showDaily ? app(LiveBookingsQuery::class)->dailySales(null, $this->season === 'archive') : null,
-            'low' => (int) rescue(fn () => app(\App\Settings\BusinessSettings::class)->low_stock_threshold, 10, false),
+            'low' => (int) rescue(fn () => app(BusinessSettings::class)->low_stock_threshold, 10, false),
         ];
     }
 }

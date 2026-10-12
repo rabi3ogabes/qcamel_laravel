@@ -5,6 +5,7 @@ namespace App\Domain\Staff;
 use App\Domain\Messaging\TransactionalMailer;
 use App\Domain\Shared\Actor;
 use App\Enums\ActivityType;
+use App\Models\LoginAttempt;
 use App\Support\Audit;
 use App\Support\QatarClock;
 use Illuminate\Http\Request;
@@ -66,6 +67,6 @@ class LoginThrottle
     /** U-AUTH-03 unblock action. */
     public static function unblock(string $identifier): int
     {
-        return \App\Models\LoginAttempt::query()->where('identifier', $identifier)->where('success', false)->delete();
+        return LoginAttempt::query()->where('identifier', $identifier)->where('success', false)->delete();
     }
 }

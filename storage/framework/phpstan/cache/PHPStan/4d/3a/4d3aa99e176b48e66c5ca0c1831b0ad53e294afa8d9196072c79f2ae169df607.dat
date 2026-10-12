@@ -1,0 +1,1 @@
+O:23:"PHPStan\Cache\CacheItem":2:{s:11:"variableKey";s:74:"v2-b82f00d0643824c6a0f20b70a3c89cf91514ce4f7770a8d247df009077704fba-8.4.25";s:4:"data";a:3:{s:7:"classes";a:1:{s:44:"illuminate\filesystem\localfilesystemadapter";b:1;}s:9:"functions";a:0:{}s:9:"constants";a:0:{}}}

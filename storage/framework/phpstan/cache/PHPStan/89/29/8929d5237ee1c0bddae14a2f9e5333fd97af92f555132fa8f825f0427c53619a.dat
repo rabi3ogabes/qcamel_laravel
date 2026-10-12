@@ -1,0 +1,91 @@
+O:23:"PHPStan\Cache\CacheItem":2:{s:11:"variableKey";s:38:"v3-6.73.0.6-dev-master@e4f5f6c-8.4.25-";s:4:"data";a:17:{s:4:"name";s:15:"json_last_error";s:10:"parameters";a:0:{}s:16:"returnsReference";b:0;s:10:"returnType";a:2:{s:5:"class";s:55:"PHPStan\BetterReflection\Reflection\ReflectionNamedType";s:4:"data";a:2:{s:4:"name";s:3:"int";s:12:"isIdentifier";b:1;}}s:10:"attributes";a:1:{i:0;a:3:{s:4:"name";s:23:"JetBrains\PhpStorm\Pure";s:10:"isRepeated";b:0;s:9:"arguments";a:1:{i:0;a:2:{s:4:"code";s:5:"\true";s:10:"attributes";a:6:{s:9:"startLine";i:95;s:7:"endLine";i:95;s:13:"startTokenPos";i:11;s:12:"startFilePos";i:2839;s:11:"endTokenPos";i:11;s:10:"endFilePos";i:2842;}}}}}s:10:"docComment";s:2424:"/**
+ * Returns the last error occurred
+ * @link https://php.net/manual/en/function.json-last-error.php
+ * @return int an integer, the value can be one of the following
+ * constants:
+ * <table class='doctable table'>
+ * <thead>
+ * <tr>
+ * <th>Constant</th>
+ * <th>Meaning</th>
+ * <th>Availability</th>
+ * </tr>
+ *
+ * </thead>
+ *
+ * <tbody class='tbody'>
+ * <tr>
+ * <td><strong><code>JSON_ERROR_NONE</code></strong></td>
+ * <td>No error has occurred</td>
+ * <td class='empty'>&nbsp;</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_DEPTH</code></strong></td>
+ * <td>The maximum stack depth has been exceeded</td>
+ * <td class='empty'>&nbsp;</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_STATE_MISMATCH</code></strong></td>
+ * <td>Invalid or malformed JSON</td>
+ * <td class='empty'>&nbsp;</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_CTRL_CHAR</code></strong></td>
+ * <td>Control character error, possibly incorrectly encoded</td>
+ * <td class='empty'>&nbsp;</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_SYNTAX</code></strong></td>
+ * <td>Syntax error</td>
+ * <td class='empty'>&nbsp;</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_UTF8</code></strong></td>
+ * <td>Malformed UTF-8 characters, possibly incorrectly encoded</td>
+ * <td>PHP 5.3.3</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_RECURSION</code></strong></td>
+ * <td>One or more recursive references in the value to be encoded</td>
+ * <td>PHP 5.5.0</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_INF_OR_NAN</code></strong></td>
+ * <td>
+ * One or more
+ * <a href='language.types.float.php#language.types.float.nan' class='link'><strong><code>NAN</code></strong></a>
+ * or <a href='function.is-infinite.php' class='link'><strong><code>INF</code></strong></a>
+ * values in the value to be encoded
+ * </td>
+ * <td>PHP 5.5.0</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_UNSUPPORTED_TYPE</code></strong></td>
+ * <td>A value of a type that cannot be encoded was given</td>
+ * <td>PHP 5.5.0</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_INVALID_PROPERTY_NAME</code></strong></td>
+ * <td>A property name that cannot be encoded was given</td>
+ * <td>PHP 7.0.0</td>
+ * </tr>
+ *
+ * <tr>
+ * <td><strong><code>JSON_ERROR_UTF16</code></strong></td>
+ * <td>Malformed UTF-16 characters, possibly incorrectly encoded</td>
+ * <td>PHP 7.0.0</td>
+ * </tr>
+ *
+ * </tbody>
+ *
+ * </table>
+ */";s:9:"startLine";i:95;s:7:"endLine";i:98;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:8:"isStatic";b:0;s:9:"namespace";N;s:13:"locatedSource";a:2:{s:5:"class";s:68:"PHPStan\BetterReflection\SourceLocator\Located\InternalLocatedSource";s:4:"data";a:4:{s:4:"name";s:15:"json_last_error";s:8:"filename";s:29:"phpstorm-stubs:json/json.stub";s:13:"extensionName";s:4:"json";s:9:"aliasName";N;}}}}

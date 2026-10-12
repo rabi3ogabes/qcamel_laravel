@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Lint & static analysis
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: bcmath, gd, intl, mbstring, pdo_sqlite, zip, exif
+          coverage: none
+      - uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - name: Pint (code style)
+        run: vendor/bin/pint --test
+      - name: Larastan (level 5, baseline for known backlog)
+        run: vendor/bin/phpstan analyse --memory-limit=2G --no-progress
+
+  tests:
+    name: Pest
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: bcmath, gd, intl, mbstring, pdo_sqlite, zip, exif
+          coverage: none
+      - uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Build assets (views reference the Vite manifest)
+        run: npm run build
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+      - name: Run the suite (in-memory SQLite, outbound HTTP faked)
+        run: vendor/bin/pest --parallel --compact
+      - name: Check every spec test ID is accounted for
+        run: |
+          python3 tools/test-matrix.py
+          git diff --exit-code docs/TEST-MATRIX.md || (echo "docs/TEST-MATRIX.md is stale — run python tools/test-matrix.py" && exit 1)
+
+  image:
+    name: Docker image builds
+    runs-on: ubuntu-24.04
+    needs: [quality, tests]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          target: runtime
+          push: false
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

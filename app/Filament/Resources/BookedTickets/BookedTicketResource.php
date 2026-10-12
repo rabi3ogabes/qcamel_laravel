@@ -15,6 +15,7 @@ use App\Settings\FeatureFlagSettings;
 use App\Support\Countries;
 use App\Support\Formats;
 use App\Support\QatarClock;
+use App\Support\Text;
 use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -86,7 +87,9 @@ class BookedTicketResource extends Resource
 
     public static function table(Table $table): Table
     {
-        $payTone = fn (TicketHolder $h) => match ($h->order?->payment_status?->value) { 'confirmed' => 'success', 'pending' => 'warning', default => 'danger' };
+        $payTone = fn (TicketHolder $h) => match ($h->order?->payment_status?->value) {
+            'confirmed' => 'success', 'pending' => 'warning', default => 'danger'
+        };
 
         return $table
             ->defaultSort('created_at', 'desc')
@@ -101,7 +104,7 @@ class BookedTicketResource extends Resource
                     ->formatStateUsing(fn (TicketHolder $record) => $record->ticket_type->label())
                     ->color(fn (TicketHolder $record) => ['vip' => 'warning', 'normal' => 'primary', 'parking' => 'info'][$record->ticket_type->value]),
                 TextColumn::make('order.booking_reference')->label(__('admin.orders.cols.reference'))->fontFamily('mono')->copyable()
-                    ->searchable(query: fn (Builder $query, string $search) => $query->whereHas('order', fn ($o) => $o->where('booking_reference', 'like', \App\Support\Text::like($search))))
+                    ->searchable(query: fn (Builder $query, string $search) => $query->whereHas('order', fn ($o) => $o->where('booking_reference', 'like', Text::like($search))))
                     ->description(fn (TicketHolder $record) => $record->order?->event?->title)
                     ->url(fn (TicketHolder $record) => $record->order ? OrderResource::getUrl('view', ['record' => $record->order_id]) : null),
                 TextColumn::make('order.source')->label(__('admin.orders.filters.source'))->badge()->color('gray')

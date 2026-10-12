@@ -1,14 +1,15 @@
 <?php
 
-use App\Domain\Staff\PasscodeAuthenticator;
-use App\Domain\Staff\StaffAccountService;
 use App\Domain\Shared\Actor;
 use App\Domain\Shared\DomainError;
+use App\Domain\Staff\PasscodeAuthenticator;
+use App\Domain\Staff\StaffAccountService;
 use App\Enums\Role;
 use App\Models\Event;
+use App\Models\KioskDevice;
 use App\Models\LoginAttempt;
-use App\Models\Order;
 use App\Settings\SadadSettings;
+use Illuminate\Support\Facades\DB;
 
 /*
 | Access control & API conventions — T-007…T-014, T-016, T-019, T-034, T-035,
@@ -64,7 +65,7 @@ it('T-013 / T-128 never leaks secrets in public pages or settings', function () 
 
 it('T-013 stores Sadad secrets encrypted at rest', function () {
     configureSadad(['checkout_secret' => 'SUPER-SECRET-KEY']);
-    $raw = \Illuminate\Support\Facades\DB::table('settings')->where('group', 'sadad')->where('name', 'checkout_secret')->value('payload');
+    $raw = DB::table('settings')->where('group', 'sadad')->where('name', 'checkout_secret')->value('payload');
 
     expect($raw)->not->toContain('SUPER-SECRET-KEY')
         ->and(app(SadadSettings::class)->checkout_secret)->toBe('SUPER-SECRET-KEY');
@@ -186,7 +187,7 @@ it('T-087 / T-122 lets a passcode session use staff apps but never the admin pan
     $this->get('/staff')->assertOk();
     $this->get('/admin')->assertRedirect();
     $this->postJson('/api/v1/admin/stock/recount')->assertStatus(403);
-    expect(\App\Models\KioskDevice::first()->expires_at->between(now()->addDays(9), now()->addDays(11)))->toBeTrue();
+    expect(KioskDevice::first()->expires_at->between(now()->addDays(9), now()->addDays(11)))->toBeTrue();
 });
 
 /* --------------------------------------------------------- staff accounts */

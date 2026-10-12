@@ -7,6 +7,7 @@ use App\Domain\Payments\Sadad\SadadApiClient;
 use App\Enums\Role;
 use App\Mail\BookingInvoiceMail;
 use App\Mail\PaymentFailedMail;
+use App\Models\Order;
 use App\Models\PaymentError;
 use App\Models\PaymentEvent;
 use Illuminate\Support\Facades\Mail;
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Mail;
 
 beforeEach(fn () => configureSadad(['site_url' => 'https://tickets.qcamel.test']));
 
-function apiResult(string $kind, \App\Models\Order $order): ApiResult
+function apiResult(string $kind, Order $order): ApiResult
 {
     return match ($kind) {
         'success' => ApiResult::success('SD-'.substr($order->booking_reference, -6), (float) $order->total_amount, $order->booking_reference, true),

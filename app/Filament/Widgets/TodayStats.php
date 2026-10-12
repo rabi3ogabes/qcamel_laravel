@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Domain\Shared\Actor;
+use App\Filament\Resources\Orders\OrderResource;
 use App\Models\Order;
 use App\Support\Formats;
 use App\Support\QatarClock;
@@ -52,7 +53,7 @@ class TodayStats extends StatsOverviewWidget
                 ->description($d['review'] ? __('admin.dash.review_n', ['n' => $d['review']]) : __('admin.dash.awaiting_payment'))
                 ->descriptionIcon($d['review'] ? Heroicon::ExclamationTriangle : Heroicon::Clock)
                 ->color($d['review'] ? 'danger' : 'gray')
-                ->url(\App\Filament\Resources\Orders\OrderResource::getUrl('index', ['tab' => $d['review'] ? 'review' : 'pending'])),
+                ->url(OrderResource::getUrl('index', ['tab' => $d['review'] ? 'review' : 'pending'])),
         ];
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -36,7 +37,7 @@ class Customer extends Model
         return ($value === null || trim($value) === '') ? null : $value;
     }
 
-    public function holders(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
+    public function holders(): HasManyThrough
     {
         return $this->hasManyThrough(TicketHolder::class, Order::class);
     }

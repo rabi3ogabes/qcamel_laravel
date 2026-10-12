@@ -20,7 +20,6 @@ class LatestOrders extends TableWidget
 
     protected int|string|array $columnSpan = 'full';
 
-
     public static function canView(): bool
     {
         return Actor::current()->can('orders.view');

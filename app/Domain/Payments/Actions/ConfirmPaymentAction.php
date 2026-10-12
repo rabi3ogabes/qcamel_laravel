@@ -12,9 +12,12 @@ use App\Events\OrderStatusChanged;
 use App\Events\PaymentConfirmed;
 use App\Models\Order;
 use App\Models\Refund;
+use App\Models\User;
+use App\Notifications\PaymentNeedsReview;
 use App\Support\QatarClock;
 use Illuminate\Database\UniqueConstraintViolationException;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 /**
  * F-PAY-041 confirm_order_payment (R-056, R-115, T-046…T-052, D-012).
@@ -114,9 +117,9 @@ class ConfirmPaymentAction
         ]);
         // NEW admin alert (F-PAY upgrades): refund needed.
         DB::afterCommit(function () use ($order, $reason) {
-            $admins = \App\Models\User::query()->where('is_active', true)
+            $admins = User::query()->where('is_active', true)
                 ->whereHas('roles', fn ($q) => $q->whereIn('name', ['super_admin', 'admin', 'accountant']))->get();
-            \Illuminate\Support\Facades\Notification::send($admins, new \App\Notifications\PaymentNeedsReview($order, $reason));
+            Notification::send($admins, new PaymentNeedsReview($order, $reason));
         });
     }
 }

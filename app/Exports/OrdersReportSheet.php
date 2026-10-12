@@ -4,7 +4,6 @@ namespace App\Exports;
 
 use App\Enums\TicketKind;
 use App\Models\Order;
-use App\Support\Formats;
 use App\Support\QatarClock;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromArray;
@@ -115,8 +114,8 @@ class OrdersReportSheet implements FromArray, WithColumnWidths, WithEvents, With
                     'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER, 'vertical' => Alignment::VERTICAL_CENTER],
                     'borders' => ['allBorders' => ['borderStyle' => Border::BORDER_THIN, 'color' => ['rgb' => 'D0D0D0']]],
                 ]);
-                $s->getStyle(self::AMOUNT_COL."2:".self::AMOUNT_COL.$n)->getNumberFormat()->setFormatCode('#,##0.00');
-                $s->getStyle(self::AMOUNT_COL."2:".self::AMOUNT_COL.$n)->getFont()->setBold(true);
+                $s->getStyle(self::AMOUNT_COL.'2:'.self::AMOUNT_COL.$n)->getNumberFormat()->setFormatCode('#,##0.00');
+                $s->getStyle(self::AMOUNT_COL.'2:'.self::AMOUNT_COL.$n)->getFont()->setBold(true);
                 $tones = ['confirmed' => ['D4EDDA', '155724'], 'pending' => ['FFF3CD', '856404'], 'cancelled' => ['F8D7DA', '721C24']];
                 foreach ($this->orders->values() as $i => $o) {
                     if ($t = $tones[$o->payment_status?->value] ?? null) {

@@ -16,6 +16,7 @@ use App\Support\Audit;
 use App\Support\Countries;
 use App\Support\Formats;
 use App\Support\QatarClock;
+use App\Support\Text;
 use BackedEnum;
 use Filament\Actions\Action;
 use Filament\Actions\ActionGroup;
@@ -161,7 +162,7 @@ class InvoiceDispatchResource extends Resource
                 TextColumn::make('customer.name')->label(__('admin.orders.cols.customer'))
                     ->formatStateUsing(fn (Order $record) => trim(Countries::flag($record->customer?->nationality).' '.($record->customer?->name ?? __('common.unknown'))))
                     ->description(fn (Order $record) => $record->customer?->fullPhone())
-                    ->searchable(query: fn (Builder $query, string $search) => $query->whereHas('customer', fn ($c) => $c->where('name', 'like', \App\Support\Text::like($search))->orWhere('phone', 'like', \App\Support\Text::like($search)))),
+                    ->searchable(query: fn (Builder $query, string $search) => $query->whereHas('customer', fn ($c) => $c->where('name', 'like', Text::like($search))->orWhere('phone', 'like', Text::like($search)))),
                 TextColumn::make('customer.email')->label(__('public.checkout.email'))->placeholder('—')->limit(24)->toggleable(),
                 TextColumn::make('quantity')->label(__('admin.orders.cols.tickets'))->formatStateUsing(fn (Order $record) => OrdersTable::ticketSummary($record))->html(),
                 TextColumn::make('total_amount')->label(__('admin.orders.cols.amount'))->formatStateUsing(fn ($state) => Formats::money($state, short: true))->alignEnd(),

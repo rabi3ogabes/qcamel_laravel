@@ -14,7 +14,7 @@ use Carbon\CarbonImmutable;
 final class Throttle
 {
     /**
-     * @param  iterable<array{attempted_at:mixed, success:bool}>  $attempts any order
+     * @param  iterable<array{attempted_at:mixed, success:bool}>  $attempts  any order
      * @return array{blocked:bool, retry_after:int, attempts_left:int}
      */
     public static function evaluate(iterable $attempts, int $max, int $windowSeconds, int $blockSeconds, CarbonImmutable $now): array

@@ -3,6 +3,7 @@
 namespace App\Livewire\Staff;
 
 use App\Domain\Analytics\LiveBookingsQuery;
+use App\Models\Event;
 use App\Models\Order;
 use App\Models\TicketHolder;
 use App\Settings\EventSettings;
@@ -72,7 +73,7 @@ class LiveBookings extends Component
     {
         $now = now()->toIso8601String();
         $scopeDate = $this->all ? null : $this->date;
-        $eventIds = $scopeDate ? \App\Models\Event::query()->onQatarDate($scopeDate)->pluck('id')->all() : null;
+        $eventIds = $scopeDate ? Event::query()->onQatarDate($scopeDate)->pluck('id')->all() : null;
 
         $orders = Order::query()->where('payment_status', 'confirmed')
             ->where('confirmed_at', '>', $this->sinceOrder)

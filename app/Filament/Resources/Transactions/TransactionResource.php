@@ -11,6 +11,7 @@ use App\Filament\Resources\Transactions\Pages\ListTransactions;
 use App\Jobs\SyncSadadTransaction;
 use App\Models\Order;
 use App\Support\Formats;
+use App\Support\Money;
 use App\Support\QatarClock;
 use BackedEnum;
 use Filament\Actions\Action;
@@ -31,6 +32,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /** ADM-TRX — financial ledger per channel with stored Sadad fee / net (read-only). */
 class TransactionResource extends Resource
@@ -106,14 +108,18 @@ class TransactionResource extends Resource
                     ]),
                 TextColumn::make('payment_status')->label(__('admin.orders.cols.status'))->badge()
                     ->formatStateUsing(fn (Order $record) => __('admin.trx.status.'.$record->payment_status->value))
-                    ->color(fn (Order $record) => match ($record->payment_status) { PaymentStatus::Confirmed => 'success', PaymentStatus::Pending => 'warning', default => 'danger' })
-                    ->description(fn (Order $record) => $record->payment_error_reason ? \Illuminate\Support\Str::limit($record->payment_error_reason, 40) : null),
+                    ->color(fn (Order $record) => match ($record->payment_status) {
+                        PaymentStatus::Confirmed => 'success', PaymentStatus::Pending => 'warning', default => 'danger'
+                    })
+                    ->description(fn (Order $record) => $record->payment_error_reason ? Str::limit($record->payment_error_reason, 40) : null),
                 TextColumn::make('sadadTransaction.status')->label(__('admin.trx.cols.sadad_status'))->badge()->placeholder('—')
                     ->formatStateUsing(fn ($state) => $sadadStatus($state))
-                    ->color(fn ($state) => match (strtoupper((string) $state)) { 'SUCCESS' => 'success', 'FAILED', 'REJECTED' => 'danger', 'REFUND', 'REFUNDED' => 'info', default => 'warning' })
+                    ->color(fn ($state) => match (strtoupper((string) $state)) {
+                        'SUCCESS' => 'success', 'FAILED', 'REJECTED' => 'danger', 'REFUND', 'REFUNDED' => 'info', default => 'warning'
+                    })
                     ->visible(fn ($livewire) => ($livewire->activeTab ?? 'sadad') === 'sadad'),
                 TextColumn::make('sadadTransaction.commission')->label(__('admin.trx.cols.fee'))->placeholder('—')->alignEnd()
-                    ->state(fn (Order $record) => $record->sadadTransaction ? \App\Support\Money::of((string) ($record->sadadTransaction->commission ?? 0))->add(\App\Support\Money::of((string) ($record->sadadTransaction->refund_charge ?? 0)))->toDecimal() : null)
+                    ->state(fn (Order $record) => $record->sadadTransaction ? Money::of((string) ($record->sadadTransaction->commission ?? 0))->add(Money::of((string) ($record->sadadTransaction->refund_charge ?? 0)))->toDecimal() : null)
                     ->formatStateUsing(fn ($state) => $state === null ? '—' : Formats::money($state, short: true))->color('warning')
                     ->visible(fn ($livewire) => ($livewire->activeTab ?? 'sadad') === 'sadad'),
                 TextColumn::make('sadadTransaction.net_amount')->label(__('admin.trx.cols.net'))->placeholder('—')->alignEnd()->weight('bold')->color('success')

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 /** Part 4.3 pos_receipts — card-terminal slips (private disk, D-006). */
 class PosReceipt extends Model
@@ -42,7 +43,7 @@ class PosReceipt extends Model
             return null;
         }
 
-        return \Illuminate\Support\Facades\URL::temporarySignedRoute('staff.receipts.image', now()->addMinutes(5), ['receipt' => $this->id]);
+        return URL::temporarySignedRoute('staff.receipts.image', now()->addMinutes(5), ['receipt' => $this->id]);
     }
 
     public function deleteImage(): void

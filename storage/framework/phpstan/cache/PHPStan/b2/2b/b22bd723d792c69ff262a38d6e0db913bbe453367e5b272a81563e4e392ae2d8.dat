@@ -1,0 +1,141 @@
+O:23:"PHPStan\Cache\CacheItem":2:{s:11:"variableKey";s:83:"v2-7df8b51aab8bd3196229be1a8e398c2c2ec636ae1767ce499a64bfdbf5675c47-8.4.25-6.73.0.6";s:4:"data";a:22:{s:13:"locatedSource";a:2:{s:5:"class";s:60:"PHPStan\BetterReflection\SourceLocator\Located\LocatedSource";s:4:"data";a:2:{s:4:"name";s:24:"Illuminate\Bus\Queueable";s:8:"filename";s:114:"C:/Users/user/Claude_projects/Qcamel_laravel/vendor/composer/../laravel/framework/src/Illuminate/Bus/Queueable.php";}}s:9:"namespace";s:14:"Illuminate\Bus";s:4:"name";s:24:"Illuminate\Bus\Queueable";s:9:"shortName";s:9:"Queueable";s:11:"isInterface";b:0;s:7:"isTrait";b:1;s:6:"isEnum";b:0;s:12:"isBackedEnum";b:0;s:9:"modifiers";i:0;s:10:"docComment";N;s:10:"attributes";a:0:{}s:9:"startLine";i:15;s:7:"endLine";i:386;s:11:"startColumn";i:1;s:9:"endColumn";i:1;s:15:"parentClassName";N;s:20:"implementsClassNames";a:0:{}s:15:"traitClassNames";a:0:{}s:18:"immediateConstants";a:0:{}s:19:"immediateProperties";a:11:{s:10:"connection";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:10:"connection";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";N;s:10:"docComment";s:87:"/**
+ * The name of the connection the job should be sent to.
+ *
+ * @var string|null
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:22;s:7:"endLine";i:22;s:11:"startColumn";i:5;s:9:"endColumn";i:23;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:5:"queue";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:5:"queue";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";N;s:10:"docComment";s:82:"/**
+ * The name of the queue the job should be sent to.
+ *
+ * @var string|null
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:29;s:7:"endLine";i:29;s:11:"startColumn";i:5;s:9:"endColumn";i:18;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:12:"messageGroup";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:12:"messageGroup";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";N;s:10:"docComment";s:76:"/**
+ * The job "group" the job should be sent to.
+ *
+ * @var string|null
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:36;s:7:"endLine";i:36;s:11:"startColumn";i:5;s:9:"endColumn";i:25;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:12:"deduplicator";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:12:"deduplicator";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";N;s:10:"docComment";s:158:"/**
+ * The job deduplicator callback the job should use to generate the deduplication ID.
+ *
+ * @var \Laravel\SerializableClosure\SerializableClosure|null
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:43;s:7:"endLine";i:43;s:11:"startColumn";i:5;s:9:"endColumn";i:25;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:5:"delay";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:5:"delay";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";N;s:10:"docComment";s:132:"/**
+ * The number of seconds before the job should be made available.
+ *
+ * @var \DateTimeInterface|\DateInterval|array|int|null
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:50;s:7:"endLine";i:50;s:11:"startColumn";i:5;s:9:"endColumn";i:18;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:11:"afterCommit";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:11:"afterCommit";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";N;s:10:"docComment";s:126:"/**
+ * Indicates whether the job should be dispatched after all database transactions have committed.
+ *
+ * @var bool|null
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:57;s:7:"endLine";i:57;s:11:"startColumn";i:5;s:9:"endColumn";i:24;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:10:"middleware";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:10:"middleware";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";a:2:{s:4:"code";s:2:"[]";s:10:"attributes";a:6:{s:9:"startLine";i:64;s:7:"endLine";i:64;s:13:"startTokenPos";i:109;s:12:"startFilePos";i:1388;s:11:"endTokenPos";i:110;s:10:"endFilePos";i:1389;}}s:10:"docComment";s:80:"/**
+ * The middleware the job should be dispatched through.
+ *
+ * @var array
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:64;s:7:"endLine";i:64;s:11:"startColumn";i:5;s:9:"endColumn";i:28;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:7:"chained";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:7:"chained";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";a:2:{s:4:"code";s:2:"[]";s:10:"attributes";a:6:{s:9:"startLine";i:71;s:7:"endLine";i:71;s:13:"startTokenPos";i:121;s:12:"startFilePos";i:1515;s:11:"endTokenPos";i:122;s:10:"endFilePos";i:1516;}}s:10:"docComment";s:79:"/**
+ * The jobs that should run if this job is successful.
+ *
+ * @var array
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:71;s:7:"endLine";i:71;s:11:"startColumn";i:5;s:9:"endColumn";i:25;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:15:"chainConnection";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:15:"chainConnection";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";N;s:10:"docComment";s:89:"/**
+ * The name of the connection the chain should be sent to.
+ *
+ * @var string|null
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:78;s:7:"endLine";i:78;s:11:"startColumn";i:5;s:9:"endColumn";i:28;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:10:"chainQueue";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:10:"chainQueue";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";N;s:10:"docComment";s:84:"/**
+ * The name of the queue the chain should be sent to.
+ *
+ * @var string|null
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:85;s:7:"endLine";i:85;s:11:"startColumn";i:5;s:9:"endColumn";i:23;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}s:19:"chainCatchCallbacks";a:16:{s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:4:"name";s:19:"chainCatchCallbacks";s:9:"modifiers";i:1;s:4:"type";N;s:7:"default";N;s:10:"docComment";s:79:"/**
+ * The callbacks to be executed on chain failure.
+ *
+ * @var array|null
+ */";s:10:"attributes";a:0:{}s:9:"startLine";i:92;s:7:"endLine";i:92;s:11:"startColumn";i:5;s:9:"endColumn";i:32;s:10:"isPromoted";b:0;s:21:"declaredAtCompileTime";b:1;s:16:"immediateVirtual";b:0;s:14:"immediateHooks";a:0:{}}}s:16:"immediateMethods";a:19:{s:12:"onConnection";a:20:{s:4:"name";s:12:"onConnection";s:10:"parameters";a:1:{s:10:"connection";a:13:{s:4:"name";s:10:"connection";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:100;s:7:"endLine";i:100;s:11:"startColumn";i:34;s:9:"endColumn";i:44;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:116:"/**
+ * Set the desired connection for the job.
+ *
+ * @param  \UnitEnum|string|null  $connection
+ * @return $this
+ */";s:9:"startLine";i:100;s:7:"endLine";i:105;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:7:"onQueue";a:20:{s:4:"name";s:7:"onQueue";s:10:"parameters";a:1:{s:5:"queue";a:13:{s:4:"name";s:5:"queue";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:113;s:7:"endLine";i:113;s:11:"startColumn";i:29;s:9:"endColumn";i:34;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:106:"/**
+ * Set the desired queue for the job.
+ *
+ * @param  \UnitEnum|string|null  $queue
+ * @return $this
+ */";s:9:"startLine";i:113;s:7:"endLine";i:118;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:7:"onGroup";a:20:{s:4:"name";s:7:"onGroup";s:10:"parameters";a:1:{s:5:"group";a:13:{s:4:"name";s:5:"group";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:128;s:7:"endLine";i:128;s:11:"startColumn";i:29;s:9:"endColumn";i:34;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:168:"/**
+ * Set the desired job "group".
+ *
+ * This feature is only supported by some queues, such as Amazon SQS.
+ *
+ * @param  \UnitEnum|string  $group
+ * @return $this
+ */";s:9:"startLine";i:128;s:7:"endLine";i:133;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:16:"withDeduplicator";a:20:{s:4:"name";s:16:"withDeduplicator";s:10:"parameters";a:1:{s:12:"deduplicator";a:13:{s:4:"name";s:12:"deduplicator";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:143;s:7:"endLine";i:143;s:11:"startColumn";i:38;s:9:"endColumn";i:50;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:191:"/**
+ * Set the desired job deduplicator callback.
+ *
+ * This feature is only supported by some queues, such as Amazon SQS FIFO.
+ *
+ * @param  callable|null  $deduplicator
+ * @return $this
+ */";s:9:"startLine";i:143;s:7:"endLine";i:150;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:15:"allOnConnection";a:20:{s:4:"name";s:15:"allOnConnection";s:10:"parameters";a:1:{s:10:"connection";a:13:{s:4:"name";s:10:"connection";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:158;s:7:"endLine";i:158;s:11:"startColumn";i:37;s:9:"endColumn";i:47;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:118:"/**
+ * Set the desired connection for the chain.
+ *
+ * @param  \UnitEnum|string|null  $connection
+ * @return $this
+ */";s:9:"startLine";i:158;s:7:"endLine";i:166;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:10:"allOnQueue";a:20:{s:4:"name";s:10:"allOnQueue";s:10:"parameters";a:1:{s:5:"queue";a:13:{s:4:"name";s:5:"queue";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:174;s:7:"endLine";i:174;s:11:"startColumn";i:32;s:9:"endColumn";i:37;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:108:"/**
+ * Set the desired queue for the chain.
+ *
+ * @param  \UnitEnum|string|null  $queue
+ * @return $this
+ */";s:9:"startLine";i:174;s:7:"endLine";i:182;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:5:"delay";a:20:{s:4:"name";s:5:"delay";s:10:"parameters";a:1:{s:5:"delay";a:13:{s:4:"name";s:5:"delay";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:190;s:7:"endLine";i:190;s:11:"startColumn";i:27;s:9:"endColumn";i:32;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:143:"/**
+ * Set the desired delay in seconds for the job.
+ *
+ * @param  \DateTimeInterface|\DateInterval|array|int|null  $delay
+ * @return $this
+ */";s:9:"startLine";i:190;s:7:"endLine";i:195;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:12:"withoutDelay";a:20:{s:4:"name";s:12:"withoutDelay";s:10:"parameters";a:0:{}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:73:"/**
+ * Set the delay for the job to zero seconds.
+ *
+ * @return $this
+ */";s:9:"startLine";i:202;s:7:"endLine";i:207;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:11:"afterCommit";a:20:{s:4:"name";s:11:"afterCommit";s:10:"parameters";a:0:{}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:121:"/**
+ * Indicate that the job should be dispatched after all database transactions have committed.
+ *
+ * @return $this
+ */";s:9:"startLine";i:214;s:7:"endLine";i:219;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:12:"beforeCommit";a:20:{s:4:"name";s:12:"beforeCommit";s:10:"parameters";a:0:{}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:136:"/**
+ * Indicate that the job should not wait until database transactions have been committed before dispatching.
+ *
+ * @return $this
+ */";s:9:"startLine";i:226;s:7:"endLine";i:231;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:7:"through";a:20:{s:4:"name";s:7:"through";s:10:"parameters";a:1:{s:10:"middleware";a:13:{s:4:"name";s:10:"middleware";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:239;s:7:"endLine";i:239;s:11:"startColumn";i:29;s:9:"endColumn";i:39;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:128:"/**
+ * Specify the middleware the job should be dispatched through.
+ *
+ * @param  array|object  $middleware
+ * @return $this
+ */";s:9:"startLine";i:239;s:7:"endLine";i:244;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:5:"chain";a:20:{s:4:"name";s:5:"chain";s:10:"parameters";a:1:{s:5:"chain";a:13:{s:4:"name";s:5:"chain";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:252;s:7:"endLine";i:252;s:11:"startColumn";i:27;s:9:"endColumn";i:32;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:111:"/**
+ * Set the jobs that should run if this job is successful.
+ *
+ * @param  array  $chain
+ * @return $this
+ */";s:9:"startLine";i:252;s:7:"endLine";i:259;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:14:"prependToChain";a:20:{s:4:"name";s:14:"prependToChain";s:10:"parameters";a:1:{s:3:"job";a:13:{s:4:"name";s:3:"job";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:267;s:7:"endLine";i:267;s:11:"startColumn";i:36;s:9:"endColumn";i:39;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:139:"/**
+ * Prepend a job to the current chain so that it is run after the currently running job.
+ *
+ * @param  mixed  $job
+ * @return $this
+ */";s:9:"startLine";i:267;s:7:"endLine";i:276;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:13:"appendToChain";a:20:{s:4:"name";s:13:"appendToChain";s:10:"parameters";a:1:{s:3:"job";a:13:{s:4:"name";s:3:"job";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:284;s:7:"endLine";i:284;s:11:"startColumn";i:35;s:9:"endColumn";i:38;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:99:"/**
+ * Append a job to the end of the current chain.
+ *
+ * @param  mixed  $job
+ * @return $this
+ */";s:9:"startLine";i:284;s:7:"endLine";i:293;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:12:"serializeJob";a:20:{s:4:"name";s:12:"serializeJob";s:10:"parameters";a:1:{s:3:"job";a:13:{s:4:"name";s:3:"job";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:303;s:7:"endLine";i:303;s:11:"startColumn";i:37;s:9:"endColumn";i:40;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:115:"/**
+ * Serialize a job for queuing.
+ *
+ * @param  mixed  $job
+ * @return string
+ *
+ * @throws \RuntimeException
+ */";s:9:"startLine";i:303;s:7:"endLine";i:316;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:2;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:22:"dispatchNextJobInChain";a:20:{s:4:"name";s:22:"dispatchNextJobInChain";s:10:"parameters";a:0:{}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:65:"/**
+ * Dispatch the next job on the chain.
+ *
+ * @return void
+ */";s:9:"startLine";i:323;s:7:"endLine";i:337;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:25:"invokeChainCatchCallbacks";a:20:{s:4:"name";s:25:"invokeChainCatchCallbacks";s:10:"parameters";a:1:{s:1:"e";a:13:{s:4:"name";s:1:"e";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:345;s:7:"endLine";i:345;s:11:"startColumn";i:47;s:9:"endColumn";i:48;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:103:"/**
+ * Invoke all of the chain's failed job callbacks.
+ *
+ * @param  \Throwable  $e
+ * @return void
+ */";s:9:"startLine";i:345;s:7:"endLine";i:350;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:14:"assertHasChain";a:20:{s:4:"name";s:14:"assertHasChain";s:10:"parameters";a:1:{s:13:"expectedChain";a:13:{s:4:"name";s:13:"expectedChain";s:7:"default";N;s:4:"type";N;s:10:"isVariadic";b:0;s:5:"byRef";b:0;s:10:"isPromoted";b:0;s:10:"attributes";a:0:{}s:9:"startLine";i:358;s:7:"endLine";i:358;s:11:"startColumn";i:36;s:9:"endColumn";i:49;s:14:"parameterIndex";i:0;s:10:"isOptional";b:0;}}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:126:"/**
+ * Assert that the job has the given chain of jobs attached to it.
+ *
+ * @param  array  $expectedChain
+ * @return void
+ */";s:9:"startLine";i:358;s:7:"endLine";i:375;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}s:21:"assertDoesntHaveChain";a:20:{s:4:"name";s:21:"assertDoesntHaveChain";s:10:"parameters";a:0:{}s:16:"returnsReference";b:0;s:10:"returnType";N;s:10:"attributes";a:0:{}s:10:"docComment";s:80:"/**
+ * Assert that the job has no remaining chained jobs.
+ *
+ * @return void
+ */";s:9:"startLine";i:382;s:7:"endLine";i:385;s:11:"startColumn";i:5;s:9:"endColumn";i:5;s:10:"couldThrow";b:0;s:9:"isClosure";b:0;s:11:"isGenerator";b:0;s:10:"isVariadic";b:0;s:9:"modifiers";i:1;s:9:"namespace";s:14:"Illuminate\Bus";s:18:"declaringClassName";s:24:"Illuminate\Bus\Queueable";s:21:"implementingClassName";s:24:"Illuminate\Bus\Queueable";s:16:"currentClassName";s:24:"Illuminate\Bus\Queueable";s:9:"aliasName";N;}}s:10:"traitsData";a:4:{s:7:"aliases";a:0:{}s:9:"modifiers";a:0:{}s:11:"precedences";a:0:{}s:6:"hashes";a:0:{}}}}

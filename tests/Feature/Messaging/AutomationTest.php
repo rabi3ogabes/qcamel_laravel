@@ -4,11 +4,11 @@ use App\Domain\Messaging\AutomationRelay;
 use App\Domain\Messaging\Drivers\N8nWebhookDriver;
 use App\Domain\Messaging\N8nPayloads;
 use App\Domain\Payments\Actions\ConfirmPaymentAction;
-use App\Domain\Tickets\QrService;
 use App\Enums\Role;
 use App\Models\Order;
 use App\Settings\AutomationSettings;
 use App\Settings\ContactSettings;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -64,7 +64,7 @@ it('T-097 relays to n8n and reports configuration and upstream errors without th
     Http::fake(['n8n.qcamel.test/webhook/wa' => Http::response(['msg' => 'not found'], 404)]);
     expect($relay->send('send_invoice', $order))->toMatchArray(['success' => false, 'error' => 'Webhook not found or inactive', 'status' => 404]);
 
-    Http::fake(['n8n.qcamel.test/*' => fn () => throw new \Illuminate\Http\Client\ConnectionException('Connection refused')]);
+    Http::fake(['n8n.qcamel.test/*' => fn () => throw new ConnectionException('Connection refused')]);
     expect($relay->send('send_invoice', $order)['success'])->toBeFalse();
 });
 

@@ -36,41 +36,41 @@ class SadadConfig
 
     public function merchantId(): ?string
     {
-        return self::clean($this->settings()?->merchant_id) ?? self::clean(env('SADAD_MERCHANT_ID'));
+        return self::clean($this->settings()?->merchant_id) ?? self::clean(config('qcamelmc.sadad.merchant_id'));
     }
 
     public function checkoutSecret(): ?string
     {
-        return self::clean(env('SADAD_CHECKOUT_SECRET')) ?? self::clean($this->settings()?->checkout_secret);
+        return self::clean(config('qcamelmc.sadad.checkout_secret')) ?? self::clean($this->settings()?->checkout_secret);
     }
 
     /** F-PAY-004: dedicated API login secret, falling back to the checkout secret. */
     public function apiLoginSecret(): ?string
     {
-        return self::clean(env('SADAD_API_LOGIN_SECRET')) ?? self::clean($this->settings()?->api_login_secret) ?? $this->checkoutSecret();
+        return self::clean(config('qcamelmc.sadad.api_login_secret')) ?? self::clean($this->settings()?->api_login_secret) ?? $this->checkoutSecret();
     }
 
     public function apiLoginSecretIsDedicated(): bool
     {
-        return (self::clean(env('SADAD_API_LOGIN_SECRET')) ?? self::clean($this->settings()?->api_login_secret)) !== null;
+        return (self::clean(config('qcamelmc.sadad.api_login_secret')) ?? self::clean($this->settings()?->api_login_secret)) !== null;
     }
 
     public function websiteDomain(): ?string
     {
-        return self::clean($this->settings()?->website_domain) ?? self::clean(env('SADAD_WEBSITE_DOMAIN'));
+        return self::clean($this->settings()?->website_domain) ?? self::clean(config('qcamelmc.sadad.website_domain'));
     }
 
     /** F-PAY-006: auto | sandbox | live (unknown → auto, T-109). */
     public function environment(): string
     {
-        $env = strtolower((string) (self::clean($this->settings()?->environment) ?? env('SADAD_ENV', 'auto')));
+        $env = strtolower((string) (self::clean($this->settings()?->environment) ?? config('qcamelmc.sadad.environment', 'auto')));
 
         return in_array($env, ['auto', 'sandbox', 'live'], true) ? $env : 'auto';
     }
 
     public function siteUrl(): ?string
     {
-        return self::clean($this->settings()?->site_url) ?? self::clean(env('FRONTEND_URL'));
+        return self::clean($this->settings()?->site_url) ?? self::clean(config('qcamelmc.sadad.frontend_url'));
     }
 
     /** F-PAY-009 / T-083: merchant id + checkout secret + website all set. */
@@ -98,13 +98,13 @@ class SadadConfig
     public function apiBase(string $env): string
     {
         return $env === 'sandbox'
-            ? rtrim((string) env('SADAD_API_SANDBOX_URL', 'https://api-sandbox.sadad.qa'), '/')
-            : rtrim((string) env('SADAD_API_LIVE_URL', 'https://api-s.sadad.qa'), '/');
+            ? rtrim((string) config('qcamelmc.sadad.api_sandbox_url', 'https://api-sandbox.sadad.qa'), '/')
+            : rtrim((string) config('qcamelmc.sadad.api_live_url', 'https://api-s.sadad.qa'), '/');
     }
 
     public function timeout(): int
     {
-        return (int) env('SADAD_HTTP_TIMEOUT', 8);
+        return (int) config('qcamelmc.sadad.http_timeout', 8);
     }
 
     /** T-114: only https on Sadad's hosts (look-alikes refused). */

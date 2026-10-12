@@ -15,6 +15,7 @@ use App\Http\Controllers\Webhooks\MailEventsController;
 use App\Http\Controllers\Webhooks\N8nResponseController;
 use App\Livewire\Public;
 use App\Livewire\Staff;
+use App\Support\PublicSettings;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -90,7 +91,7 @@ Route::middleware('auth')->prefix('account')->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::get('/staff/manifest.webmanifest', function () {
-    $brand = \App\Support\PublicSettings::current();
+    $brand = PublicSettings::current();
 
     return response()->json([
         'name' => ($brand['festival_name'] ?? __('common.app_name')).' — '.__('ops.shell.hub'),

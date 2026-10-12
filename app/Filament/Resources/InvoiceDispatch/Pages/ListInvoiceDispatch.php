@@ -5,6 +5,7 @@ namespace App\Filament\Resources\InvoiceDispatch\Pages;
 use App\Domain\Messaging\InvoiceDispatcher;
 use App\Domain\Shared\Actor;
 use App\Filament\Resources\InvoiceDispatch\InvoiceDispatchResource as R;
+use App\Models\Order;
 use App\Settings\AutomationSettings;
 use Filament\Actions\Action;
 use Filament\Notifications\Notification;
@@ -24,7 +25,7 @@ class ListInvoiceDispatch extends ListRecords
     {
         $base = fn () => R::getEloquentQuery();
         $pending = fn (Builder $q) => R::onHold(R::eventDone(R::pendingMessage($q), false), false);
-        $sent = fn (Builder $q) => $q->whereNotNull('n8n_response_message')->whereNotIn('n8n_response_message', [\App\Models\Order::SENDING_WHATSAPP, \App\Models\Order::SENDING_EMAIL])->whereNotNull('n8n_responded_at');
+        $sent = fn (Builder $q) => $q->whereNotNull('n8n_response_message')->whereNotIn('n8n_response_message', [Order::SENDING_WHATSAPP, Order::SENDING_EMAIL])->whereNotNull('n8n_responded_at');
         $hold = fn (Builder $q) => R::eventDone(R::onHold($q), false);
         $done = fn (Builder $q) => R::eventDone($q->where(fn ($w) => R::pendingMessage($w)->orWhereNull('n8n_responded_at')));
 

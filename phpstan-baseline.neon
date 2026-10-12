@@ -1,0 +1,2053 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$booking_reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$confirmed_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$invoice_downloaded_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$n8n_responded_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$posUser\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:isPos\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Method App\\Domain\\Analytics\\LiveBookingsQuery\:\:holders\(\) should return Illuminate\\Support\\Collection\<int, array\<string, mixed\>\> but returns Illuminate\\Support\\Collection\<int, array\{id\: string, seq\: int, name\: string, flag\: string, nationality\: string, phone\: string, type\: mixed, type_label\: mixed, \.\.\.\}\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,App\\Models\\TicketHolder\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Domain/Analytics/LiveBookingsQuery.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Booking/Actions/ChangeOrderEventAction.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: app/Domain/Booking/Actions/ChangeOrderEventAction.php
+
+		-
+			message: '#^Cannot call method isActive\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Domain/Booking/Actions/ChangeOrderEventAction.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Domain/Booking/Actions/ChangeOrderEventAction.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>title" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Domain/Booking/Actions/ChangeOrderEventAction.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: app/Domain/Booking/Actions/CreateOrderAction.php
+
+		-
+			message: '#^Cannot call method isAdmission\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 3
+			path: app/Domain/Booking/Actions/CreateOrderAction.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:isExpired\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Booking/Actions/ExpireHoldsAction.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 4
+			path: app/Domain/Booking/Actions/OrderStatusActions.php
+
+		-
+			message: '#^Cannot call method isActive\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 5
+			path: app/Domain/Booking/Actions/OrderStatusActions.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Domain/Booking/Actions/OrderStatusActions.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Booking/Actions/RecycleBinActions.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Booking/Actions/RecycleBinActions.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Booking/Actions/RecycleBinActions.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 5
+			path: app/Domain/Booking/Actions/RecycleBinActions.php
+
+		-
+			message: '#^Cannot call method isActive\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Domain/Booking/Actions/RecycleBinActions.php
+
+		-
+			message: '#^Method App\\Domain\\Booking\\Actions\\RecycleBinActions\:\:eventOf\(\) should return App\\Models\\Event\|null but returns Illuminate\\Database\\Eloquent\\Model\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Booking/Actions/RecycleBinActions.php
+
+		-
+			message: '#^Parameter \#1 \$value of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:limit\(\) expects int, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Booking/Actions/RecycleBinActions.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Domain/Booking/Actions/UpdateTicketTypeAction.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Domain/Booking/Actions/UpdateTicketTypeAction.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between mixed and null will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: app/Domain/Booking/Data/OrderRequestValidator.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Domain/Booking/Queries/AvailabilityQuery.php
+
+		-
+			message: '#^Cannot call method sortWeight\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Domain/Booking/Queries/AvailabilityQuery.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Domain/Booking/Queries/AvailabilityQuery.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) expects callable\(Illuminate\\Database\\Eloquent\\Model, int\)\: array\{id\: string, type\: mixed, price\: numeric\-string&uppercase\-string, capacity\: int\<0, max\>, remaining\: int\<0, max\>, sold_out\: bool, description\: string\}, Closure\(App\\Models\\TicketType\)\: array\{id\: string, type\: mixed, price\: numeric\-string&uppercase\-string, capacity\: int\<0, max\>, remaining\: int\<0, max\>, sold_out\: bool, description\: string\} given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Booking/Queries/AvailabilityQuery.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:sortBy\(\) expects array\<array\{string, string\}\|\(callable\(Illuminate\\Database\\Eloquent\\Model, Illuminate\\Database\\Eloquent\\Model\)\: mixed\)\|\(callable\(Illuminate\\Database\\Eloquent\\Model, int\)\: mixed\)\|string\>\|\(callable\(Illuminate\\Database\\Eloquent\\Model, int\)\: mixed\)\|string, Closure\(App\\Models\\TicketType\)\: mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Booking/Queries/AvailabilityQuery.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$checked_in_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$checked_in_by_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$country_code\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$is_present\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$location\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$nationality\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$phone\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$qr_code\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$qr_image_url\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$ticket_type\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 5
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,App\\Models\\Order\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 2
+			path: app/Domain/Booking/Queries/PublicOrderQueries.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 5
+			path: app/Domain/Booking/Services/StockLedger.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Relations\\HasMany\:\:withTrashed\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Events/EventAdminActions.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Domain/Events/EventAdminActions.php
+
+		-
+			message: '#^Parameter \#1 \$h of static method App\\Domain\\Messaging\\N8nPayloads\:\:singleTicket\(\) expects App\\Models\\TicketHolder, Illuminate\\Database\\Eloquent\\Model given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Messaging/AutomationRelay.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:withTrashed\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Messaging/InvoiceDispatcher.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:isExpired\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Messaging/InvoiceDispatcher.php
+
+		-
+			message: '#^Method App\\Domain\\Messaging\\InvoiceDispatcher\:\:candidates\(\) should return Illuminate\\Support\\Collection\<int, App\\Models\\Order\> but returns Illuminate\\Database\\Eloquent\\Collection\<int, Illuminate\\Database\\Eloquent\\Model\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Domain/Messaging/InvoiceDispatcher.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:reject\(\) expects bool\|\(callable\(Illuminate\\Database\\Eloquent\\Model, int\)\: bool\)\|Illuminate\\Database\\Eloquent\\Model, Closure\(App\\Models\\Order\)\: bool given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Messaging/InvoiceDispatcher.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$booking_reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$country_code\.$#'
+			identifier: property.notFound
+			count: 6
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$items\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$location\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$nationality\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$phone\.$#'
+			identifier: property.notFound
+			count: 5
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$ticket_type\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$unit_price\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:ticketTypes\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 12
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) expects callable\(Illuminate\\Database\\Eloquent\\Model, int\)\: array\{name\: string, phone\: string\|null, nationality\: string, id_number\: mixed, ticket_type\: mixed, ticket_price\: float, qr_code\: string\|null, qr_code_image\: string\}, Closure\(App\\Models\\TicketHolder\)\: array\{name\: string, phone\: string\|null, nationality\: string, id_number\: mixed, ticket_type\: mixed, ticket_price\: float, qr_code\: string\|null, qr_code_image\: string\} given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) expects callable\(Illuminate\\Database\\Eloquent\\Model, int\)\: array\{order_id\: string, name\: string, phone\: string\|null, country_code\: string\|null, nationality\: string, ticket_type\: mixed, qr_code\: string\|null, qr_image_url\: string\|null, qr_code_image\: string\|null, id_number\: mixed\}, Closure\(App\\Models\\TicketHolder\)\: array\{order_id\: string, name\: string, phone\: string\|null, country_code\: string\|null, nationality\: string, ticket_type\: mixed, qr_code\: string\|null, qr_image_url\: string\|null, qr_code_image\: string\|null, id_number\: mixed\} given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) expects callable\(Illuminate\\Database\\Eloquent\\Model, int\)\: non\-empty\-array\<string, mixed\>, Closure\(App\\Models\\TicketHolder\)\: non\-empty\-array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Parameter \#1 \$h of static method App\\Domain\\Messaging\\N8nPayloads\:\:qrUrl\(\) expects App\\Models\\TicketHolder, Illuminate\\Database\\Eloquent\\Model given\.$#'
+			identifier: argument.type
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>email" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 2
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>unit_price" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Domain/Messaging/N8nPayloads.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Domain/Messaging/TransactionalMailer.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Domain/Payments/Actions/ConfirmPaymentAction.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>kind" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Domain/Payments/PaymentDecision.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Domain/Payments/PaymentProcessor.php
+
+		-
+			message: '#^Call to function is_array\(\) with array will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 2
+			path: app/Domain/Payments/Sadad/PayloadReader.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$country_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Payments/Sadad/SadadCheckoutBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Payments/Sadad/SadadCheckoutBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$phone\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Payments/Sadad/SadadCheckoutBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$quantity\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Payments/Sadad/SadadCheckoutBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Payments/Sadad/SadadCheckoutBuilder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$unit_price\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Domain/Payments/Sadad/SadadCheckoutBuilder.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>email" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Domain/Shared/Actor.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Domain/Shared/Actor.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$booking_reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$customer\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_id\.$#'
+			identifier: property.notFound
+			count: 6
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$payment_method\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$payment_status\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:isCashAtVenue\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:trashed\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Parameter \#1 \$h of method App\\Domain\\Tickets\\CheckInService\:\:ticketInfo\(\) expects App\\Models\\TicketHolder, Illuminate\\Database\\Eloquent\\Model given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Domain/Tickets/CheckInService.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Domain/Tickets/GateBoardQuery.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$qr_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Domain/Tickets/QrService.php
+
+		-
+			message: '#^Parameter \#1 \$holder of method App\\Domain\\Tickets\\QrService\:\:renderHolder\(\) expects App\\Models\\TicketHolder, Illuminate\\Database\\Eloquent\\Model given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Domain/Tickets/QrService.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Events/OrderConfirmed.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: app/Events/OrderCreated.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Events/TicketCheckedIn.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Events/TicketCheckedIn.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$booking_reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/BookedTicketsExport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/BookedTicketsExport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$payment_status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/BookedTicketsExport.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Exports/BookedTicketsExport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$country_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersExport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersExport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Exports/OrdersExport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$nationality\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersExport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$phone\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersExport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersExport.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Exports/OrdersExport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Exports/OrdersReport.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Exports/OrdersReport.php
+
+		-
+			message: '#^Parameter \#1 \$o of closure expects App\\Models\\Order, \(int\|string\) given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Exports/OrdersReport.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$country_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id_number\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$location\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$nationality\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$phone\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$ticket_type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<int,App\\Models\\Order\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>location" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>title" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Exports/OrdersReportSheet.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Pages/EmailPreview.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Mail\\Mailable\:\:envelope\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Pages/EmailPreview.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Filament/Pages/EmailPreview.php
+
+		-
+			message: '#^Property Illuminate\\Mail\\Mailable\:\:\$locale \(string\) on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.property
+			count: 1
+			path: app/Filament/Pages/EmailPreview.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Pages/EmailPreview.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$available_quantity\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Pages/EventsManager.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$description\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Pages/EventsManager.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$price\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Pages/EventsManager.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Pages/EventsManager.php
+
+		-
+			message: '#^Cannot call method greaterThan\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Filament/Pages/NotificationsFeed.php
+
+		-
+			message: '#^Access to an undefined property App\\Filament\\Pages\\Reports\:\:\$form\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Pages/Reports.php
+
+		-
+			message: '#^Access to an undefined property App\\Filament\\Pages\\Settings\:\:\$form\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Filament/Pages/Settings.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Pages/Settings.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Pages/Settings.php
+
+		-
+			message: '#^Cannot call method longLabel\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Filament/Pages/TicketInventory.php
+
+		-
+			message: '#^Cannot call method sortWeight\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Filament/Pages/TicketInventory.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Filament/Resources/ActivityLogs/ActivityLogResource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 2
+			path: app/Filament/Resources/ActivityLogs/ActivityLogResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$booking_reference\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$customer\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$payment_method\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$payment_status\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$total_amount\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:onQatarDate\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:isPos\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Cannot call method longLabel\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>booking_reference" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>created_at" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Resources/BookedTickets/BookedTicketResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Customers/CustomerResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$phone\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Customers/CustomerResource.php
+
+		-
+			message: '#^Parameter \#1 \$order of method App\\Domain\\Booking\\Actions\\OrderStatusActions\:\:delete\(\) expects App\\Models\\Order, Illuminate\\Database\\Eloquent\\Model given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Filament/Resources/Customers/CustomerResource.php
+
+		-
+			message: '#^Cannot access property \$name on Illuminate\\Database\\Eloquent\\Model\|int\|string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Filament/Resources/Customers/Pages/ViewCustomer.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Customers/RelationManagers/HoldersRelationManager.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$payment_status\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Filament/Resources/Customers/RelationManagers/HoldersRelationManager.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Filament/Resources/Customers/RelationManagers/HoldersRelationManager.php
+
+		-
+			message: '#^Parameter \#2 \$order of method App\\Domain\\Messaging\\AutomationRelay\:\:send\(\) expects App\\Models\\Order, Illuminate\\Database\\Eloquent\\Model\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Filament/Resources/Customers/RelationManagers/HoldersRelationManager.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Customers/RelationManagers/OrdersRelationManager.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Customers/RelationManagers/OrdersRelationManager.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>title" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Resources/Customers/RelationManagers/OrdersRelationManager.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$attempt\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$detail\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$nationality\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$recipient\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:withTrashed\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:fullPhone\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),Illuminate\\Database\\Eloquent\\Model\>\:\:filter\(\) expects \(callable\(Illuminate\\Database\\Eloquent\\Model, int\|string\)\: bool\)\|null, Closure\(App\\Models\\Order\)\: bool given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Resources/InvoiceDispatch/InvoiceDispatchResource.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:label\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Resources/KioskDevices/KioskDeviceResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Filament/Resources/KioskDevices/KioskDeviceResource.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Filament/Resources/KioskDevices/KioskDeviceResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$customer\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/OrderResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/OrderResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$payment_status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/OrderResource.php
+
+		-
+			message: '#^Cannot access property \$booking_reference on Illuminate\\Database\\Eloquent\\Model\|int\|string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Filament/Resources/Orders/Pages/ViewOrder.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/Schemas/OrderInfolist.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Filament/Resources/Orders/Schemas/OrderInfolist.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$nationality\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/Schemas/OrderInfolist.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:fullPhone\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/Schemas/OrderInfolist.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: app/Filament/Resources/Orders/Schemas/OrderInfolist.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$booking_reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$icon\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$nationality\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:fullPhone\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),Illuminate\\Database\\Eloquent\\Model\>\:\:filter\(\) expects \(callable\(Illuminate\\Database\\Eloquent\\Model, int\|string\)\: bool\)\|null, Closure\(App\\Models\\Order\)\: bool given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>title" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Resources/Orders/Tables/OrdersTable.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/PaymentErrors/PaymentErrorResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/PaymentErrors/PaymentErrorResource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Resources/PaymentErrors/PaymentErrorResource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>value" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 2
+			path: app/Filament/Resources/PaymentErrors/PaymentErrorResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Models\\PosUser\:\:\$amount_today\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/PosUsers/PosUserResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Models\\PosUser\:\:\$amount_total\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/PosUsers/PosUserResource.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:label\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Resources/StaffAccounts/StaffAccountResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$amount\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$commission\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$is_refund\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$last_error\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$net_amount\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$refund_charge\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$synced_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:fullPhone\(\)\.$#'
+			identifier: method.notFound
+			count: 2
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Support\\Collection\<\(int\|string\),Illuminate\\Database\\Eloquent\\Model\>\:\:filter\(\) expects \(callable\(Illuminate\\Database\\Eloquent\\Model, int\|string\)\: bool\)\|null, Closure\(App\\Models\\Order\)\: bool given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>name" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>title" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Resources/Transactions/TransactionResource.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Support/OrderActions.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Support/OrderActions.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Filament/Support/OrderActions.php
+
+		-
+			message: '#^Cannot call method isActive\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Filament/Support/OrderActions.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>title" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Filament/Support/OrderActions.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Filament/Widgets/SalesTrendChart.php
+
+		-
+			message: '#^Parameter \#3 \$holder of method App\\Domain\\Messaging\\AutomationRelay\:\:send\(\) expects App\\Models\\TicketHolder\|null, Illuminate\\Database\\Eloquent\\Model\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Http/Controllers/Api/V1/AdminToolsController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Api/V1/EventController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$price\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Api/V1/EventController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Api/V1/EventController.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Http/Controllers/Api/V1/EventController.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,App\\Models\\Event\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Http/Controllers/Api/V1/EventController.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Http/Controllers/Api/V1/EventController.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Http/Controllers/Api/V1/OrderController.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Http/Controllers/Api/V1/OrderController.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Http/Controllers/Api/V1/PaymentController.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Controllers/Api/V1/ScannerController.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Http/Controllers/Payments/SadadRedirectController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Public/InvoiceDownloadController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$is_present\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Public/InvoiceDownloadController.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$qr_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Controllers/Public/InvoiceDownloadController.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:code\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Http/Controllers/Public/InvoiceDownloadController.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Http/Controllers/Public/InvoiceDownloadController.php
+
+		-
+			message: '#^Call to function in_array\(\) with arguments App\\Enums\\EmailDeliveryStatus\:\:Bounced\|App\\Enums\\EmailDeliveryStatus\:\:Complained\|App\\Enums\\EmailDeliveryStatus\:\:Unsubscribed, array\{App\\Enums\\EmailDeliveryStatus\:\:Bounced, App\\Enums\\EmailDeliveryStatus\:\:Complained, App\\Enums\\EmailDeliveryStatus\:\:Unsubscribed\} and true will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Http/Controllers/Webhooks/MailEventsController.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>template" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Http/Controllers/Webhooks/MailEventsController.php
+
+		-
+			message: '#^Cannot call method lt\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Http/Middleware/ResolveKiosk.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Listeners/DomainEventSubscriber.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:fullPhone\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Listeners/DomainEventSubscriber.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$available_quantity\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Livewire/Admin/CapacityAlert.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 3
+			path: app/Livewire/Admin/CapacityAlert.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$phone\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Livewire/Public/BookingLookup.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Livewire/Public/BookingLookup.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: app/Livewire/Public/Confirmation.php
+
+		-
+			message: '#^Cannot call method toIso8601String\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: app/Livewire/Public/Home.php
+
+		-
+			message: '#^Parameter \#1 \$array of function array_values contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Livewire/Public/Home.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,App\\Models\\Event\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Livewire/Public/Home.php
+
+		-
+			message: '#^Parameter \#3 \$callback of static method Illuminate\\Cache\\Repository\:\:remember\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Livewire/Public/Home.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Livewire/Staff/LiveBookings.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$icon\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Livewire/Staff/LiveBookings.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Livewire/Staff/LiveBookings.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$nationality\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Livewire/Staff/LiveBookings.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Livewire/Staff/LiveBookings.php
+
+		-
+			message: '#^Cannot call method label\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Livewire/Staff/LiveBookings.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Livewire/Staff/Pos.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$qr_code\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Livewire/Staff/Pos.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$ticket_type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Livewire/Staff/Pos.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Livewire/Staff/Pos.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>receipt_price_normal" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Livewire/Staff/Receipts.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>receipt_price_parking" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Livewire/Staff/Receipts.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>receipt_price_vip" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Livewire/Staff/Receipts.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$booking_reference\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Livewire/Staff/TicketViewer.php
+
+		-
+			message: '#^Parameter \#2 \$order of method App\\Domain\\Messaging\\AutomationRelay\:\:send\(\) expects App\\Models\\Order, Illuminate\\Database\\Eloquent\\Model given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Livewire/Staff/TicketViewer.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mail/AdminSaleAlertMail.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mail/AdminSaleAlertMail.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$ticket_type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mail/AdminSaleAlertMail.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Mail/AdminSaleAlertMail.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mail/BookingInvoiceMail.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mail/PaymentFailedMail.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$available_quantity\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Mcp/Tools/EventSalesSummary.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$price\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/EventSalesSummary.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$sold_quantity\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Mcp/Tools/EventSalesSummary.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$type\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Mcp/Tools/EventSalesSummary.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$checked_in_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$checked_in_by_name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$email\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$event_date\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$is_present\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$nationality\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$phone\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$ticket_type\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,Illuminate\\Database\\Eloquent\\Model\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Mcp/Tools/FindBooking.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$name\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/ListPaymentReviews.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$title\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Mcp/Tools/ListPaymentReviews.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Mcp/Tools/ListPaymentReviews.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,App\\Models\\Order\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Mcp/Tools/ListPaymentReviews.php
+
+		-
+			message: '#^Parameter \#1 \$value of function collect contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 1
+			path: app/Mcp/Tools/ListPaymentReviews.php
+
+		-
+			message: '#^Match expression does not handle remaining value\: string$#'
+			identifier: match.unhandled
+			count: 1
+			path: app/Models/Event.php
+
+		-
+			message: '#^Cannot call method isFuture\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Models/KioskDevice.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:withTrashed\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Models/Order.php
+
+		-
+			message: '#^Cannot access property \$value on string\.$#'
+			identifier: property.nonObject
+			count: 1
+			path: app/Models/Order.php
+
+		-
+			message: '#^Cannot call method isActive\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Models/Order.php
+
+		-
+			message: '#^Cannot call method isFuture\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Models/Order.php
+
+		-
+			message: '#^Cannot call method defaultDescription\(\) on string\.$#'
+			identifier: method.nonObject
+			count: 1
+			path: app/Models/TicketType.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\ConnectionInterface\:\:getDriverName\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>id" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 2
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: '#^Call to an undefined method Spatie\\Activitylog\\Contracts\\Activity\:\:getKey\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Support/Audit.php

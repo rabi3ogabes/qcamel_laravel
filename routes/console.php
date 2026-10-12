@@ -1,6 +1,9 @@
 <?php
 
+use App\Models\ActiveVisitor;
+use App\Models\LoginAttempt;
 use Illuminate\Support\Facades\Schedule;
+use Laravel\Horizon\Horizon;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +19,10 @@ Schedule::command('visitors:prune')->everyMinute()->withoutOverlapping();
 Schedule::command('sadad:reconcile-pending')->everyFiveMinutes()->withoutOverlapping()->onOneServer();
 Schedule::command('sadad:sync-transactions')->everyFifteenMinutes()->withoutOverlapping()->onOneServer();
 Schedule::command('stock:verify')->hourly()->withoutOverlapping()->onOneServer();
-Schedule::command('model:prune', ['--model' => [\App\Models\LoginAttempt::class, \App\Models\ActiveVisitor::class]])->dailyAt('00:00')->timezone('Asia/Qatar');
+Schedule::command('model:prune', ['--model' => [LoginAttempt::class, ActiveVisitor::class]])->dailyAt('00:00')->timezone('Asia/Qatar');
 Schedule::command('activitylog:clean')->daily();
 Schedule::command('exports:clean')->hourly();
 Schedule::command('queue:prune-failed', ['--hours' => 168])->daily();
 Schedule::command('backup:clean')->dailyAt('02:00')->timezone('Asia/Qatar');
 Schedule::command('backup:run')->dailyAt('02:30')->timezone('Asia/Qatar');
-Schedule::command('horizon:snapshot')->everyFiveMinutes()->when(fn () => class_exists(\Laravel\Horizon\Horizon::class) && config('queue.default') === 'redis');
+Schedule::command('horizon:snapshot')->everyFiveMinutes()->when(fn () => class_exists(Horizon::class) && config('queue.default') === 'redis');
