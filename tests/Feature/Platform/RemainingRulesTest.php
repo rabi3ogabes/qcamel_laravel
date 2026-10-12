@@ -4,6 +4,7 @@ use App\Domain\Booking\Actions\CreateOrderAction;
 use App\Domain\Booking\Data\OrderRequestValidator;
 use App\Domain\Messaging\N8nPayloads;
 use App\Domain\Payments\Actions\ConfirmPaymentAction;
+use App\Domain\Payments\Sadad\SadadConfig;
 use App\Domain\Shared\Actor;
 use App\Domain\Shared\DomainError;
 use App\Domain\Staff\PasscodeAuthenticator;
@@ -95,7 +96,7 @@ it('T-111 attributes POS sales to the cashier and returns the limit message as 4
 it('reads the Sadad .env fallbacks through config so they survive config:cache', function () {
     configureSadad(['merchant_id' => null, 'website_domain' => null, 'checkout_secret' => null]);
     config(['qcamelmc.sadad.merchant_id' => '1112223', 'qcamelmc.sadad.website_domain' => 'qcamel.test', 'qcamelmc.sadad.checkout_secret' => 'FROM-ENV']);
-    $cfg = app(\App\Domain\Payments\Sadad\SadadConfig::class);
+    $cfg = app(SadadConfig::class);
 
     expect($cfg->isConfigured())->toBeTrue()->and($cfg->checkoutSecret())->toBe('FROM-ENV')->and($cfg->merchantId())->toBe('1112223');
 });
