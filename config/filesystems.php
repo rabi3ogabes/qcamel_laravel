@@ -47,6 +47,53 @@ return [
             'report' => false,
         ],
 
+        // Part 4.6: ticket QR PNGs, public, object names "<code>.png" (R-066).
+        // Served at /storage/qr-codes/<code>.png so n8n templates keep working (F-NTF-023).
+        'qr' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/qr-codes'),
+            'url' => env('APP_URL').'/storage/qr-codes',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        // Branding images (logo, hero, header texture, before-footer, og) — public.
+        'branding' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/branding'),
+            'url' => env('APP_URL').'/storage/branding',
+            'visibility' => 'public',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        // Card-terminal slips — PRIVATE, 5-minute signed URLs only (D-006, T-123).
+        'receipts' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private/receipts'),
+            'visibility' => 'private',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        // Generated exports (Excel/PDF) — private, cleaned after 24 h.
+        'exports' => [
+            'driver' => 'local',
+            'root' => storage_path('app/private/exports'),
+            'visibility' => 'private',
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'backups' => [
+            'driver' => env('BACKUP_DISK_DRIVER', 'local'),
+            'root' => storage_path('app/private/backups'),
+            'visibility' => 'private',
+            'throw' => false,
+            'report' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
