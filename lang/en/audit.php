@@ -22,4 +22,6 @@ return [
     'data_bulk' => 'Data management operation: :op',
     'passcode_rotated' => 'Team passcode rotated and all team devices revoked',
     'kiosk_revoked' => 'Team device :name revoked',
+    'receipt_counts' => 'Receipt :seq ticket counts edited',
+    'receipt_deleted' => 'POS receipt :seq deleted',
 ];

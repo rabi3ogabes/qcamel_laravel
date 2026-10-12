@@ -22,4 +22,6 @@ return [
     'data_bulk' => 'عملية إدارة بيانات: :op',
     'passcode_rotated' => 'تغيير كلمة مرور الفريق وإلغاء جميع أجهزة الفريق',
     'kiosk_revoked' => 'إلغاء جهاز الفريق :name',
+    'receipt_counts' => 'تعديل عدد تذاكر الإيصال :seq',
+    'receipt_deleted' => 'حذف إيصال POS :seq',
 ];

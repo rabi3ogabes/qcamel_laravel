@@ -19,6 +19,8 @@ class GateBoardQuery
     {
         $eventId ??= rescue(fn () => app(EventSettings::class)->current_event_id, null, false);
         $event = $eventId ? Event::query()->find($eventId) : null;
+        // Fallback: today's (first) public event when no current event is configured.
+        $event ??= Event::query()->public()->onQatarDate(\App\Support\QatarClock::today())->orderBy('display_order')->orderBy('event_date')->first();
         if (! $event) {
             return ['success' => true, 'code' => 'no_current_event', 'event' => null, 'totals' => [], 'issued' => 0, 'scanned' => 0, 'recent' => [], 'generated_at' => now()->toIso8601String()];
         }
