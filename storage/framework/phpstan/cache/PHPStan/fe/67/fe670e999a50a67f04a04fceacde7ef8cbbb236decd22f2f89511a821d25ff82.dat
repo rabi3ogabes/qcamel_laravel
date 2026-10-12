@@ -1,1 +1,0 @@
-O:23:"PHPStan\Cache\CacheItem":2:{s:11:"variableKey";s:74:"v2-459c7a31021a72d180e835acea7b08a424809e221957cdf716b43b5cb720e73f-8.4.25";s:4:"data";a:3:{s:7:"classes";a:1:{s:54:"illuminate\database\uniqueconstraintviolationexception";b:1;}s:9:"functions";a:0:{}s:9:"constants";a:0:{}}}
