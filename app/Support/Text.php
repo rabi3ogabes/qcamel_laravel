@@ -126,4 +126,15 @@ final class Text
 
         return $value;
     }
+
+    /** Keep the last 3 digits of a phone for staff without the personal-data permission. */
+    public static function maskPhone(?string $phone): ?string
+    {
+        if ($phone === null || $phone === '') {
+            return $phone;
+        }
+        $d = preg_replace('/\D+/', '', $phone);
+
+        return strlen($d) <= 3 ? '•••' : str_repeat('•', strlen($d) - 3).substr($d, -3);
+    }
 }

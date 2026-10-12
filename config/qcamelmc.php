@@ -100,6 +100,11 @@ return [
         'home_page_size' => 9,                // R-175
     ],
 
+    'mcp' => [
+        'enabled' => (bool) env('MCP_ENABLED', true),  // F-API-001: read-only AI tools at POST /mcp
+        'token_days' => (int) env('MCP_TOKEN_DAYS', 90),
+    ],
+
     'capacity' => [
         'nearing' => 80, 'warning' => 90, 'critical' => 100,     // R-176
         'toast_ms' => 8000, 'pos_banner_ms' => 10000, 'live_banner_ms' => 4000, // R-177

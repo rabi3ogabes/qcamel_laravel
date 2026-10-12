@@ -43,6 +43,12 @@ class AppServiceProvider extends ServiceProvider
         // super_admin passes every ability (spatie Gate::before pattern).
         Gate::before(fn (User $user) => $user->is_active && $user->hasRole('super_admin') ? true : null);
 
+        // Spec 2.2: OpenAPI docs at /docs/api for admins only (session); bearer scheme documented.
+        Gate::define('viewApiDocs', fn (?User $user) => $user !== null && $user->is_active && $user->can('settings.view'));
+        \Dedoc\Scramble\Scramble::configure()->withDocumentTransformers(
+            fn (\Dedoc\Scramble\Support\Generator\OpenApi $openApi) => $openApi->secure(\Dedoc\Scramble\Support\Generator\SecurityScheme::http('bearer'))
+        );
+
         Event::subscribe(DomainEventSubscriber::class);
 
         // FOR UPDATE SKIP LOCKED where supported (MySQL 8 / PostgreSQL), plain lock elsewhere.
