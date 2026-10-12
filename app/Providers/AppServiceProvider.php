@@ -79,6 +79,7 @@ class AppServiceProvider extends ServiceProvider
         RateLimiter::for('staff-lookup', fn (Request $r) => Limit::perMinute(30)->by(($r->user()?->id ?? $ip($r))));
         RateLimiter::for('receipts', fn (Request $r) => Limit::perMinute(20)->by(($r->user()?->id ?? $ip($r))));
         RateLimiter::for('api', fn (Request $r) => Limit::perMinute(120)->by($r->user()?->id ?: $ip($r)));
+        RateLimiter::for('sadad-sync', fn () => Limit::perMinute(30));
         RateLimiter::for('mcp', fn (Request $r) => Limit::perMinute(60)->by($r->user()?->id ?: $ip($r)));
     }
 }

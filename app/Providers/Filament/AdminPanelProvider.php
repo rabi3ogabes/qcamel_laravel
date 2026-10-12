@@ -58,14 +58,14 @@ class AdminPanelProvider extends PanelProvider
             ->unsavedChangesAlerts()
             ->globalSearch(false)
             ->navigationGroups([
-                NavigationGroup::make('orders')->label(fn () => __('admin.nav.orders')),
-                NavigationGroup::make('finance')->label(fn () => __('admin.nav.finance')),
-                NavigationGroup::make('tickets')->label(fn () => __('admin.nav.tickets')),
-                NavigationGroup::make('customers')->label(fn () => __('admin.nav.customers')),
-                NavigationGroup::make('events')->label(fn () => __('admin.nav.events')),
-                NavigationGroup::make('analytics')->label(fn () => __('admin.nav.analytics')),
-                NavigationGroup::make('team')->label(fn () => __('admin.nav.team')),
-                NavigationGroup::make('system')->label(fn () => __('admin.nav.system'))->collapsed(),
+                NavigationGroup::make(fn () => __('admin.nav.orders')),
+                NavigationGroup::make(fn () => __('admin.nav.finance')),
+                NavigationGroup::make(fn () => __('admin.nav.tickets')),
+                NavigationGroup::make(fn () => __('admin.nav.customers')),
+                NavigationGroup::make(fn () => __('admin.nav.events')),
+                NavigationGroup::make(fn () => __('admin.nav.analytics')),
+                NavigationGroup::make(fn () => __('admin.nav.team')),
+                NavigationGroup::make(fn () => __('admin.nav.system'))->collapsed(),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
