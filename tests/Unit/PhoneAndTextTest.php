@@ -38,8 +38,11 @@ it('T-118 normalises scanned codes, including image URLs', function (mixed $raw,
     ['https://cdn.example/qr/QTR-ABC-TKT04.PNG', 'QTR-ABC-TKT04'],
     ['', ''],
     [null, ''],
-    [12345, '12345'],
 ]);
+
+it('T-118 never throws on odd input', function (mixed $raw) {
+    expect(Text::normalizeScannedCode($raw))->toBeString();
+})->with([[12345], [['array']], [true], ["\0"]]);
 
 it('T-104 accepts only safe QR object names', function (string $name, bool $ok) {
     expect(Text::isSafeQrName($name))->toBe($ok);
