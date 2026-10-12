@@ -36,31 +36,35 @@ class CheckInService
         return ['ok' => false, 'success' => false, 'code' => $code, 'message' => $message, 'ticket' => $h ? $this->ticketInfo($h) : null] + $extra;
     }
 
-    /** Admission eligibility in the mandatory rebuild order (F-GATE-039). */
-    public function evaluate(TicketHolder $h): array
+    /**
+     * Admission eligibility in the mandatory rebuild order (F-GATE-039).
+     * $withTicket=false is used by ticketInfo() itself (no recursion).
+     */
+    public function evaluate(TicketHolder $h, bool $withTicket = true): array
     {
+        $t = $withTicket ? $h : null;
         $order = $h->order;
         $event = $order?->event;
         if (! $order || ! $event || $order->trashed()) {
             return $this->refuse('not_found', __('gate.not_found'));
         }
         if ($order->payment_status === PaymentStatus::Cancelled) {
-            return $this->refuse('order_cancelled', __('gate.order_cancelled'), $h); // D-005 / T-119
+            return $this->refuse('order_cancelled', __('gate.order_cancelled'), $t); // D-005 / T-119
         }
         if ($event->isExpired('checkin')) {
-            return $this->refuse('event_expired', __('gate.event_expired', ['date' => Formats::longDate($event->end_date ?? $event->event_date, false)]), $h);
+            return $this->refuse('event_expired', __('gate.event_expired', ['date' => Formats::longDate($event->end_date ?? $event->event_date, false)]), $t);
         }
         if (! $event->isToday()) {
-            return $this->refuse('wrong_day', __('gate.wrong_day', ['date' => Formats::longDate($event->event_date, false)]), $h);
+            return $this->refuse('wrong_day', __('gate.wrong_day', ['date' => Formats::longDate($event->event_date, false)]), $t);
         }
         if ($h->is_present) {
-            return $this->refuse('already_checked_in', __('gate.already_used'), $h, ['already' => true]);
+            return $this->refuse('already_checked_in', __('gate.already_used'), $t, ['already' => true]);
         }
         $collectCash = false;
         if ($order->payment_status !== PaymentStatus::Confirmed) {
             $cashAtVenue = $order->isCashAtVenue() && $order->payment_status === PaymentStatus::Pending;
             if (! ($cashAtVenue && app(FeatureFlagSettings::class)->admit_unpaid_cash_bookings)) {
-                return $this->refuse('payment_pending', __('gate.payment_pending'), $h);
+                return $this->refuse('payment_pending', __('gate.payment_pending'), $t);
             }
             $collectCash = true; // R-129 «تحصيل نقدي»
         }
@@ -251,7 +255,7 @@ class CheckInService
             ->whereHas('order', fn ($q) => $q->whereIn('event_id', $todayEvents)->where('payment_status', '!=', 'cancelled'))
             ->orderBy('order_id')->orderBy('position')
             ->limit(60)->get()
-            ->filter(fn ($h) => $this->evaluate($h)['ok'] || $h->is_present);
+            ->filter(fn ($h) => $this->evaluate($h, false)['ok'] || $h->is_present);
 
         return ['success' => true, 'results' => $rows->map(fn ($h) => $this->ticketInfo($h, $actor))->values()->all()];
     }
@@ -326,7 +330,7 @@ class CheckInService
     {
         $o = $h->order;
         $e = $o?->event;
-        $verdict = $o && $e ? $this->evaluate($h) : ['ok' => false, 'code' => 'not_found'];
+        $verdict = $o && $e ? $this->evaluate($h, false) : ['ok' => false, 'code' => 'not_found'];
         $info = [
             'holder_id' => $h->id,
             'booking_reference' => $o?->booking_reference,

@@ -8,17 +8,11 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/js/scanner.js',
                 'resources/css/filament/admin/theme.css',
             ],
             refresh: true,
         }),
         tailwindcss(),
     ],
-    build: {
-        rollupOptions: {
-            output: {
-                manualChunks: { scanner: ['html5-qrcode'] },
-            },
-        },
-    },
 });

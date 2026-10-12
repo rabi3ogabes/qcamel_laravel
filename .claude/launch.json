@@ -4,7 +4,17 @@
     {
       "name": "qcamel",
       "runtimeExecutable": "php",
-      "runtimeArgs": ["artisan", "serve", "--host=127.0.0.1", "--port=8077"],
+      "runtimeArgs": [
+        "-d", "zend_extension=opcache",
+        "-d", "opcache.enable_cli=1",
+        "-d", "opcache.validate_timestamps=1",
+        "-d", "opcache.revalidate_freq=0",
+        "-d", "opcache.memory_consumption=256",
+        "-d", "max_execution_time=60",
+        "-S", "127.0.0.1:8077",
+        "-t", "public",
+        "server.php"
+      ],
       "port": 8077
     }
   ]
