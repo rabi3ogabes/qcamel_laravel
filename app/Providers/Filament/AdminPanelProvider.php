@@ -41,7 +41,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandName(fn () => rescue(fn () => app(\App\Settings\BrandingSettings::class)->festival_name, null, false) ?: __('common.app_name'))
             ->brandLogo(fn () => rescue(fn () => app(\App\Settings\BrandingSettings::class)->logo_url, null, false))
             ->brandLogoHeight('2.6rem')
-            ->favicon(asset('favicon.ico'))
+            ->favicon(asset('favicon-32.png'))
             ->colors([
                 'primary' => Color::hex('#9C1638'),
                 'warning' => Color::hex('#E3950C'),

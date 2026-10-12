@@ -102,7 +102,7 @@ Route::get('/staff/manifest.webmanifest', function () {
         'theme_color' => '#9C1638',
         'dir' => app()->getLocale() === 'en' ? 'ltr' : 'rtl',
         'lang' => app()->getLocale(),
-        'icons' => [['src' => asset('favicon.png'), 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any maskable']],
+        'icons' => [['src' => asset('favicon-192.png'), 'sizes' => '192x192', 'type' => 'image/png', 'purpose' => 'any'], ['src' => asset('favicon-512.png'), 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any']],
     ], 200, ['Content-Type' => 'application/manifest+json']);
 })->name('staff.manifest');
 

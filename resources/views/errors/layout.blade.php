@@ -9,7 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="robots" content="noindex">
     <title>@yield('code') · {{ $brandData['festival_name'] ?? __('common.app_name') }}</title>
-    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <meta name="theme-color" content="#9C1638">
     @vite(['resources/css/app.css'])
 </head>
 <body class="grain min-h-dvh bg-cream font-sans text-ink antialiased">

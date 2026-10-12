@@ -19,7 +19,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="{{ route('staff.manifest') }}">
     <title>{{ $title ? $title.' · ' : '' }}{{ $brand['festival_name'] ?? __('common.app_name') }}</title>
-    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
     {{ $head ?? '' }}
