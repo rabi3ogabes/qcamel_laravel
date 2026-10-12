@@ -77,13 +77,24 @@ Health: `GET /up` (Laravel) and the Horizon dashboard at `/horizon` (admins only
 - Restore drill: create an empty database, import the dump, copy `storage/app`, run `php artisan migrate --force`
   (no-op on a current schema), then `php artisan stock:verify`.
 
-## 8. Development
+## 8. Data migration from Supabase (one-off cut-over)
+
+1. Freeze the old site (maintenance page, disable n8n and its auto-send cron); snapshot the database and both buckets.
+2. Restore the snapshot to a **read-only** Postgres and set `LEGACY_DB_*` in `.env`.
+3. Download the buckets (`qr-codes/`, `pos-receipts/`) to a folder, e.g. `/srv/legacy-storage`.
+4. Rehearse: `php artisan migrate:from-supabase --dry-run` → read `storage/app/migration-report.md`
+   (row counts, confirmed revenue old vs new, fixes F-01…F-14, warnings such as unknown ticket types F-10).
+5. Run for real: `php artisan migrate:from-supabase --storage=/srv/legacy-storage` (resume a step with `--step=orders` etc.).
+6. `php artisan stock:verify` must report 0 drift; spot-check 50 references against the old invoices.
+7. All admins must reset their password on first sign-in and enrol 2FA; put rotated Sadad / n8n secrets in Settings.
+
+## 9. Development
 
 ```bash
 composer install && npm ci && npm run build
 cp .env.example .env && php artisan key:generate   # DB_CONNECTION=sqlite works locally
 php artisan migrate:fresh --seed                    # demo season, POS users, owner from SEED_ADMIN_*
-vendor/bin/pest                                     # 192 tests, in-memory DB, HTTP faked
+vendor/bin/pest                                     # 205 tests, in-memory DB, HTTP faked
 vendor/bin/pint && vendor/bin/phpstan analyse --memory-limit=2G
 python tools/test-matrix.py                         # refresh docs/TEST-MATRIX.md
 node tools/brand/render.mjs "$(pwd)"                # re-render favicon set + Open Graph card

@@ -22,4 +22,4 @@ Architecture and product decisions taken during the rebuild, with the reason. Sp
 | 16 | **Tests on in-memory SQLite with all outbound HTTP faked**; the T-ID is part of each test title; `TEST-MATRIX.md` is generated. | Fast, isolated, never touches real data or Sadad/n8n; coverage gaps are visible. |
 | 17 | **Larastan level 5 with a baseline** for relation-generic annotations. | Catches new defects in CI today (it already found the `env()`/config-cache bug) while the annotation backlog is paid down. |
 | 18 | **Brand assets rendered from HTML** (`tools/brand/render.mjs`). | Pixel-perfect Arabic typography; regenerated in seconds after a design change. |
-| 19 | **Legacy data importer deferred**. | Needs a production Supabase export; tests T-001…T-004 are tracked as pending in the matrix. |
+| 19 | **Importer reads a read-only legacy connection, writes with the query builder in one transaction**, ids preserved, deterministic ids for synthesised rows, secrets not copied unless `--with-secrets`. | Idempotent and resumable, `--dry-run` rolls back, no model events/stock side effects, rotated secrets by default (D-002). |

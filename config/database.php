@@ -82,6 +82,21 @@ return [
             ]) : [],
         ],
 
+        // Part 4.9: read-only copy of the production Supabase database (migrate:from-supabase).
+        'supabase_legacy' => [
+            'driver' => 'pgsql',
+            'url' => env('LEGACY_DB_URL'),
+            'host' => env('LEGACY_DB_HOST', '127.0.0.1'),
+            'port' => env('LEGACY_DB_PORT', '5432'),
+            'database' => env('LEGACY_DB_DATABASE', 'postgres'),
+            'username' => env('LEGACY_DB_USERNAME', 'postgres'),
+            'password' => env('LEGACY_DB_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'search_path' => 'public',
+            'sslmode' => env('LEGACY_DB_SSLMODE', 'prefer'),
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DB_URL'),

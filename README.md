@@ -39,7 +39,7 @@ php artisan serve
 ## Quality
 
 ```bash
-vendor/bin/pest                              # 192 tests — in-memory DB, all outbound HTTP faked
+vendor/bin/pest                              # 205 tests — in-memory DB, all outbound HTTP faked
 vendor/bin/pint --test                       # code style
 vendor/bin/phpstan analyse --memory-limit=2G # Larastan level 5
 python tools/test-matrix.py                  # spec T-ID → test mapping (docs/TEST-MATRIX.md)

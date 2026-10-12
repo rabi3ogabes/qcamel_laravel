@@ -8,10 +8,6 @@ import os
 import re
 
 NOT_APPLICABLE = {
-    'T-001': 'Legacy Supabase importer not built yet (data migration tool).',
-    'T-002': 'Legacy Supabase importer not built yet (QR-code column migration).',
-    'T-003': 'Legacy Supabase importer not built yet (stale order closing on import).',
-    'T-004': 'Legacy Supabase importer not built yet (post-import recount).',
     'T-116': 'Original browser API client (TypeScript) is replaced by server-side Livewire actions; nothing to test.',
 }
 
