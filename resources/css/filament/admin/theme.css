@@ -10,6 +10,7 @@
 @source '../../../../resources/views/filament/**/*';
 @source '../../../../resources/views/components/public/invoice-card.blade.php';
 @source '../../../../resources/views/components/ui/**/*';
+@source '../../../../resources/views/livewire/admin/**/*';
 
 /* Desert-luxury tokens shared with the public site (Part 6.4). */
 @theme {

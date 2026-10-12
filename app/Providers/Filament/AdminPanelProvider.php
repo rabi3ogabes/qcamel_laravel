@@ -71,7 +71,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')
             ->pages([Dashboard::class])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
-            ->renderHook(PanelsRenderHook::BODY_START, fn () => Blade::render('@includeIf(\'filament.hooks.capacity-alert\')'))
+            ->renderHook(PanelsRenderHook::CONTENT_START, fn () => Blade::render('@includeIf(\'filament.hooks.capacity-alert\')'))
             ->renderHook(PanelsRenderHook::USER_MENU_BEFORE, fn () => Blade::render('@includeIf(\'filament.hooks.staff-apps\')'))
             ->middleware([
                 EncryptCookies::class,
