@@ -2,6 +2,7 @@
 
 use App\Domain\Booking\Services\StockLedger;
 use App\Domain\Migration\LegacyImporter;
+use App\Domain\Migration\SupabaseRestSource;
 use App\Models\Order;
 use App\Models\TicketHolder;
 use App\Models\User;
@@ -11,7 +12,9 @@ use App\Settings\SadadSettings;
 use Carbon\CarbonInterval;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
@@ -234,4 +237,52 @@ it('runs as an artisan command with a dry run and writes the report', function (
     expect(file_get_contents(base_path($report)))->toContain('dry run, rolled back')
         ->and(Order::count())->toBe(0);
     @unlink(base_path($report));
+});
+
+/** Serve the legacy fixture through a fake Supabase REST + Auth API. */
+function fakeSupabaseApi(Connection $db, int $pageSize = 1000): void
+{
+    Http::fake(function (Request $r) use ($db) {
+        if (($r->header('apikey')[0] ?? null) !== 'sb_secret_test') {
+            return Http::response(['message' => 'bad key'], 401);
+        }
+        $path = parse_url($r->url(), PHP_URL_PATH);
+        parse_str((string) parse_url($r->url(), PHP_URL_QUERY), $q);
+        if ($path === '/auth/v1/admin/users') {
+            $users = $db->table('auth_users')->get()->map(fn ($u) => ['id' => $u->id, 'email' => $u->email, 'created_at' => $u->created_at, 'user_metadata' => []])->all();
+
+            return Http::response(['users' => (int) ($q['page'] ?? 1) === 1 ? $users : []]);
+        }
+        $table = basename($path);
+        $rows = $db->table($table)->orderBy('id')->offset((int) $q['offset'])->limit((int) $q['limit'])->get()->map(fn ($x) => (array) $x)->all();
+
+        return Http::response($rows);
+    });
+}
+
+it('imports the same data through the Supabase REST API with a secret key', function () {
+    $db = legacyDb();
+    seedLegacy($db);
+    fakeSupabaseApi($db);
+    $source = new SupabaseRestSource('https://legacy.supabase.co', 'sb_secret_test');
+
+    $importer = (new LegacyImporter($source))->run();
+
+    expect(Order::count())->toBe(7)
+        ->and(TicketHolder::query()->where('qr_code', 'like', 'http%')->count())->toBe(0)
+        ->and((int) DB::table('ticket_types')->where('type', 'normal')->value('sold_quantity'))->toBe(3)
+        ->and(User::query()->where('email', 'boss@example.qa')->first()->must_reset_password)->toBeTrue()
+        ->and(User::query()->where('email', 'mod@example.qa')->first()->must_reset_password)->toBeTrue() // no hash over REST
+        ->and($importer->report(false))->toContain('Confirmed revenue: legacy 300.00 QAR');
+});
+
+it('sends the secret key only as apikey for new sb_secret keys and pages through large tables', function () {
+    $db = legacyDb();
+    seedLegacy($db);
+    fakeSupabaseApi($db);
+    $rows = (new SupabaseRestSource('https://legacy.supabase.co', 'sb_secret_test'))->table('orders')->get();
+
+    expect($rows)->toHaveCount(7);
+    Http::assertSent(fn ($r) => $r->hasHeader('apikey', 'sb_secret_test') && ! $r->hasHeader('Authorization'));
+    expect(fn () => new SupabaseRestSource('http://insecure', 'k'))->toThrow(RuntimeException::class);
 });

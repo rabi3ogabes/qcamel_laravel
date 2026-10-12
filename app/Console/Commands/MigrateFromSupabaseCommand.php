@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Domain\Migration\LegacyImporter;
+use App\Domain\Migration\SupabaseRestSource;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -18,7 +19,8 @@ class MigrateFromSupabaseCommand extends Command
     protected $signature = 'migrate:from-supabase
         {--dry-run : Run every step inside a transaction and roll it back}
         {--step=* : Only these steps (see LegacyImporter::STEPS)}
-        {--connection=supabase_legacy : Read-only legacy database connection}
+        {--source=db : db (read-only Postgres connection) or rest (Supabase URL + secret key)}
+        {--connection=supabase_legacy : Read-only legacy database connection (source=db)}
         {--auth-table=auth.users : Table holding the Supabase auth users}
         {--with-secrets : Also copy Sadad secret and n8n webhook URLs (rotate them afterwards)}
         {--storage= : Folder with the downloaded Supabase buckets (qr-codes/, pos-receipts/)}
@@ -33,8 +35,14 @@ class MigrateFromSupabaseCommand extends Command
             return self::FAILURE;
         }
 
+        $source = $this->option('source') === 'rest'
+            ? new SupabaseRestSource((string) config('qcamelmc.legacy.supabase_url'), (string) config('qcamelmc.legacy.supabase_secret_key'))
+            : DB::connection((string) $this->option('connection'));
+        if ($source instanceof SupabaseRestSource) {
+            $this->warn('REST source: password hashes are not available — every imported account must reset its password.');
+        }
         $importer = new LegacyImporter(
-            DB::connection((string) $this->option('connection')),
+            $source,
             ['auth_users' => (string) $this->option('auth-table'), 'include_secrets' => (bool) $this->option('with-secrets')],
             fn (string $m) => $this->line($m),
         );

@@ -46,6 +46,9 @@ class LegacyImporter
     /** @var list<string> */
     public array $warnings = [];
 
+    /** Σ total_amount of confirmed legacy orders, for the reconciliation report. */
+    private ?string $legacyRevenue = null;
+
     /** @var list<string> */
     public array $fixes = [];
 
@@ -64,7 +67,7 @@ class LegacyImporter
      * @param  array{auth_users?:string, include_secrets?:bool}  $options
      */
     public function __construct(
-        private readonly ConnectionInterface $legacy,
+        private readonly ConnectionInterface|SupabaseRestSource $legacy,
         private readonly array $options = [],
         private readonly ?\Closure $log = null,
     ) {
@@ -113,6 +116,7 @@ class LegacyImporter
             $legacyRoles = collect($roles[$u['id']] ?? [])->pluck('role')->map(fn ($r) => (string) $r);
             $role = $admins->has($email) || $legacyRoles->contains('admin') ? Role::Admin : ($legacyRoles->contains('moderator') ? Role::Supervisor : null);
             $hash = (string) ($u['encrypted_password'] ?? '');
+            $noHash = $hash === ''; // REST/Auth API never exposes hashes → password reset required
             $hash = str_starts_with($hash, '$2a$') ? '$2y$'.substr($hash, 4) : ($hash !== '' ? $hash : bcrypt(Str::random(40)));
 
             DB::table('users')->upsert([[
@@ -122,7 +126,7 @@ class LegacyImporter
                 'email_verified_at' => $this->ts($u['email_confirmed_at'] ?? null) ?? $this->ts($u['created_at'] ?? null),
                 'password' => $hash,
                 'is_active' => $role !== null,
-                'must_reset_password' => $role === Role::Admin, // D-001 forced rotation for admins
+                'must_reset_password' => $role === Role::Admin || $noHash, // D-001 forced rotation for admins
                 'created_at' => $this->ts($u['created_at'] ?? null) ?? $this->now,
                 'updated_at' => $this->now,
             ]], ['id'], ['name', 'email', 'email_verified_at', 'password', 'is_active', 'must_reset_password', 'updated_at']);
@@ -223,6 +227,9 @@ class LegacyImporter
         // F-04: a payment id may appear on several orders; keep it on the confirmed / earliest one.
         $keepPaymentOn = $rows->filter(fn ($o) => ! empty($o['payment_id']))->groupBy('payment_id')
             ->map(fn (Collection $g) => $g->sortBy([fn ($a, $b) => ($b['payment_status'] === 'confirmed') <=> ($a['payment_status'] === 'confirmed'), fn ($a, $b) => strcmp((string) $a['created_at'], (string) $b['created_at'])])->first()['id']);
+
+        $this->legacyRevenue = $rows->filter(fn (array $o): bool => ($o['payment_status'] ?? null) === 'confirmed')
+            ->reduce(fn (Money $sum, array $o): Money => $sum->add(Money::of((string) $o['total_amount'])), Money::zero())->toDecimal();
 
         foreach ($rows as $o) {
             $created = $this->ts($o['created_at'] ?? null) ?? $this->ts($o['confirmed_at'] ?? null) ?? $this->ts($o['paid_at'] ?? null) ?? $this->now; // F-08
@@ -815,7 +822,7 @@ class LegacyImporter
     /** Markdown reconciliation report (counts and confirmed revenue old vs new). */
     public function report(bool $dryRun): string
     {
-        $legacyRevenue = (string) rescue(fn () => $this->legacy->table('orders')->where('payment_status', 'confirmed')->sum('total_amount'), '?', false);
+        $legacyRevenue = $this->legacyRevenue ?? '?';
         $newRevenue = (string) DB::table('orders')->where('payment_status', 'confirmed')->sum('total_amount');
         $out = ['# Data migration report', '', '- Run: '.$this->now->setTimezone('Asia/Qatar')->format('Y-m-d H:i').' (Qatar)'.($dryRun ? ' — **dry run, rolled back**' : ''),
             "- Confirmed revenue: legacy {$legacyRevenue} QAR → new {$newRevenue} QAR".($dryRun ? ' (new = target after rollback)' : ''), '',

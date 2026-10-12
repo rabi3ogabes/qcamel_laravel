@@ -114,6 +114,12 @@ return [
         'http_timeout' => (int) env('SADAD_HTTP_TIMEOUT', 8),
     ],
 
+    // Part 4.9 importer over the Supabase HTTP APIs (migrate:from-supabase --source=rest).
+    'legacy' => [
+        'supabase_url' => env('LEGACY_SUPABASE_URL', env('SUPABASE_URL')),
+        'supabase_secret_key' => env('LEGACY_SUPABASE_SECRET_KEY', env('SUPABASE_SECRET_KEY')),
+    ],
+
     'mcp' => [
         'enabled' => (bool) env('MCP_ENABLED', true),  // F-API-001: read-only AI tools at POST /mcp
         'token_days' => (int) env('MCP_TOKEN_DAYS', 90),
