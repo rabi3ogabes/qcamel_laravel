@@ -79,6 +79,11 @@ class CreateOrderAction
             throw DomainError::validation([__('orders.v.cashier_invalid')]);
         }
 
+        // F-PUB-050/052 rebuild: the terms gate is enforced by the server, not the button.
+        if (! $isPos && ! $data->termsAccepted && config('qcamelmc.orders.require_terms', true)) {
+            throw new DomainError('terms_required', 422, 'terms_required');
+        }
+
         // T-039 / R-099: gateway readiness BEFORE anything is reserved.
         if ($data->paymentMethod === PaymentMethod::Sadad && ! $this->sadad->isConfigured()) {
             throw new DomainError('payment_unavailable', 503, 'Online payment is not available right now');

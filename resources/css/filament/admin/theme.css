@@ -1,0 +1,35 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+@import '@fontsource/tajawal/arabic-400.css';
+@import '@fontsource/tajawal/arabic-500.css';
+@import '@fontsource/tajawal/arabic-700.css';
+@import '@fontsource/tajawal/arabic-800.css';
+@import '@fontsource/tajawal/latin-400.css';
+@import '@fontsource/tajawal/latin-700.css';
+
+@source '../../../../app/Filament/**/*';
+@source '../../../../resources/views/filament/**/*';
+@source '../../../../resources/views/components/public/invoice-card.blade.php';
+@source '../../../../resources/views/components/ui/**/*';
+
+/* Desert-luxury tokens shared with the public site (Part 6.4). */
+@theme {
+    --color-maroon-50: #fdf2f5; --color-maroon-100: #f9e1e8; --color-maroon-200: #f2bccb; --color-maroon-500: #b52a50;
+    --color-maroon-600: #9c1638; --color-maroon-700: #7f1130;
+    --color-gold-50: #fffaeb; --color-gold-100: #fef0c7; --color-gold-200: #fde08a; --color-gold-300: #fccb4d; --color-gold-400: #f9b11f;
+    --color-gold-600: #c47206; --color-gold-700: #9c5009; --color-gold-800: #7f400f;
+    --color-cream: #f5efe7; --color-ivory: #fdfbf7; --color-sand: #d4b78a; --color-sand-light: #e8d8bd; --color-terracotta: #a85740;
+    --color-bark: #6b4e3d; --color-clay: #8b6f47; --color-ink: #2a1a12; --color-ink-soft: #5c4a3d; --color-success: #188b48; --color-danger: #c4302b;
+    --shadow-soft: 0 1px 2px rgb(42 26 18 / 0.04), 0 8px 24px -12px rgb(42 26 18 / 0.12);
+    --shadow-elegant: 0 24px 60px -28px rgb(156 22 56 / 0.35), 0 2px 6px rgb(42 26 18 / 0.05);
+}
+
+.fi-body { font-feature-settings: "tnum" 1; }
+.fi-body:not(.dark) { background-color: #f7f2ec; }
+.fi-sidebar:not(.dark *) { background: linear-gradient(180deg, #fffdf9 0%, #f8f1e8 100%); }
+.fi-sidebar-item-active > a, .fi-sidebar-item-active > button { box-shadow: inset 3px 0 0 var(--color-gold-400); }
+[dir="rtl"] .fi-sidebar-item-active > a, [dir="rtl"] .fi-sidebar-item-active > button { box-shadow: inset -3px 0 0 var(--color-gold-400); }
+.fi-section, .fi-ta-ctn, .fi-wi-stats-overview-stat { border-radius: 1.25rem !important; }
+.fi-topbar nav { backdrop-filter: blur(16px); }
+.gold-rule { height: 1px; background: linear-gradient(90deg, transparent, var(--color-sand), var(--color-gold-400), var(--color-sand), transparent); }
+.bezel { padding: .375rem; border-radius: 1.75rem; background: rgb(107 78 61 / .06); box-shadow: inset 0 0 0 1px rgb(107 78 61 / .08); }
+.bezel-core { border-radius: calc(1.75rem - .375rem); background: #fff; box-shadow: var(--shadow-soft); }

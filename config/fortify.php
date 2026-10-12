@@ -115,7 +115,7 @@ return [
     */
 
     'limiters' => [
-        'login' => 'login',
+        'login' => null, // enforced by App\Http\Auth\ThrottleAndValidateLogin (R-145)
         'two-factor' => 'two-factor',
     ],
 

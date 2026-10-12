@@ -112,5 +112,11 @@ class ConfirmPaymentAction
             'gateway_reference' => $order->payment_id,
             'requested_by' => $actorUserId,
         ]);
+        // NEW admin alert (F-PAY upgrades): refund needed.
+        DB::afterCommit(function () use ($order, $reason) {
+            $admins = \App\Models\User::query()->where('is_active', true)
+                ->whereHas('roles', fn ($q) => $q->whereIn('name', ['super_admin', 'admin', 'accountant']))->get();
+            \Illuminate\Support\Facades\Notification::send($admins, new \App\Notifications\PaymentNeedsReview($order, $reason));
+        });
     }
 }

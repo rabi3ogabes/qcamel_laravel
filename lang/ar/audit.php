@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'order_cancelled' => 'إلغاء الحجز :ref وإعادة تذاكره للبيع',
+    'order_confirmed' => 'تأكيد دفع الحجز :ref يدوياً',
+    'order_status' => 'تغيير حالة الحجز :ref من :from إلى :to',
+    'order_deleted' => 'حذف الحجز :ref',
+    'refund_handled' => 'تمت معالجة استرداد الحجز :ref',
+    'event_change' => 'نقل الحجز :ref من «:from» إلى «:to»',
+    'settings_changed' => 'تعديل الإعدادات: :keys',
+    'event_updated' => 'تعديل الفعالية :title',
+    'event_archived' => 'أرشفة الفعالية :title',
+    'event_restored' => 'استعادة الفعالية :title',
+    'event_deleted' => 'حذف الفعالية :title',
+    'event_toggled' => 'تغيير حالة نشاط الفعالية :title',
+    'season_started' => 'بدء فعالية جديدة :title',
+    'pos_sale' => 'بيع من نقطة البيع :ref',
+    'invoice_download' => 'تحميل فاتورة :ref',
+    'customer_updated' => 'تعديل بيانات العميل :name',
+    'holder_updated' => 'تعديل هاتف حامل التذكرة :name',
+    'pos_user' => 'تعديل مستخدم نقطة البيع :name',
+    'data_bulk' => 'عملية إدارة بيانات: :op',
+    'passcode_rotated' => 'تغيير كلمة مرور الفريق وإلغاء جميع أجهزة الفريق',
+    'kiosk_revoked' => 'إلغاء جهاز الفريق :name',
+];

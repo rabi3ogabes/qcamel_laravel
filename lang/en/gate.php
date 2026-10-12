@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'not_found' => 'Ticket not found',
+    'booking_not_found' => 'Booking not found',
+    'reference_required' => 'A booking reference is required',
+    'code_required' => 'A ticket code is required',
+    'ticket_unspecified' => 'No ticket selected',
+    'holder_id_required' => 'Ticket id is required',
+    'event_expired' => '⏰ Ticket expired — the event ended on :date',
+    'wrong_day' => '📅 This ticket is not for today — valid on :date only',
+    'already_used' => 'This ticket was already used',
+    'already_marked' => 'This ticket was already checked in',
+    'payment_pending' => '⚠️ Payment not confirmed — entry not allowed',
+    'order_cancelled' => '⛔ Booking cancelled — entry not allowed',
+    'code_revoked' => 'Expired ticket code — the booking was moved to another event',
+    'admitted' => '✅ Ticket of :name verified',
+    'admitted_manual' => '✅ :name checked in',
+    'collect_cash' => 'Collect cash',
+    'reset_admin_only' => 'Undoing a scan is for administrators only',
+    'not_scanned' => 'This ticket was not scanned',
+    'reset_done' => 'Scan undone, the ticket is valid again',
+    'phone_short' => 'Enter at least 8 digits to search by phone',
+    'audit_admit' => 'Ticket of :name admitted',
+    'audit_reset' => 'Scan of :name undone',
+    'audit_search' => 'Scanner search',
+];

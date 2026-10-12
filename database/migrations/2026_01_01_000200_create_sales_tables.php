@@ -65,6 +65,7 @@ return new class extends Migration
             $table->string('automation_status', 24)->default('none');
             $table->unsignedTinyInteger('send_attempt_count')->default(0);
             $table->timestamp('invoice_email_sent_at')->nullable();
+            $table->timestamp('invoice_downloaded_at')->nullable(); // F-LIVE-015 rebuild
             $table->string('return_origin', 255)->nullable();
             $table->timestamp('last_payment_check_at')->nullable();
             $table->timestamp('review_required_at')->nullable();

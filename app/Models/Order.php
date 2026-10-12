@@ -40,6 +40,7 @@ class Order extends Model
             'confirmed_at' => 'immutable_datetime',
             'n8n_responded_at' => 'immutable_datetime',
             'invoice_email_sent_at' => 'immutable_datetime',
+            'invoice_downloaded_at' => 'immutable_datetime',
             'last_payment_check_at' => 'immutable_datetime',
             'review_required_at' => 'immutable_datetime',
             'refund_handled_at' => 'immutable_datetime',

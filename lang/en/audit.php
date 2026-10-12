@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'order_cancelled' => 'Booking :ref cancelled and its tickets returned to sale',
+    'order_confirmed' => 'Payment of booking :ref confirmed manually',
+    'order_status' => 'Booking :ref status changed from :from to :to',
+    'order_deleted' => 'Booking :ref deleted',
+    'refund_handled' => 'Refund of booking :ref handled',
+    'event_change' => 'Booking :ref moved from “:from” to “:to”',
+    'settings_changed' => 'Settings changed: :keys',
+    'event_updated' => 'Event :title updated',
+    'event_archived' => 'Event :title archived',
+    'event_restored' => 'Event :title restored',
+    'event_deleted' => 'Event :title deleted',
+    'event_toggled' => 'Event :title active state changed',
+    'season_started' => 'New event :title started',
+    'pos_sale' => 'POS sale :ref',
+    'invoice_download' => 'Invoice :ref downloaded',
+    'customer_updated' => 'Customer :name updated',
+    'holder_updated' => 'Phone of ticket holder :name updated',
+    'pos_user' => 'POS user :name updated',
+    'data_bulk' => 'Data management operation: :op',
+    'passcode_rotated' => 'Team passcode rotated and all team devices revoked',
+    'kiosk_revoked' => 'Team device :name revoked',
+];

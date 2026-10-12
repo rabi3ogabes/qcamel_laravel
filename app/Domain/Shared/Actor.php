@@ -48,6 +48,9 @@ final class Actor
     public static function current(): self
     {
         $user = auth()->user();
+        if (! $user && request()->bearerToken()) {
+            $user = auth('sanctum')->user(); // API v1 tokens (T-093: bearer only, anon key is not a session)
+        }
         if ($user instanceof User && $user->is_active) {
             return self::user($user);
         }
