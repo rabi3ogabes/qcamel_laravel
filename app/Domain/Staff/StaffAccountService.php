@@ -90,7 +90,12 @@ class StaffAccountService
             throw DomainError::forbidden();
         }
         $old = $user->getRoleNames()->implode(',');
-        DB::transaction(fn () => $user->syncRoles([$role->value]));
+        DB::transaction(function () use ($user, $role) {
+            $user->syncRoles([$role->value]);
+            if (! $user->is_active) {
+                $user->forceFill(['is_active' => true])->save(); // re-granting a role restores a revoked account
+            }
+        });
         Audit::log(ActivityType::StaffRoleChanged, __('staff.audit_role', ['email' => $user->email, 'role' => $role->label()]), $user, ['from' => $old, 'to' => $role->value], $actor);
 
         return $user;

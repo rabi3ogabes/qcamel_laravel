@@ -29,6 +29,10 @@ class DomainError extends RuntimeException
         if ($this->errorCode === 'ticket_limit_exceeded' && $this->getMessage() !== $this->errorCode) {
             return $this->getMessage();
         }
+        // A forbidden error may carry a specific, already-localized reason ("you cannot revoke yourself").
+        if ($this->errorCode === 'forbidden' && $this->getMessage() !== $this->errorCode && $this->getMessage() !== __('errors.forbidden')) {
+            return $this->getMessage();
+        }
         $key = 'errors.'.$this->errorCode;
         $msg = __($key, $this->extra['replace'] ?? []);
         if ($msg === $key) {

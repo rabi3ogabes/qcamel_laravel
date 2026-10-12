@@ -8,8 +8,10 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use App\Filament\Pages\Dashboard;
 use Filament\Navigation\NavigationGroup;
-use Filament\Pages\Dashboard;
+use Filament\Navigation\NavigationItem;
+use Filament\Support\Icons\Heroicon;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -56,7 +58,8 @@ class AdminPanelProvider extends PanelProvider
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s')
             ->unsavedChangesAlerts()
-            ->globalSearch(false)
+            ->globalSearchKeyBindings(['mod+k'])
+            ->globalSearchFieldSuffix(fn () => '⌘K')
             ->navigationGroups([
                 NavigationGroup::make(fn () => __('admin.nav.orders')),
                 NavigationGroup::make(fn () => __('admin.nav.finance')),
@@ -66,6 +69,20 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make(fn () => __('admin.nav.analytics')),
                 NavigationGroup::make(fn () => __('admin.nav.team')),
                 NavigationGroup::make(fn () => __('admin.nav.system'))->collapsed(),
+                NavigationGroup::make(fn () => __('admin.nav.quick')),
+            ])
+            // F-ADM-SHL-012: quick links (same-tab / new-tab behaviour kept), permission-filtered.
+            ->navigationItems([
+                NavigationItem::make('quick_pos')->label(fn () => __('staff.link_pos'))->icon(Heroicon::OutlinedBanknotes)->group(fn () => __('admin.nav.quick'))
+                    ->url(fn () => route('staff.pos'), shouldOpenInNewTab: true)->visible(fn () => \App\Domain\Shared\Actor::current()->can('pos.sell'))->sort(1),
+                NavigationItem::make('quick_scan')->label(fn () => __('staff.link_scanner'))->icon(Heroicon::OutlinedQrCode)->group(fn () => __('admin.nav.quick'))
+                    ->url(fn () => route('staff.scanner'))->visible(fn () => \App\Domain\Shared\Actor::current()->can('scanner.admit'))->sort(2),
+                NavigationItem::make('quick_receipts')->label(fn () => __('staff.link_receipts'))->icon(Heroicon::OutlinedDocumentText)->group(fn () => __('admin.nav.quick'))
+                    ->url(fn () => route('staff.receipts'))->visible(fn () => \App\Domain\Shared\Actor::current()->can('receipts.capture'))->sort(3),
+                NavigationItem::make('quick_live')->label(fn () => __('staff.link_live'))->icon(Heroicon::OutlinedSignal)->group(fn () => __('admin.nav.quick'))
+                    ->url(fn () => route('staff.live'), shouldOpenInNewTab: true)->visible(fn () => \App\Domain\Shared\Actor::current()->can('live.view'))->sort(4),
+                NavigationItem::make('quick_site')->label(fn () => __('admin.nav.website'))->icon(Heroicon::OutlinedGlobeAlt)->group(fn () => __('admin.nav.quick'))
+                    ->url(fn () => url('/'), shouldOpenInNewTab: true)->sort(9),
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\Filament\Pages')

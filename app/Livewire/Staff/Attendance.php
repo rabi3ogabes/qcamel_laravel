@@ -55,7 +55,7 @@ class Attendance extends Component
     public function markAll(AttendanceService $svc): void
     {
         if ($this->guarded(fn () => $svc->bulkPresent($this->date, Actor::current()), __('attendance.update_failed'))) {
-            $this->dispatch('toast', type: 'success', message: __('attendance.mark_all_done'));
+            $this->toast('success', __('attendance.mark_all_done'));
         }
     }
 
@@ -63,8 +63,20 @@ class Attendance extends Component
     {
         if ($this->guarded(fn () => $svc->clearDay($this->date, Actor::current()), __('attendance.clear_failed'))) {
             $this->dispatch('close-dialog', 'att-clear');
-            $this->dispatch('toast', type: 'success', message: __('attendance.cleared'));
+            $this->toast('success', __('attendance.cleared'));
         }
+    }
+
+    /** Staff layout uses the Alpine toast store; inside Filament use its notifications. */
+    private function toast(string $type, string $message, ?string $title = null): void
+    {
+        if ($this->embedded) {
+            \Filament\Notifications\Notification::make()->status($type === 'error' ? 'danger' : $type)
+                ->title($title ?? $message)->body($title ? $message : null)->send();
+
+            return;
+        }
+        $this->dispatch('toast', type: $type, title: $title, message: $message);
     }
 
     private function guarded(callable $fn, string $fallback): bool
@@ -74,10 +86,10 @@ class Attendance extends Component
 
             return true;
         } catch (DomainError $e) {
-            $this->dispatch('toast', type: 'error', title: $e->errorCode === 'account_required' ? __('attendance.read_only_toast') : null, message: $e->userMessage());
+            $this->toast('error', $e->userMessage(), $e->errorCode === 'account_required' ? __('attendance.read_only_toast') : null);
         } catch (\Throwable $e) {
             report($e);
-            $this->dispatch('toast', type: 'error', message: $fallback);
+            $this->toast('error', $fallback);
         }
 
         return false;

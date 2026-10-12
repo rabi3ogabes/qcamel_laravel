@@ -82,6 +82,22 @@ class CustomerResource extends Resource
         return false;
     }
 
+    /** U-ADM-SHL-01: ⌘K search by name / e-mail / phone (personal data → view_pii only). */
+    public static function canGloballySearch(): bool
+    {
+        return Actor::current()->can('customers.view_pii') && parent::canGloballySearch();
+    }
+
+    public static function getGloballySearchableAttributes(): array
+    {
+        return ['name', 'email', 'phone'];
+    }
+
+    public static function getGlobalSearchResultDetails(Model $record): array
+    {
+        return array_filter([__('admin.dash.phone') => $record->phone, __('admin.stf.email') => $record->email]);
+    }
+
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()

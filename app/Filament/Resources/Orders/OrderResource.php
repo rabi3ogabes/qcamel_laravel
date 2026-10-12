@@ -103,4 +103,18 @@ class OrderResource extends Resource
     {
         return ['booking_reference'];
     }
+
+    public static function getGlobalSearchEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    {
+        return parent::getGlobalSearchEloquentQuery()->with(['customer', 'event']);
+    }
+
+    public static function getGlobalSearchResultDetails(\Illuminate\Database\Eloquent\Model $record): array
+    {
+        return array_filter([
+            __('admin.dash.customer') => $record->customer?->name,
+            __('admin.dash.event') => $record->event?->title,
+            __('admin.dash.status') => $record->payment_status?->label(),
+        ]);
+    }
 }
