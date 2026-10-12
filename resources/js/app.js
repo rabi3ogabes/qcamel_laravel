@@ -37,6 +37,23 @@ document.addEventListener('alpine:init', () => {
         remove(id) { this.items = this.items.filter((t) => t.id !== id); },
     });
 
+    /* F-GATE-002 rebuild: real connectivity = navigator.onLine + a 30 s server ping. */
+    window.Alpine.data('netStatus', () => ({
+        online: navigator.onLine,
+        start() {
+            const ping = async () => {
+                if (!navigator.onLine) { this.online = false; return; }
+                try {
+                    const r = await fetch('/up', { cache: 'no-store', credentials: 'same-origin' });
+                    this.online = r.ok;
+                } catch { this.online = false; }
+            };
+            window.addEventListener('online', ping);
+            window.addEventListener('offline', () => (this.online = false));
+            setInterval(ping, 30000);
+        },
+    }));
+
     window.Alpine.data('copyText', (text) => ({
         done: false,
         async copy() {

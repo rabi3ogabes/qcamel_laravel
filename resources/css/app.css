@@ -134,8 +134,8 @@ body { font-feature-settings: "tnum" 1; text-rendering: optimizeLegibility; }
 .sadu::before {
     content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; border-radius: inherit;
     background-image:
-        repeating-linear-gradient(45deg, rgb(255 255 255 / .07) 0 6px, transparent 6px 12px),
-        repeating-linear-gradient(-45deg, rgb(255 255 255 / .05) 0 6px, transparent 6px 12px);
+        repeating-linear-gradient(45deg, rgb(255 255 255 / .045) 0 6px, transparent 6px 12px),
+        repeating-linear-gradient(-45deg, rgb(255 255 255 / .035) 0 6px, transparent 6px 12px);
 }
 
 .gold-rule { height: 1px; background: linear-gradient(90deg, transparent, var(--color-sand), var(--color-gold-400), var(--color-sand), transparent); }

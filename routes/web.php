@@ -89,6 +89,23 @@ Route::middleware('auth')->prefix('account')->group(function () {
 | Staff apps (R-138): any staff identity incl. kiosk, per permission
 |--------------------------------------------------------------------------
 */
+Route::get('/staff/manifest.webmanifest', function () {
+    $brand = \App\Support\PublicSettings::current();
+
+    return response()->json([
+        'name' => ($brand['festival_name'] ?? __('common.app_name')).' — '.__('ops.shell.hub'),
+        'short_name' => __('ops.shell.hub'),
+        'start_url' => '/staff',
+        'scope' => '/staff',
+        'display' => 'standalone',
+        'background_color' => '#120708',
+        'theme_color' => '#9C1638',
+        'dir' => app()->getLocale() === 'en' ? 'ltr' : 'rtl',
+        'lang' => app()->getLocale(),
+        'icons' => [['src' => asset('favicon.png'), 'sizes' => '512x512', 'type' => 'image/png', 'purpose' => 'any maskable']],
+    ], 200, ['Content-Type' => 'application/manifest+json']);
+})->name('staff.manifest');
+
 Route::prefix('staff')->name('staff.')->group(function () {
     Route::get('/', Staff\Hub::class)->middleware('staff:staff.hub')->name('hub');
     Route::get('/pos', Staff\Pos::class)->middleware('staff:pos.sell')->name('pos');
