@@ -144,13 +144,14 @@ class LiveBookingsQuery
      *
      * @return array{rows:list<array<string,mixed>>, totals:array<string,mixed>}
      */
-    public function dailySales(?string $seasonStart = null): array
+    public function dailySales(?string $seasonStart = null, ?bool $archived = null): array
     {
         $rows = DB::table('order_items as i')
             ->join('orders as o', 'o.id', '=', 'i.order_id')
             ->join('events as e', 'e.id', '=', 'o.event_id')
             ->whereNull('o.deleted_at')->where('o.payment_status', 'confirmed')
             ->when($seasonStart, fn ($q) => $q->where('e.event_date', '>=', QatarClock::at($seasonStart, '00:00:00')->utc()))
+            ->when($archived !== null, fn ($q) => $q->where('e.is_archived', $archived))
             ->get(['e.event_date', 'i.type', 'i.quantity', 'i.unit_price', 'i.line_total']);
 
         $days = [];

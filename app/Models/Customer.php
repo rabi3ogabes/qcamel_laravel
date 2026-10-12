@@ -36,6 +36,11 @@ class Customer extends Model
         return ($value === null || trim($value) === '') ? null : $value;
     }
 
+    public function holders(): \Illuminate\Database\Eloquent\Relations\HasManyThrough
+    {
+        return $this->hasManyThrough(TicketHolder::class, Order::class);
+    }
+
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
