@@ -58,7 +58,7 @@ return [
         'stock_recount' => 'Stock recount', 'settings_changed' => 'Settings changed', 'staff_role_changed' => 'Role changed',
         'ticket_binned' => 'Ticket binned', 'ticket_restored' => 'Ticket restored', 'price_changed' => 'Price changed',
         'capacity_changed' => 'Capacity changed', 'event_updated' => 'Event updated', 'customer_changed' => 'Customer updated',
-        'invoice_dispatch' => 'Invoice dispatch', 'data_management' => 'Data management', 'auth' => 'Sign-in', 'payment_review' => 'Payment review',
+        'invoice_dispatch' => 'Invoice dispatch', 'data_management' => 'Data management', 'auth' => 'Sign-in', 'payment_review' => 'Payment review', 'attendance' => 'Team attendance', 'pos_user_changed' => 'POS users',
     ],
     'actor_type' => ['admin' => 'Admin', 'guest' => 'Guest', 'system' => 'System', 'staff' => 'Staff'],
     'expired_qr_reason' => ['event_date_changed' => 'Event date changed'],

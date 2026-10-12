@@ -77,7 +77,7 @@ class AttendanceService
             );
         }
         event(new AttendanceChanged($date));
-        Audit::log(ActivityType::StaffRoleChanged, __('attendance.audit_set', ['date' => $date]), null, ['pos_user_id' => $posUserId, 'status' => $status, 'date' => $date], $actor);
+        Audit::log(ActivityType::Attendance, __('attendance.audit_set', ['date' => $date]), null, ['pos_user_id' => $posUserId, 'status' => $status, 'date' => $date], $actor);
     }
 
     /** @return list<string> ids marked present */
@@ -95,7 +95,7 @@ class AttendanceService
             }
         });
         event(new AttendanceChanged($date));
-        Audit::log(ActivityType::StaffRoleChanged, __('attendance.audit_bulk', ['date' => $date]), null, ['count' => count($ids)], $actor);
+        Audit::log(ActivityType::Attendance, __('attendance.audit_bulk', ['date' => $date]), null, ['count' => count($ids)], $actor);
 
         return $ids;
     }
@@ -106,7 +106,7 @@ class AttendanceService
         $date = $this->assertDate($date);
         $n = StaffAttendance::query()->whereDate('attendance_date', $date)->delete();
         event(new AttendanceChanged($date));
-        Audit::log(ActivityType::StaffRoleChanged, __('attendance.audit_clear', ['date' => $date]), null, ['deleted' => $n], $actor);
+        Audit::log(ActivityType::Attendance, __('attendance.audit_clear', ['date' => $date]), null, ['deleted' => $n], $actor);
 
         return $n;
     }

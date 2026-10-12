@@ -31,6 +31,8 @@ enum ActivityType: string
     case DataManagement = 'data_management';
     case Auth = 'auth';
     case PaymentReview = 'payment_review';
+    case Attendance = 'attendance';
+    case PosUserChanged = 'pos_user_changed';
 
     public static function langKey(): string
     {

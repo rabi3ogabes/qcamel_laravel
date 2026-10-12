@@ -58,7 +58,7 @@ return [
         'stock_recount' => 'إعادة حساب المخزون', 'settings_changed' => 'تعديل الإعدادات', 'staff_role_changed' => 'تعديل صلاحيات',
         'ticket_binned' => 'نقل تذكرة للسلة', 'ticket_restored' => 'استرجاع تذكرة', 'price_changed' => 'تعديل سعر',
         'capacity_changed' => 'تعديل السعة', 'event_updated' => 'تعديل فعالية', 'customer_changed' => 'تعديل عميل',
-        'invoice_dispatch' => 'إرسال فواتير', 'data_management' => 'إدارة البيانات', 'auth' => 'دخول', 'payment_review' => 'مراجعة دفع',
+        'invoice_dispatch' => 'إرسال فواتير', 'data_management' => 'إدارة البيانات', 'auth' => 'دخول', 'payment_review' => 'مراجعة دفع', 'attendance' => 'حضور الفريق', 'pos_user_changed' => 'مستخدمو نقاط البيع',
     ],
     'actor_type' => ['admin' => 'مدير', 'guest' => 'ضيف', 'system' => 'نظام', 'staff' => 'فريق'],
     'expired_qr_reason' => ['event_date_changed' => 'تم تغيير موعد الفعالية'],

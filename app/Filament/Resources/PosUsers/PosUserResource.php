@@ -131,7 +131,7 @@ class PosUserResource extends Resource
                             } else {
                                 $record->forceDelete();
                             }
-                            Audit::log(ActivityType::StaffRoleChanged, __('admin.pos.audit_deleted', ['name' => $record->name]), null, ['pos_user_id' => $record->id, 'archived' => $hasOrders], Actor::current());
+                            Audit::log(ActivityType::PosUserChanged, __('admin.pos.audit_deleted', ['name' => $record->name]), null, ['pos_user_id' => $record->id, 'archived' => $hasOrders], Actor::current());
                             Notification::make()->success()->title(__($hasOrders ? 'admin.pos.archived' : 'admin.pos.deleted'))->send();
                         }),
                 ]),
@@ -164,7 +164,7 @@ class PosUserResource extends Resource
             ->action(function (array $data) {
                 $name = preg_replace('/\s+/u', ' ', trim($data['name']));
                 $user = PosUser::query()->create(['name' => $name, 'icon' => PosUser::nextIcon(), 'is_active' => true]);
-                Audit::log(ActivityType::StaffRoleChanged, __('admin.pos.audit_created', ['name' => $name]), $user, [], Actor::current());
+                Audit::log(ActivityType::PosUserChanged, __('admin.pos.audit_created', ['name' => $name]), $user, [], Actor::current());
                 Notification::make()->success()->title(__('admin.pos.added'))->send();
             });
     }
