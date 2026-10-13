@@ -51,6 +51,7 @@ python tools/test-matrix.py                  # spec T-ID → test mapping (docs/
 |---|---|
 | [docs/SPEC.md](docs/SPEC.md) | Master specification (features, rules, defects, tests). |
 | [docs/PROGRESS.md](docs/PROGRESS.md) | What is delivered, defects fixed, what is pending. |
+| [docs/DEPLOY-LARAVEL-CLOUD.md](docs/DEPLOY-LARAVEL-CLOUD.md) | Step-by-step deployment to Laravel Cloud. |
 | [docs/RUNBOOK.md](docs/RUNBOOK.md) | Deployment, daily operations, payment and security incidents, backups. |
 | [docs/SECURITY-CHECKLIST.md](docs/SECURITY-CHECKLIST.md) | Controls and their tests. |
 | [docs/DECISIONS.md](docs/DECISIONS.md) | Architecture and product decisions. |
