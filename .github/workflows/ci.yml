@@ -96,6 +96,11 @@ jobs:
       DB_DATABASE: qcamelmc
       DB_USERNAME: ${{ matrix.db == 'mysql' && 'root' || 'postgres' }}
       DB_PASSWORD: secret
+      # No Redis service in this job: keep cache/queue/session/broadcast in-process.
+      CACHE_STORE: array
+      QUEUE_CONNECTION: sync
+      SESSION_DRIVER: array
+      BROADCAST_CONNECTION: 'null'
     steps:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
