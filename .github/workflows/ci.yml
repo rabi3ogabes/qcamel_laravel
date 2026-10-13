@@ -63,10 +63,66 @@ jobs:
           python3 tools/test-matrix.py
           git diff --exit-code docs/TEST-MATRIX.md || (echo "docs/TEST-MATRIX.md is stale — run python tools/test-matrix.py" && exit 1)
 
+  databases:
+    name: Migrations on ${{ matrix.db }}
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - db: mysql
+            port: 3306
+          - db: pgsql
+            port: 5432
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_DATABASE: qcamelmc
+          MYSQL_ROOT_PASSWORD: secret
+        ports: ['3306:3306']
+        options: --health-cmd="mysqladmin ping -h 127.0.0.1 -psecret" --health-interval=5s --health-retries=20
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: qcamelmc
+          POSTGRES_PASSWORD: secret
+        ports: ['5432:5432']
+        options: --health-cmd="pg_isready" --health-interval=5s --health-retries=20
+    env:
+      DB_CONNECTION: ${{ matrix.db }}
+      DB_HOST: 127.0.0.1
+      DB_PORT: ${{ matrix.port }}
+      DB_DATABASE: qcamelmc
+      DB_USERNAME: ${{ matrix.db == 'mysql' && 'root' || 'postgres' }}
+      DB_PASSWORD: secret
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: bcmath, gd, intl, mbstring, pdo_mysql, pdo_pgsql, zip, exif
+          coverage: none
+      - uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+      - run: composer install --no-interaction --no-progress --prefer-dist
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+      - name: Migrate and seed from scratch (CHECK constraints apply here, unlike SQLite)
+        run: php artisan migrate:fresh --seed --force
+      - name: Roll everything back and migrate again
+        run: |
+          php artisan migrate:rollback --force
+          php artisan migrate --force
+
   image:
     name: Docker image builds
     runs-on: ubuntu-24.04
-    needs: [quality, tests]
+    needs: [quality, tests, databases]
     steps:
       - uses: actions/checkout@v4
       - uses: docker/setup-buildx-action@v3

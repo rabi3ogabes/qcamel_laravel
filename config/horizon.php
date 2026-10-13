@@ -199,7 +199,9 @@ return [
     'defaults' => [
         'supervisor-1' => [
             'connection' => 'redis',
-            'queue' => ['default'],
+            // Every queue the jobs use, most urgent first (payment confirmations before e-mails, QR, exports).
+            // A plain worker needs the same list: php artisan queue:work --queue=payments,notifications,automation,qr,exports,default
+            'queue' => ['payments', 'notifications', 'automation', 'qr', 'exports', 'default'],
             'balance' => 'auto',
             'autoScalingStrategy' => 'time',
             'maxProcesses' => 1,
