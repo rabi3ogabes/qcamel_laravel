@@ -42,7 +42,11 @@ it('T-069 redirects the customer back to the result page after the callback (POS
 
 it('T-069 never throws on garbage and shows the reference when no safe base exists', function () {
     configureSadad(['site_url' => null]);
+    config(['qcamelmc.sadad.frontend_url' => null]); // no .env fallback either → no safe base
+
     $this->post('/payments/sadad/callback', ['junk' => str_repeat('<x>', 50)])->assertSuccessful();
+    $this->post('/payments/sadad/callback', ['ORDERID' => 'QTR-1-1-2026-ABCDEFABCDEF', 'transaction_status' => '9'])
+        ->assertSuccessful()->assertSee('QTR-1-1-2026-ABCDEFABCDEF');
 });
 
 it('T-070 always answers the webhook with success and never double-confirms on replay', function () {
