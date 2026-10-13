@@ -17,7 +17,7 @@ Last updated: 2026-10-12.
 | Admin — system | Settings (design, messaging, Sadad + diagnose, contact/analytics, business rules, data import/export), AI assistant tokens | ✅ |
 | Integrations | Sadad Web Checkout 2.1 + merchant API, n8n (WhatsApp / e-mail), transactional mail, MCP server (5 read-only tools), REST API v1, OpenAPI at `/docs/api` | ✅ |
 | Brand | Desert-luxury design system, Qaf monogram favicon set, Open Graph card | ✅ |
-| Quality | 205 Pest tests / 660+ assertions (127 of 128 spec test IDs, see TEST-MATRIX), Pint, Larastan level 5 (baseline), CI | ✅ |
+| Quality | 211 Pest tests / 710+ assertions; CI green on 2026-10-13 incl. migrations on MySQL 8.4 + Postgres 17 and the Docker image build (127 of 128 spec test IDs, see TEST-MATRIX), Pint, Larastan level 5 (baseline), CI | ✅ |
 | Data migration | `migrate:from-supabase {--dry-run} {--step=} {--storage=}`: users/roles, events, tickets, customers, orders + derived lines, holders, recycle bin, payments, analytics, settings; fixes F-01…F-14; recount; reconciliation report | ✅ |
 | Operations | Dockerfile (runtime + web), docker-compose (horizon, scheduler, reverb, mysql, redis), `.env.example`, RUNBOOK, SECURITY-CHECKLIST, ERD, DECISIONS | ✅ |
 
@@ -30,6 +30,8 @@ Last updated: 2026-10-12.
 - Receipt OCR read an undefined `services.ai` config (no API key ever) — config added (`AI_API_KEY`, `AI_BASE_URL`).
 - Blocked actions showed a generic "no permission" instead of the specific reason — `DomainError` keeps it.
 - Importer: refunds for duplicate payment ids were written before their order (FK), and re-runs created duplicate holder rows for legacy orders without holders — both fixed with tests.
+- Horizon only consumed the `default` queue while jobs use payments / notifications / automation / qr — payment
+  confirmations, e-mails, WhatsApp and QR rendering would never have run in production. Fixed with a guard test.
 - Attendance and POS-user changes were logged as "role changes" — dedicated log types.
 
 ## Pending
@@ -37,6 +39,5 @@ Last updated: 2026-10-12.
 | Item | Notes |
 |---|---|
 | Production data cut-over | Rehearsed 2026-10-12 on the production backup `qcamelmc_261012`: 3,191 orders, 6,025 holders, 34 events, 37,461 page views imported; confirmed revenue 1,007,150.00 QAR reconciled per event; 0 stock drift; 0 warnings. Repeat with the final backup at cut-over (RUNBOOK §8). |
-| Docker image build verification | Dockerfile and compose validated (`docker compose config`); image not built locally because Docker Desktop was not running — CI builds it on every push. |
 | Larastan backlog | ~340 baseline entries, mostly missing relation generics; reduce over time. |
 | Operational setup | Real Sadad keys, mail provider, n8n workflows, backups off-site, `TRUSTED_PROXIES` (see SECURITY-CHECKLIST). |
