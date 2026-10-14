@@ -26,7 +26,10 @@ class SadadWebhookController extends Controller
             $payload = PayloadReader::read($request);
             $normalized = NormalizedPayment::from($payload);
             if ($normalized) {
-                ProcessSadadNotification::dispatch($normalized->orderRef, $payload, SadadSigner::verifyChecksum($payload, $config->checkoutSecret()));
+                $job = new ProcessSadadNotification($normalized->orderRef, $payload, SadadSigner::verifyChecksum($payload, $config->checkoutSecret()));
+                // Serverless hosts have no resident worker: confirm inside the webhook request (D-016 still
+                // holds — the decision comes from Sadad's API, not from this payload).
+                config('qcamelmc.serverless.enabled') ? dispatch_sync($job) : dispatch($job);
             }
         } catch (Throwable $e) {
             Log::debug('sadad webhook ignored', ['error' => $e->getMessage()]);

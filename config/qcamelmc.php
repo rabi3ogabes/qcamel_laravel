@@ -120,6 +120,14 @@ return [
         'supabase_secret_key' => env('LEGACY_SUPABASE_SECRET_KEY', env('SUPABASE_SECRET_KEY')),
     ],
 
+    // Serverless hosting (Vercel): no resident worker, so time-critical jobs run inline and a
+    // per-minute cron (/vercel/cron/minute, signed with CRON_SECRET) drains the queue + scheduler.
+    'serverless' => [
+        'enabled' => (bool) env('SERVERLESS', env('VERCEL_RUNTIME', false)),
+        'cron_secret' => env('CRON_SECRET'),
+        'cron_budget_seconds' => (int) env('CRON_BUDGET_SECONDS', 45),
+    ],
+
     'mcp' => [
         'enabled' => (bool) env('MCP_ENABLED', true),  // F-API-001: read-only AI tools at POST /mcp
         'token_days' => (int) env('MCP_TOKEN_DAYS', 90),
@@ -135,7 +143,7 @@ return [
         'heartbeat_seconds' => 60,            // R-179
         'active_minutes' => 3,
         'prune_minutes' => 5,
-        'excluded_prefixes' => ['/admin', '/staff', '/live-', '/pos', '/scanner', '/livewire', '/api', '/payments', '/webhooks', '/up', '/v', '/broadcasting', '/horizon', '/pulse', '/telescope', '/docs', '/mcp', '/build', '/storage', '/favicon'],
+        'excluded_prefixes' => ['/admin', '/staff', '/live-', '/pos', '/scanner', '/livewire', '/api', '/payments', '/webhooks', '/up', '/v', '/broadcasting', '/horizon', '/pulse', '/telescope', '/docs', '/mcp', '/build', '/storage', '/favicon', '/vercel'],
     ],
 
     'cache' => [

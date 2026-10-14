@@ -24,7 +24,7 @@ use Symfony\Component\HttpKernel\Exception\HttpExceptionInterface;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-return Application::configure(basePath: dirname(__DIR__))
+$app = Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__.'/../routes/web.php',
         api: __DIR__.'/../routes/api.php',
@@ -94,3 +94,13 @@ return Application::configure(basePath: dirname(__DIR__))
             }
         });
     })->create();
+
+// Read-only hosts (Vercel): api/index.php points these at a writable temp directory.
+if ($storage = getenv('APP_STORAGE_PATH')) {
+    $app->useStoragePath($storage);
+}
+if ($bootstrapCache = getenv('APP_BOOTSTRAP_CACHE')) {
+    $app->useBootstrapPath($bootstrapCache); // cached config/routes/packages live here
+}
+
+return $app;

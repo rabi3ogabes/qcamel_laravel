@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AccountSecurityController;
 use App\Http\Controllers\Auth\PasscodeController;
 use App\Http\Controllers\Auth\StaffLogoutController;
+use App\Http\Controllers\CronController;
 use App\Http\Controllers\Payments\SadadCallbackController;
 use App\Http\Controllers\Payments\SadadRedirectController;
 use App\Http\Controllers\Payments\SadadWebhookController;
@@ -68,6 +69,8 @@ Route::post('/sadad-callback', SadadCallbackController::class)->middleware('thro
 Route::post('/payments/sadad/webhook', SadadWebhookController::class)->middleware('throttle:sadad')->name('payments.sadad.webhook');
 Route::post('/webhooks/n8n/response', N8nResponseController::class)->middleware('throttle:n8n')->name('webhooks.n8n');
 Route::post('/webhooks/mail/{provider}', MailEventsController::class)->middleware('throttle:mail-webhook')->name('webhooks.mail');
+// Serverless hosts: Vercel cron (GET, "Authorization: Bearer CRON_SECRET") runs the scheduler and drains the queue.
+Route::get('/vercel/cron/minute', CronController::class)->name('serverless.cron');
 
 /*
 |--------------------------------------------------------------------------
