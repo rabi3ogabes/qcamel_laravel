@@ -37,7 +37,6 @@ return [
         'title_fallback' => 'Mafareed Challenge Festival',
         'hero_eyebrow' => 'Events & tickets · Qatar',
         'hero_alt' => ':name events',
-        'day_label' => ':d',
         'subtitle' => 'Book your ticket in a minute and walk through the gate with a QR code on your phone.',
         'scroll' => 'Explore events',
         'events_title' => 'Available events',

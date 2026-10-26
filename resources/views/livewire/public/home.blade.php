@@ -41,10 +41,9 @@
                             @endif
 
                             <div class="relative z-10 flex flex-1 flex-col text-center">
-                                <h3 class="break-words text-2xl font-bold text-fx-clay">{{ $e['day_title'] }}</h3>
-                                <p class="mt-3 text-base font-bold leading-7 text-black">{{ $e['title'] }}</p>
+                                <h3 class="break-words text-2xl font-bold text-fx-clay">{{ $e['title'] }}</h3>
                                 @if($e['description'])
-                                    <p class="mt-1 line-clamp-2 text-sm leading-6 text-black/70">{{ $e['description'] }}</p>
+                                    <p class="mt-3 line-clamp-3 text-base leading-7 text-black">{{ $e['description'] }}</p>
                                 @endif
 
                                 <div class="my-6 space-y-3 text-sm text-black">
