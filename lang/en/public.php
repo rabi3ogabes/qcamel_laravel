@@ -2,11 +2,12 @@
 
 return [
     'meta' => [
-        'title' => 'Event tickets in Qatar — book your experience',
+        'title' => 'Mafareed Challenge Festival | Events & Tickets',
         'description' => 'Book tickets for Qatar\'s leading events. Secure online booking with instant confirmation.',
         'author' => 'Qatar Ticketing Hub',
     ],
-    'brand_text' => 'Qatar Events',
+    'brand_text' => 'Mafareed Challenge Festival',
+    'club_name' => 'Qatar Camel Mzayen Club',
     'skip_to_content' => 'Skip to content',
     'my_bookings' => 'My bookings',
     'my_bookings_empty' => 'No bookings saved on this device yet.',
@@ -19,6 +20,8 @@ return [
     'whatsapp_aria' => 'WhatsApp support',
     'footer' => [
         'secure' => 'Secure, protected payment',
+        'country' => 'State of Qatar',
+        'aria' => 'Site information',
         'version' => 'v:v',
         'tagline' => 'Official tickets · Instant confirmation · QR entry',
     ],
@@ -31,10 +34,13 @@ return [
 
     'home' => [
         'eyebrow' => 'Current season',
-        'title_fallback' => 'Live the festival',
+        'title_fallback' => 'Mafareed Challenge Festival',
+        'hero_eyebrow' => 'Events & tickets · Qatar',
+        'hero_alt' => ':name events',
+        'day_label' => ':d',
         'subtitle' => 'Book your ticket in a minute and walk through the gate with a QR code on your phone.',
         'scroll' => 'Explore events',
-        'events_title' => 'Events open for booking',
+        'events_title' => 'Available events',
         'events_subtitle' => 'Pick the day that suits you and start booking.',
         'empty' => 'No active events',
         'empty_hint' => 'Stay tuned — booking for upcoming events will open here.',

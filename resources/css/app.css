@@ -64,6 +64,15 @@
     --color-ink: #2a1a12;
     --color-ink-soft: #5c4a3d;
 
+    /* Festival theme (public site mirrors qcamelmc.org): navy ink, turquoise, clay, burgundy, gold */
+    --color-fx-ink: #244a6c;
+    --color-fx-ink-deep: #142a3d;
+    --color-fx-turquoise: #26a4a9;
+    --color-fx-clay: #cb7552;
+    --color-fx-burgundy: #6d1d4a;
+    --color-fx-gold: #edb97d;
+    --color-fx-line: #dfe8e8;
+
     /* Ticket kinds (F-UI-005) */
     --color-ticket-vip: #f9b11f;
     --color-ticket-normal: #9c1638;
@@ -169,6 +178,43 @@ body { font-feature-settings: "tnum" 1; text-rendering: optimizeLegibility; }
 
 /* Focus rings in gold (accessibility upgrade) */
 :focus-visible { outline: 2px solid var(--color-gold-400); outline-offset: 3px; border-radius: .5rem; }
+
+/* ─── Festival theme: public pages mirror qcamelmc.org (F-PUB-008…011) ─────────────── */
+/* The festival's licensed Arabic face when installed locally; Tajawal (loaded) otherwise. */
+@font-face { font-family: 'Festival Adapter'; src: local('Adapter Arabic Text'), local('Adapter Arab'), local('AdapterArabicText-Regular'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Festival Adapter'; src: local('Adapter Arabic Text Semibold'), local('AdapterArabicText-Semibold'); font-weight: 600 900; font-display: swap; }
+.fx-site { font-family: 'Festival Adapter', 'Tajawal', ui-sans-serif, system-ui, sans-serif; letter-spacing: 0; }
+
+/* Faint heritage artwork behind the page (7 %), centred 260px below the header */
+.fx-page { position: relative; isolation: isolate; }
+.fx-page::before {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .07;
+    background: url('/images/mafareed/page-background.png') center 260px / min(520px, 82%) auto no-repeat;
+}
+
+/* 20px sadu strip under the header (admin header image replaces the tile) */
+.fx-heritage-strip { height: 20px; background: #fff url('/images/mafareed/heritage.webp') center 27% / 164px auto repeat; border-block: 1px solid var(--color-fx-line); }
+
+/* Hero: photo height capped at 65svh, navy → turquoise shade, title bottom-start */
+.fx-hero { min-height: min(var(--hero-h, 800px), 65svh); }
+@media (max-width: 639px) { .fx-hero { min-height: min(calc(var(--hero-h, 800px) * .7333), 65svh); } }
+.fx-hero-shade { background: linear-gradient(to top, rgb(36 74 108 / .94), rgb(36 74 108 / .72) 26%, rgb(38 164 169 / .52) 62%, rgb(38 164 169 / .18)); }
+
+/* Event cards: camel photo washed with warm ivory so the text stays legible */
+.fx-card-wash { background: linear-gradient(rgb(249 246 240 / .86), rgb(249 246 240 / .66)); }
+.fx-divider { width: 108px; height: 18px; object-fit: contain; }
+
+/* Clay call-to-action (burgundy on hover, pressed scale) */
+.fx-btn { background: var(--color-fx-clay); border: 2px solid var(--color-fx-clay); color: #fff; font-weight: 700; box-shadow: 0 6px 18px -8px rgb(203 117 82 / .6); transition: background-color .2s, border-color .2s, transform .1s, box-shadow .2s; }
+.fx-btn:hover { background: var(--color-fx-burgundy); border-color: var(--color-fx-burgundy); color: #fff; box-shadow: 0 10px 24px -10px rgb(109 29 74 / .55); }
+.fx-btn:active { transform: scale(.98); }
+.fx-btn:focus-visible { outline: 3px solid var(--color-fx-ink); outline-offset: 2px; }
+
+/* Pattern band before the footer: tiled horizontally, fading in from the top */
+.fx-pre-footer { background-repeat: repeat-x; background-size: auto 100%; background-position: center; mask-image: linear-gradient(to bottom, transparent 0%, #000 100%); -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 100%); }
+
+/* Camel caravan silhouette along the footer's bottom edge */
+.fx-footer-camels { height: 6.55vw; min-height: 34px; background: url('/images/mafareed/footer-camels.webp') center bottom / auto 100% repeat-x; }
 
 input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 input, textarea, select { font-size: max(16px, 1em); }

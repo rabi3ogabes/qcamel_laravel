@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Event;
 use App\Models\PosUser;
+use App\Settings\BrandingSettings;
+use App\Support\PublicSettings;
 use App\Support\QatarClock;
 use Illuminate\Database\Seeder;
 
@@ -15,6 +17,15 @@ class DemoSeeder extends Seeder
 {
     public function run(): void
     {
+        // Festival identity (qcamelmc.org) unless an admin already named it.
+        $brand = app(BrandingSettings::class);
+        if (blank($brand->festival_name)) {
+            $brand->festival_name = 'مهرجان التحدي للمفاريد';
+            $brand->season_label = '2026';
+            $brand->save();
+            PublicSettings::flush();
+        }
+
         if (Event::query()->exists()) {
             return;
         }

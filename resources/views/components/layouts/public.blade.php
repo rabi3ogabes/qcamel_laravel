@@ -53,7 +53,7 @@
     @livewireStyles
     {{ $head ?? '' }}
 </head>
-<body @class(['grain min-h-dvh font-sans text-ink antialiased selection:bg-gold-200 selection:text-ink', 'bg-cream' => $surface === 'cream', 'bg-ivory' => $surface === 'white'])
+<body @class(['grain min-h-dvh font-sans text-ink antialiased selection:bg-gold-200 selection:text-ink', 'bg-cream' => $surface === 'cream', 'bg-ivory' => $surface === 'white', 'bg-white' => $surface === 'plain'])
       data-track="{{ $track ? '1' : '0' }}" style="--header-bg: {{ $headerColor }}">
     <a href="#main" class="sr-only z-[70] rounded-full bg-ink px-4 py-2 text-cream focus:not-sr-only focus:fixed focus:start-4 focus:top-4">{{ __('public.skip_to_content') }}</a>
 
@@ -61,15 +61,14 @@
         <x-public.header :overlay="$header === 'home'" :color="$headerColor" :texture="$headerTexture" />
     @endif
 
-    <main id="main" class="relative z-[2]">
+    <main id="main" @class(['relative z-[2]', 'fx-page' => $header !== 'none'])>
         {{ $slot }}
     </main>
 
-    @if($beforeFooter && ($brand['before_footer_image_url'] ?? null))
-        <div class="relative z-[2] mt-16">
-            <img src="{{ $brand['before_footer_image_url'] }}" alt="" loading="lazy" decoding="async" class="block w-full">
-            <div class="absolute inset-0 bg-gradient-to-b from-cream/80 to-cream/40"></div>
-        </div>
+    {{-- F-PUB-010: heritage pattern band before the footer (admin image or the bundled festival tile) --}}
+    @if($beforeFooter)
+        <div class="fx-pre-footer relative z-[2] mt-16 h-[clamp(150px,28vw,290px)] w-full" aria-hidden="true"
+             style="background-image: url('{{ $brand['before_footer_image_url'] ?? asset('images/mafareed/before-footer.png') }}')"></div>
     @endif
 
     <x-public.footer :texture="$headerTexture" />

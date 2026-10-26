@@ -19,6 +19,8 @@ final class PublicSettings
 {
     public const CACHE_KEY = 'public.settings';
 
+    public const DEFAULT_COPYRIGHT = 'جميع الحقوق محفوظة لنادي قطر لمزاين الإبل';
+
     public const ALLOWED = [
         'logo_url', 'header_bg_color', 'header_bg_image_url', 'hero_image_url', 'hero_text', 'before_footer_image_url',
         'copyright_text', 'festival_name', 'season_label', 'og_image_url', 'site_title_ar', 'site_title_en',
@@ -47,7 +49,7 @@ final class PublicSettings
                 'hero_image_url' => $b->hero_image_url,
                 'hero_text' => (string) $b->hero_text,
                 'before_footer_image_url' => $b->before_footer_image_url,
-                'copyright_text' => $b->copyright_text ?: 'جميع الحقوق محفوظة',
+                'copyright_text' => $b->copyright_text ?: self::DEFAULT_COPYRIGHT,
                 'festival_name' => $b->festival_name,
                 'season_label' => $b->season_label,
                 'og_image_url' => $b->og_image_url,
@@ -88,6 +90,6 @@ final class PublicSettings
     /** @return array<string, mixed> */
     public static function defaults(): array
     {
-        return array_fill_keys(self::ALLOWED, null) + ['header_bg_color' => '#D4B78A', 'copyright_text' => 'جميع الحقوق محفوظة', 'hero_text' => ''];
+        return array_fill_keys(self::ALLOWED, null) + ['header_bg_color' => '#D4B78A', 'copyright_text' => self::DEFAULT_COPYRIGHT, 'hero_text' => ''];
     }
 }

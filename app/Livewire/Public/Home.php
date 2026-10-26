@@ -15,7 +15,7 @@ use Livewire\Component;
  * F-PUB-014…022: event home. Server-rendered list cached 60 s (busted with
  * the public settings), re-filtered by the 18:00 cut-off on every read.
  */
-#[Layout('components.layouts.public', ['header' => 'home', 'whatsapp' => true, 'beforeFooter' => true])]
+#[Layout('components.layouts.public', ['header' => 'home', 'whatsapp' => true, 'beforeFooter' => true, 'surface' => 'plain'])]
 class Home extends Component
 {
     public const PER_PAGE = 9;
@@ -55,6 +55,20 @@ class Home extends Component
         return array_values(array_filter($rows, fn ($r) => $now->lt($r['cutoff'])));
     }
 
+    /** Card heading: "يوم السبت 7 نوفمبر 2026" in Arabic, "Saturday, 7 November 2026" in English. */
+    public static function dayTitle(?string $iso): string
+    {
+        $d = QatarClock::local($iso);
+        if (! $d) {
+            return '';
+        }
+        if (app()->getLocale() === 'en') {
+            return Formats::longDate($d);
+        }
+
+        return __('public.home.day_label', ['d' => Formats::weekday($d).' '.Formats::dayMonth($d).' '.$d->year]);
+    }
+
     public function goTo(int $page): void
     {
         $this->page = max(1, $page);
@@ -69,6 +83,7 @@ class Home extends Component
 
         return view('livewire.public.home', [
             'events' => array_map(fn ($e) => $e + [
+                'day_title' => self::dayTitle($e['event_date']),
                 'date_label' => Formats::longDate($e['event_date']),
                 'day' => Formats::dayMonth($e['event_date']),
                 'weekday' => Formats::weekday($e['event_date']),
